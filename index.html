@@ -4,6 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Earth Pulse</title>
+    <style>
+      body{
+      margin: 10;
+      padding: 10;
+      
+      }
+      .top-bar {
+      background-color: green;
+      padding: 10px; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar a {
+      color: white; 
+      text-decoration: none; 
+      margin-right: 10px; 
+    }
+    .button-container {
+      margin-top: 10px; 
+      
+    }
+
+    .button-container button {
+      margin-bottom: 10px; 
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px; /* Adjust margin as needed */
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Style for the input fields in the table */
+    input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    </style>
   </head>
-  <body></body>
+  <body>
+  <div class="top-bar">
+      <h1>GreenFleet</h1>
+      <a href="#">Data Input</a>
+    <a href="#">Green Option</a>
+    <a href="#">Results</a>
+  </div>
+  <p>Enter Your Data</p>
+  <div class="button-container">
+    <button onclick="Function1()">Download Excel</button>
+    <br>
+    <button onclick="Function2()">Choose File</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
+        
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
+        
+      </tr>
+      
+    </tbody>
+  </table><script>
+    function Function1() {
+      
+      alert('Download button clicked!');
+    }
+
+    function Function2() {
+      
+      alert('Upload button clicked!');
+    }
+  </script>
+  </body>
 </html>
