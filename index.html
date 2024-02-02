@@ -1,9 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>Earth Pulse</title>
+    <link
+      href="http://fonts.googleapis.com/css?family=Lato:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- style -->
+    <link rel="stylesheet" href="/styles/main.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <br /><br />
+      <div class="table-content" id="demo">
+        <table id="table-content">
+          <thead>
+            <tr id="col-heading">
+              <td>Description</td>
+              <td>Type</td>
+              <td>Year</td>
+              <td>Make</td>
+              <td>Model</td>
+              <td>Annual VKT</td>
+              <td>Annual Fuel</td>
+              <td>Fuel Type</td>
+              <td>Fuel Flex</td>
+              <td id="task">Quantity</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="null-records">
+              <td colspan="10">Records don't exist</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <button id="add" onclick="showPopUp();">Add+</button>
+      <div class="modal" id="tableTabModal">
+        <div class="modal-content">
+          <div class="table-tab">
+            <table>
+              <tr>
+                <td>
+                  <label for="description">Description: </label>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    placeholder="Description"
+                    id="description"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="type">Type: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Type" id="type" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="Year">Year: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Year" id="year" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="make">Make: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Make" id="make" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="model">Model: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Model" id="model" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="a_vkt">Annual VKT: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Annual VKT" id="a_vkt" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="a_fuel">Annual Fuel: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Annual Fuel" id="a_fuel" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="f_type">Fuel Type: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Fuel Type" id="f_type" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="f_flex">Fuel Flex: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Flex Fuel" id="f_flex" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="quantity">Quantity: </label>
+                </td>
+                <td>
+                  <input type="text" placeholder="Quantity" id="quantity" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div class="modal-buttons">
+                    <button onclick="submitForm();">Submit</button>
+                    <button onclick="closePopUp();">Cancel</button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- scripts -->
+    <script src="/scripts/main.js"></script>
+  </body>
 </html>
