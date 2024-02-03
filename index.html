@@ -52,6 +52,11 @@
       width: 100%;
       box-sizing: border-box;
     }
+    .Add-button {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px; /* Adjust margin as needed */
+    }
     </style>
   </head>
   <body>
@@ -88,13 +93,20 @@
     <br>
     <button onclick="Function2()">Choose File</button>
   </div>
-  
   <table>
     <thead>
       <tr>
-        <th>Column 1</th>
-        <th>Column 2</th>
-        <th>Column 3</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Year</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Annual KVT</th>
+        <th>Anuual Fuel</th>
+        <th>Fuel Type</th>
+        <th>Fuel Type</th>
+        <th>Flex-Fuel</th>
+        <th>Qty</th>
         
       </tr>
     </thead>
@@ -103,9 +115,11 @@
         <td><input type="text" placeholder="Enter value"></td>
         <td><input type="text" placeholder="Enter value"></td>
         <td><input type="text" placeholder="Enter value"></td>
-        
-      </tr>
-      <tr>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
+        <td><input type="text" placeholder="Enter value"></td>
         <td><input type="text" placeholder="Enter value"></td>
         <td><input type="text" placeholder="Enter value"></td>
         <td><input type="text" placeholder="Enter value"></td>
@@ -114,8 +128,10 @@
       
     </tbody>
   </table>
+  <div class="Add-button">
+    <button onclick="Function3()">Add</button>
   </div>
-  <script>
+ <script>
     function Function1() {
       
       alert('Download button clicked!');
