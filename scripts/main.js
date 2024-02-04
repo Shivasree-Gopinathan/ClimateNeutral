@@ -72,37 +72,6 @@ function validate() {
   }
 }
 
-function display() {
-  var table = document
-    .getElementById('table-content')
-    .getElementsByTagName('tbody')[0]
-  let allEntries = localStorage.getItem('record')
-  if (allEntries == null) {
-    entries = []
-  } else {
-    entries = JSON.parse(allEntries)
-  }
-  entries.forEach((item, index) => {
-    document.getElementById('null-records').style.display = 'none'
-    var newRow = table.insertRow(table.length)
-
-    cell1 = newRow.insertCell(0)
-    cell1.innerHTML = entries[index].field1
-    cell2 = newRow.insertCell(1)
-    cell2.innerHTML = entries[index].feild2
-    cell3 = newRow.insertCell(2)
-    cell3.innerHTML = entries[index].Minutes
-    cell4 = newRow.insertCell(3)
-    cell4.innerHTML = entries[index].Task_Description
-    cell5 = newRow.insertCell(4)
-    cell5.innerHTML =
-      '<button  class="btn1" onclick="edit(this);">Edit</button> <button class="btn1" onclick="delete_record(this);">Delete</button>'
-    cell6 = newRow.insertCell(5)
-    cell6.innerHTML = index
-    cell6.style.display = 'none'
-  })
-}
-
 function showPopUp() {
   document.getElementById('tableTabform').style.display = 'flex'
 }
@@ -113,6 +82,27 @@ function closePopUp() {
 }
 
 function submitForm() {
+  // Check for existence of null records
+  var nullRecordsRow = document.getElementById('null-records')
+  if (nullRecordsRow) {
+    nullRecordsRow.parentNode.removeChild(nullRecordsRow)
+  }
+
+  // Checkkfor validation
+  if (!validate()) {
+    return
+  }
+
+  // Getting the selected value for Fuel Flex
+  var fuelFlexOptions = document.getElementsByName('fuel_flex')
+  var selectedFuelFlex
+  for (var i = 0; i < fuelFlexOptions.length; i++) {
+    if (fuelFlexOptions[i].checked) {
+      selectedFuelFlex = fuelFlexOptions[i].value
+      break
+    }
+  }
+
   var description = document.getElementById('description').value
   var type = document.getElementById('type').value
   var year = document.getElementById('year').value
@@ -124,16 +114,6 @@ function submitForm() {
   var f_flex = document.getElementById('f_flex').value
   var quantity = document.getElementById('quantity').value
 
-  if (!validate()) {
-    return
-  }
-
-  // Check for the null records
-  var nullRecordsRow = document.getElementById('null-records')
-  if (nullRecordsRow) {
-    nullRecordsRow.parentNode.removeChild(nullRecordsRow)
-  }
-
   // Creation and insertion of records as per values defined by user
   var table = document.getElementById('table-content')
   var newRow = table.insertRow(-1)
@@ -141,6 +121,16 @@ function submitForm() {
   var cells = []
   for (var i = 0; i < 10; i++) {
     cells.push(newRow.insertCell(i))
+  }
+
+  var f_flexOptions = document.getElementsByName('fuel_flex')
+  var selectedFuelFlex
+
+  for (var i = 0; i < f_flexOptions.length; i++) {
+    if (f_flexOptions[i].checked) {
+      selectedFuelFlex = f_flexOptions[i].value
+      break
+    }
   }
 
   // Savings the user defined values
@@ -152,7 +142,7 @@ function submitForm() {
   cells[5].innerHTML = a_vkt
   cells[6].innerHTML = a_fuel
   cells[7].innerHTML = f_type
-  cells[8].innerHTML = f_flex
+  cells[8].innerHTML = selectedFuelFlex
   cells[9].innerHTML = quantity
 
   closePopUp()
@@ -175,11 +165,46 @@ function validate() {
   ]
 
   for (var i = 0; i < fields.length; i++) {
-    var value = document.getElementById(fields[i]).value.trim()
-    if (value === '') {
-      alert('Please fill in all fields. Field: ' + fields[i])
-      console.error('Validation failed for field: ' + fields[i])
-      return false
+    var fieldId = fields[i]
+    var value
+
+    if (fieldId === 'f_flex') {
+      // For radio buttons, check if at least one option is selected
+      var fuelFlexOptions = document.getElementsByName('fuel_flex')
+      var selectedFuelFlex = false
+
+      for (var j = 0; j < fuelFlexOptions.length; j++) {
+        if (fuelFlexOptions[j].checked) {
+          selectedFuelFlex = true
+          break
+        }
+      }
+
+      if (!selectedFuelFlex) {
+        alert('Please select Fuel Flex option.')
+        console.error('Validation failed for field: ' + fieldId)
+        return false
+      }
+    } else if (
+      fieldId === 'year' ||
+      fieldId === 'a_vkt' ||
+      fieldId === 'a_fuel'
+    ) {
+      // For 'Year,' 'Annual VKT,' and 'Annual Fuel,' check if the value is an integer
+      value = document.getElementById(fieldId).value.trim()
+      if (!Number.isInteger(Number(value))) {
+        alert('Please enter a valid integer for ' + fieldId)
+        console.error('Validation failed for field: ' + fieldId)
+        return false
+      }
+    } else {
+      // For other fields, check if the value is not an empty string
+      value = document.getElementById(fieldId).value.trim()
+      if (value === '') {
+        alert('Please fill in all fields. \n Field: ' + fieldId)
+        console.error('Validation failed for field: ' + fieldId)
+        return false
+      }
     }
   }
 

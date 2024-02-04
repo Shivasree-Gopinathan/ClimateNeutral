@@ -44,7 +44,7 @@
                   <label for="description">Description: </label>
                 </td>
                 <td>
-                  <input type="text" id="description" />
+                  <input type="text" id="description" value="Des1" default />
                 </td>
               </tr>
               <tr>
@@ -52,7 +52,7 @@
                   <label for="type">Type: </label>
                 </td>
                 <td>
-                  <input type="text" id="type" />
+                  <input type="text" id="type" value="T1" default />
                 </td>
               </tr>
               <tr>
@@ -69,7 +69,7 @@
                   <label for="make">Make: </label>
                 </td>
                 <td>
-                  <input type="text" id="make" />
+                  <input type="text" id="make" value="Ford" default />
                 </td>
               </tr>
               <tr>
@@ -77,7 +77,7 @@
                   <label for="model">Model: </label>
                 </td>
                 <td>
-                  <input type="text" id="model" />
+                  <input type="text" id="model" value="Model" default />
                 </td>
               </tr>
               <tr>
@@ -85,7 +85,7 @@
                   <label for="a_vkt">Annual VKT: </label>
                 </td>
                 <td>
-                  <input type="text" id="a_vkt" />
+                  <input type="text" id="a_vkt" value="120000" default />
                 </td>
               </tr>
               <tr>
@@ -93,26 +93,15 @@
                   <label for="a_fuel">Annual Fuel: </label>
                 </td>
                 <td>
-                  <input type="text" id="a_fuel" />
+                  <input type="text" id="a_fuel" value="762" default />
                 </td>
               </tr>
               <tr>
                 <td>
                   <label for="f_type">Fuel Type: </label>
                 </td>
-                <td id="f_type">
-                  <input type="radio" name="fuel_flex" value="yes" />
-                  <label>Yes</label>
-                  <input type="radio" name="fuel_flex" value="no" />
-                  <label>No</label>
-                </td>
-              </tr>
-              <tr>
                 <td>
-                  <label for="f_flex">Fuel Flex: </label>
-                </td>
-                <td>
-                  <select id="f_flex" class="custom-select">
+                  <select id="f_type" class="custom-select">
                     <option value="E10">E10</option>
                     <option value="">Options</option>
                     <option value="">Options</option>
@@ -122,10 +111,21 @@
               </tr>
               <tr>
                 <td>
+                  <label for="f_flex">Fuel Flex: </label>
+                </td>
+                <td id="f_flex">
+                  <input type="radio" name="fuel_flex" value="Yes" default />
+                  <label>Yes</label>
+                  <input type="radio" name="fuel_flex" value="No" />
+                  <label>No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
                   <label for="quantity">Quantity: </label>
                 </td>
                 <td>
-                  <input type="text" id="quantity" />
+                  <input type="text" id="quantity" value="1" default />
                 </td>
               </tr>
               <tr>
