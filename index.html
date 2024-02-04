@@ -7,11 +7,6 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>Earth Pulse</title>
-    <link
-      href="http://fonts.googleapis.com/css?family=Lato:400,700"
-      rel="stylesheet"
-      type="text/css"
-    />
     <!-- style -->
     <link rel="stylesheet" href="/styles/main.css" />
   </head>
@@ -20,32 +15,28 @@
       <br /><br />
       <div class="table-content" id="demo">
         <table id="table-content">
-          <thead>
-            <tr id="col-heading">
-              <td>Description</td>
-              <td>Type</td>
-              <td>Year</td>
-              <td>Make</td>
-              <td>Model</td>
-              <td>Annual VKT</td>
-              <td>Annual Fuel</td>
-              <td>Fuel Type</td>
-              <td>Fuel Flex</td>
-              <td id="task">Quantity</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="null-records">
-              <td colspan="10">Records don't exist</td>
-            </tr>
-          </tbody>
+          <tr id="col-heading">
+            <td>Description</td>
+            <td>Type</td>
+            <td>Year</td>
+            <td>Make</td>
+            <td>Model</td>
+            <td>Annual VKT</td>
+            <td>Annual Fuel</td>
+            <td>Fuel Type</td>
+            <td>Fuel Flex</td>
+            <td>Quantity</td>
+            <!-- <td></td> -->
+          </tr>
+          <tr id="null-records">
+            <td colspan="10">Records don't exist</td>
+          </tr>
         </table>
       </div>
       <br />
       <button id="add" onclick="showPopUp();">Add+</button>
-      <div class="modal" id="tableTabModal">
-        <div class="modal-content">
+      <div class="form" id="tableTabform">
+        <div class="form-content">
           <div class="table-tab">
             <table>
               <tr>
@@ -53,11 +44,7 @@
                   <label for="description">Description: </label>
                 </td>
                 <td>
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    id="description"
-                  />
+                  <input type="text" id="description" />
                 </td>
               </tr>
               <tr>
@@ -65,7 +52,7 @@
                   <label for="type">Type: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Type" id="type" />
+                  <input type="text" id="type" />
                 </td>
               </tr>
               <tr>
@@ -73,7 +60,8 @@
                   <label for="Year">Year: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Year" id="year" />
+                  <!-- <input type="text" id="year" /> -->
+                  <select id="year" class="custom-select"></select>
                 </td>
               </tr>
               <tr>
@@ -81,7 +69,7 @@
                   <label for="make">Make: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Make" id="make" />
+                  <input type="text" id="make" />
                 </td>
               </tr>
               <tr>
@@ -89,7 +77,7 @@
                   <label for="model">Model: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Model" id="model" />
+                  <input type="text" id="model" />
                 </td>
               </tr>
               <tr>
@@ -97,7 +85,7 @@
                   <label for="a_vkt">Annual VKT: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Annual VKT" id="a_vkt" />
+                  <input type="text" id="a_vkt" />
                 </td>
               </tr>
               <tr>
@@ -105,15 +93,18 @@
                   <label for="a_fuel">Annual Fuel: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Annual Fuel" id="a_fuel" />
+                  <input type="text" id="a_fuel" />
                 </td>
               </tr>
               <tr>
                 <td>
                   <label for="f_type">Fuel Type: </label>
                 </td>
-                <td>
-                  <input type="text" placeholder="Fuel Type" id="f_type" />
+                <td id="f_type">
+                  <input type="radio" name="fuel_flex" value="yes" />
+                  <label>Yes</label>
+                  <input type="radio" name="fuel_flex" value="no" />
+                  <label>No</label>
                 </td>
               </tr>
               <tr>
@@ -121,7 +112,12 @@
                   <label for="f_flex">Fuel Flex: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Flex Fuel" id="f_flex" />
+                  <select id="f_flex" class="custom-select">
+                    <option value="E10">E10</option>
+                    <option value="">Options</option>
+                    <option value="">Options</option>
+                    <option value="">Options</option>
+                  </select>
                 </td>
               </tr>
               <tr>
@@ -129,12 +125,12 @@
                   <label for="quantity">Quantity: </label>
                 </td>
                 <td>
-                  <input type="text" placeholder="Quantity" id="quantity" />
+                  <input type="text" id="quantity" />
                 </td>
               </tr>
               <tr>
                 <td colspan="2">
-                  <div class="modal-buttons">
+                  <div class="form-buttons">
                     <button onclick="submitForm();">Submit</button>
                     <button onclick="closePopUp();">Cancel</button>
                   </div>
