@@ -188,12 +188,14 @@ function validate() {
     } else if (
       fieldId === 'year' ||
       fieldId === 'a_vkt' ||
-      fieldId === 'a_fuel'
+      fieldId === 'a_fuel' ||
+      fieldId === 'quantity'
     ) {
-      // For 'Year,' 'Annual VKT,' and 'Annual Fuel,' check if the value is an integer
+      // For 'Year', 'Annual VKT', 'Annual Fuel' and 'Quantity, check if the value is an integer
       value = document.getElementById(fieldId).value.trim()
       if (!Number.isInteger(Number(value))) {
         alert('Please enter a valid integer for ' + fieldId)
+        document.getElementById(fieldId).focus()
         console.error('Validation failed for field: ' + fieldId)
         return false
       }
@@ -201,7 +203,7 @@ function validate() {
       // For other fields, check if the value is not an empty string
       value = document.getElementById(fieldId).value.trim()
       if (value === '') {
-        alert('Please fill in all fields. \n Field: ' + fieldId)
+        alert('Please fill in all fields.\nField: ' + fieldId)
         console.error('Validation failed for field: ' + fieldId)
         return false
       }
