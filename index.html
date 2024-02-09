@@ -9,9 +9,9 @@
   <body>
     <!--Side bar-->
   <div class="sidebar" id="sidebar">
+  <a href="javascript:void(0)" class="closebutton" onclick="closeSidebar()">X</a>
    <label for="province">Select a province:</label>
   <select name="province" id="province">
-  <a href="javascript:void(0)" class="closebutton" onclick="closeSidebar()">X</a>
     <option value="ontario">Ontario</option>
     <option value="quebec">Quebec</option>
     <option value="newfound">Newfoundland and Labrador</option>
@@ -26,15 +26,16 @@
   </div>
   
   <div id="pageBody">
-  <button class="openbutton" onclick="openSidebar()">☰</button>
+  
   
   <div class="top-bar">
+  <button class="openbutton" onclick="openSidebar()">☰</button>
       <h1>GreenFleet</h1>
       <a href="#">Data Input</a>
     <a href="#">Green Option</a>
     <a href="#">Results</a>
   </div>
-  <p>Enter Your Data</p>
+ <!-- <p>Enter Your Data</p> -->
   <div class="button-container">
     <button onclick="Function1()">Download Excel</button>
     <br>
