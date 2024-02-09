@@ -1,3 +1,167 @@
+/* stylesheet */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Add Data Table with Add Button */
+.container {
+  margin: 0 5%;
+}
+
+button {
+  background-color: #26b170;
+  border: 0px;
+  border-radius: 10px;
+  padding: 8px 15px;
+  color: white;
+  font-size: medium;
+}
+
+button:hover {
+  background-color: #0c1081;
+  cursor: pointer;
+}
+
+#add {
+  float: right;
+}
+
+.table-content td {
+  width: 70px;
+  border: 2px solid black;
+  text-align: center;
+}
+
+#col-heading {
+  font-weight: 550;
+  background-color: #0c1081;
+  color: white;
+}
+
+.table-content table {
+  background-color: white;
+  color: black;
+  width: 100%;
+}
+
+.table-content table,
+tr,
+td {
+  /* border: 1px solid rgb(145, 144, 144); */
+  border-collapse: collapse;
+  text-align: center;
+  height: 40px;
+}
+
+.table-tab table,
+tr,
+td {
+  border-collapse: collapse;
+  text-align: left;
+  /* background-color: blueviolet; */
+  width: -webkit-fill-available;
+}
+
+.table-tab table tr td {
+  padding: 0px 5px;
+  /* font-size: medium; */
+}
+
+.table-tab input {
+  width: -webkit-fill-available;
+  margin: 10px 5px;
+  height: 30px;
+  font-size: medium;
+  padding-left: 10px;
+}
+
+#f_flex input {
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.form {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 40%;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1%;
+}
+
+.form-buttons button {
+  margin-left: 5%;
+  border: 0px;
+  border-radius: 8px;
+  padding: 8px 15px;
+  color: white;
+  font-size: medium;
+}
+
+.custom-select {
+  min-width: 300px;
+  position: relative;
+  margin: 0 5px;
+  font-size: 15px;
+}
+
+select {
+  /* appearance: none; */
+  /* -webkit-appearance: none; */
+  width: inherit;
+  padding: 6px 5px;
+  background-color: inherit;
+  border: 1px solid gray;
+  border-radius: 2px;
+  color: #000;
+  cursor: pointer;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.2rem;
+  content: '';
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+/* Add Data Table with Add Button */
+
 /* The side navigation menu */
 .sidebar {
   height: 100%;
@@ -21,6 +185,6 @@
 }
 
 #pageBody {
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 16px;
 }

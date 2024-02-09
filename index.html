@@ -93,7 +93,7 @@
     <br>
     <button onclick="Function2()">Choose File</button>
   </div>
-  <table>
+  <!-- <table>
     <thead>
       <tr>
         <th>Description</th>
@@ -130,7 +130,139 @@
   </table>
   <div class="Add-button">
     <button onclick="Function3()">Add</button>
+  </div> -->
+  <div class="container">
+    <br /><br />
+    <div class="table-content" id="demo">
+      <table id="table-content">
+        <tr id="col-heading">
+          <td>Description</td>
+          <td>Type</td>
+          <td>Year</td>
+          <td>Make</td>
+          <td>Model</td>
+          <td>Annual VKT</td>
+          <td>Annual Fuel</td>
+          <td>Fuel Type</td>
+          <td>Fuel Flex</td>
+          <td>Quantity</td>
+          <!-- <td></td> -->
+        </tr>
+        <tr id="null-records">
+          <td colspan="10">Records don't exist</td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <button id="add" onclick="showPopUp();">Add+</button>
+    <div class="form" id="tableTabform">
+      <div class="form-content">
+        <div class="table-tab">
+          <table>
+            <tr>
+              <td>
+                <label for="description">Description: </label>
+              </td>
+              <td>
+                <input type="text" id="description" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="type">Type: </label>
+              </td>
+              <td>
+                <input type="text" id="type" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="Year">Year: </label>
+              </td>
+              <td>
+                <!-- <input type="text" id="year" /> -->
+                <select id="year" class="custom-select"></select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="make">Make: </label>
+              </td>
+              <td>
+                <input type="text" id="make" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="model">Model: </label>
+              </td>
+              <td>
+                <input type="text" id="model" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="a_vkt">Annual VKT: </label>
+              </td>
+              <td>
+                <input type="text" id="a_vkt" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="a_fuel">Annual Fuel: </label>
+              </td>
+              <td>
+                <input type="text" id="a_fuel" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="f_type">Fuel Type: </label>
+              </td>
+              <td>
+                <select id="f_type" class="custom-select">
+                  <option value="Gasoline">Gasoline</option>
+                  <option value="E10 Gasoline">E10 Gasoline</option>
+                  <option value="Diesel">Diesel</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="f_flex">Fuel Flex: </label>
+              </td>
+              <td id="f_flex">
+                <input type="radio" name="fuel_flex" value="Yes" />
+                <label>Yes</label>
+                <input type="radio" name="fuel_flex" value="No" />
+                <label>No</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="quantity">Quantity: </label>
+              </td>
+              <td>
+                <input type="text" id="quantity" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div class="form-buttons">
+                  <button onclick="submitForm();">Submit</button>
+                  <button onclick="closePopUp();">Cancel</button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
+      <!-- scripts -->
+      <script src="/scripts/main.js"></script>
+
  <script>
     function Function1() {
       
