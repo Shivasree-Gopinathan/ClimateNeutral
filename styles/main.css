@@ -107,21 +107,12 @@ body {
   padding: 10;
 }
 .top-bar {
-<<<<<<< HEAD
-      background-color:#26b170;
-      padding: 10px; 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-=======
   background-color: green;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
->>>>>>> e75b057ef60438cd574205b046389890b712efb7
 
 .top-bar a {
   color: white;
@@ -160,37 +151,7 @@ input {
   box-sizing: border-box;
 }
 .Add-button {
-<<<<<<< HEAD
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 10px; /* Adjust margin as needed */
-    }
-
-.car {
-      position: relative;
-      height: 200px; /* Adjust height as needed */
-      overflow: hidden;
-  }
-  
-.car-image {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 200px; /* Adjust height of the car image */
-      animation: scrollCar 10s linear infinite; /* Adjust duration as needed */
-  }
-  
-  @keyframes scrollCar {
-      0% {
-          transform: translateX(-100%); /* Start position (move off-screen left) */
-      }
-      100% {
-          transform: translateX(100%); /* End position (move off-screen right) */
-      }
-  }
-=======
   display: flex;
   justify-content: flex-end;
   margin-top: 10px; /* Adjust margin as needed */
 }
->>>>>>> e75b057ef60438cd574205b046389890b712efb7
