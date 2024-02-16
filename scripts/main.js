@@ -227,3 +227,18 @@ function clearForm() {
   document.getElementById('quantity').value = ''
 }
 // User Data Input's Add Functionality
+// Get the car image element
+const carImage = document.getElementById('carImage');
+
+// Function to scroll the car image
+function scrollCar() {
+    // Move the car image horizontally
+    carImage.style.left = (parseInt(carImage.style.left) - 1) + 'px'; // Adjust speed by changing the number
+    // Reset position when the car image moves out of the container
+    if (parseInt(carImage.style.left) < -carImage.width) {
+        carImage.style.left = '100%'; // Restart from the right side of the container
+    }
+}
+
+// Call the scrollCar function every 10 milliseconds (adjust interval as needed)
+setInterval(scrollCar, 10);
