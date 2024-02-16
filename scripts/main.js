@@ -1,20 +1,4 @@
-// User Data Input's Add Functionality
-var description = document.getElementById('description')
-var type = document.getElementById('type')
-var year = document.getElementById('year')
-var make = document.getElementById('make')
-var model = document.getElementById('model')
-var a_vkt = document.getElementById('a_vkt')
-var a_fuel = document.getElementById('a_fuel')
-var f_type = document.getElementById('f_type')
-var f_flex = document.getElementById('f_flex')
-var quantity = document.getElementById('quantity')
-var table = document.getElementById('table-content')
-var selectedrow = null
-var flag = false
-var rowIndex = 0
-
-// Dynamically generating list of years
+// Dynamically generating list of years for User's Data Input
 var currentYear = new Date().getFullYear()
 var selectYear = document.getElementById('year')
 
@@ -25,205 +9,147 @@ for (var i = currentYear; i >= 1950; i--) {
   selectYear.add(option)
 }
 
-// Validation of User Input
+// User Data Input's Add Functionality with loal storage
+var description = document.getElementById('description')
+var type = document.getElementById('type')
+var year = document.getElementById('year')
+var make = document.getElementById('make')
+var model = document.getElementById('model')
+var a_vkt = document.getElementById('a_vkt')
+var a_fuel = document.getElementById('a_fuel')
+var f_type = document.getElementById('f_type')
+var fuel_flex = document.getElementById('fuel-flex')
+var quantity = document.getElementById('quantity')
+var table = document.getElementById('table-content')
+
+// Load data from local storage on page load
+window.onload = function () {
+  loadDataFromLocalStorage()
+}
+
+function addRow() {
+  if (validate()) {
+    let newRow = table.insertRow(table.rows.length)
+    let cell1 = newRow.insertCell(0)
+    let cell2 = newRow.insertCell(1)
+    let cell3 = newRow.insertCell(2)
+    let cell4 = newRow.insertCell(3)
+    let cell5 = newRow.insertCell(4)
+    let cell6 = newRow.insertCell(5)
+    let cell7 = newRow.insertCell(6)
+    let cell8 = newRow.insertCell(7)
+    let cell9 = newRow.insertCell(8)
+    let cell10 = newRow.insertCell(9)
+
+    cell1.innerHTML = description.value
+    cell2.innerHTML = type.value
+    cell3.innerHTML = year.value
+    cell4.innerHTML = make.value
+    cell5.innerHTML = model.value
+    cell6.innerHTML = a_vkt.value
+    cell7.innerHTML = a_fuel.value
+    cell8.innerHTML = f_type.value
+    cell9.innerHTML = fuel_flex.value
+    cell10.innerHTML = quantity.value
+
+    // Save data to local storage
+    saveDataToLocalStorage()
+
+    clearFields()
+  }
+}
+
+function cancelRow() {
+  clearFields()
+}
+
+function clearFields() {
+  description.value = ''
+  type.value = ''
+  year.value = ''
+  make.value = ''
+  model.value = ''
+  a_vkt.value = ''
+  a_fuel.value = ''
+  f_type.value = ''
+  fuel_flex.value = ''
+  quantity.value = ''
+}
+
 function validate() {
-  var field1 = document.getElementById('description').value
-  var field2 = document.getElementById('type').value
-  var field3 = document.getElementById('year').value
-  var field4 = document.getElementById('make').value
-  var field5 = document.getElementById('model').value
-  var field6 = document.getElementById('a_vkt').value
-  var field7 = document.getElementById('a_fuel').value
-  var field8 = document.getElementById('f_type').value
-  var field9 = document.getElementById('f_flex').value
-  var field10 = document.getElementById('quantity').value
-
-  if (field1 === '') {
-    alert('Enter the description')
+  if (!description.value) {
+    alert('Please enter Description.')
+    description.focus()
     return false
-  } else if (field2 === '') {
-    alert('Enter the type')
+  } else if (!type.value) {
+    alert('Please enter Type.')
+    type.focus()
     return false
-  } else if (field3 === '') {
-    alert('Enter the year')
+  } else if (!year.value) {
+    alert('Please enter Year.')
+    year.focus()
     return false
-  } else if (field4 === '') {
-    alert('Enter the make')
+  } else if (!make.value) {
+    alert('Please enter Make.')
+    make.focus()
     return false
-  } else if (field5 === '') {
-    alert('Enter the model')
+  } else if (!model.value) {
+    alert('Please enter Model.')
+    model.focus()
     return false
-  } else if (field6 === '') {
-    alert('Enter the annual vkt')
+  } else if (!isNumber(a_vkt.value)) {
+    alert('Please enter a valid Annual VKT (numeric value).')
+    a_vkt.focus()
     return false
-  } else if (field7 === '') {
-    alert('Enter the annual fuel')
+  } else if (!isNumber(a_fuel.value)) {
+    alert('Please enter a valid Annual Fuel (numeric value).')
+    a_fuel.focus()
     return false
-  } else if (field8 === '') {
-    alert('Enter the fuel type')
+  } else if (!f_type.value) {
+    alert('Please select Fuel Type.')
+    f_type.focus()
     return false
-  } else if (field9 === '') {
-    alert('Enter the fuel flex')
+  } else if (!fuel_flex.value) {
+    alert('Please select Fuel Flex.')
+    fuel_flex.focus()
     return false
-  } else if (field10 === '') {
-    alert('Enter the quantity')
+  } else if (!isNumber(quantity.value)) {
+    alert('Please enter a valid Quantity (numeric value).')
+    quantity.focus()
     return false
-  } else {
-    return true
-  }
-}
-
-function showPopUp() {
-  document.getElementById('tableTabform').style.display = 'flex'
-}
-
-function closePopUp() {
-  document.getElementById('tableTabform').style.display = 'none'
-  clearForm()
-}
-
-function submitForm() {
-  // Check for existence of null records
-  var nullRecordsRow = document.getElementById('null-records')
-  if (nullRecordsRow) {
-    nullRecordsRow.parentNode.removeChild(nullRecordsRow)
-  }
-
-  // Checkkfor validation
-  if (!validate()) {
-    return
-  }
-
-  // Getting the selected value for Fuel Flex
-  var fuelFlexOptions = document.getElementsByName('fuel_flex')
-  var selectedFuelFlex
-  for (var i = 0; i < fuelFlexOptions.length; i++) {
-    if (fuelFlexOptions[i].checked) {
-      selectedFuelFlex = fuelFlexOptions[i].value
-      break
-    }
-  }
-
-  var description = document.getElementById('description').value
-  var type = document.getElementById('type').value
-  var year = document.getElementById('year').value
-  var make = document.getElementById('make').value
-  var model = document.getElementById('model').value
-  var a_vkt = document.getElementById('a_vkt').value
-  var a_fuel = document.getElementById('a_fuel').value
-  var f_type = document.getElementById('f_type').value
-  var f_flex = document.getElementById('f_flex').value
-  var quantity = document.getElementById('quantity').value
-
-  // Creation and insertion of records as per values defined by user
-  var table = document.getElementById('table-content')
-  var newRow = table.insertRow(-1)
-
-  var cells = []
-  for (var i = 0; i < 10; i++) {
-    cells.push(newRow.insertCell(i))
-  }
-
-  var f_flexOptions = document.getElementsByName('fuel_flex')
-  var selectedFuelFlex
-
-  for (var i = 0; i < f_flexOptions.length; i++) {
-    if (f_flexOptions[i].checked) {
-      selectedFuelFlex = f_flexOptions[i].value
-      break
-    }
-  }
-
-  // Savings the user defined values
-  cells[0].innerHTML = description
-  cells[1].innerHTML = type
-  cells[2].innerHTML = year
-  cells[3].innerHTML = make
-  cells[4].innerHTML = model
-  cells[5].innerHTML = a_vkt
-  cells[6].innerHTML = a_fuel
-  cells[7].innerHTML = f_type
-  cells[8].innerHTML = selectedFuelFlex
-  cells[9].innerHTML = quantity
-
-  closePopUp()
-  alert('Data added to the table!')
-  clearForm()
-}
-
-// Validation of User Input
-function validate() {
-  var fields = [
-    'description',
-    'type',
-    'year',
-    'make',
-    'model',
-    'a_vkt',
-    'a_fuel',
-    'f_type',
-    'f_flex',
-    'quantity',
-  ]
-
-  for (var i = 0; i < fields.length; i++) {
-    var fieldId = fields[i]
-    var value
-
-    if (fieldId === 'f_flex') {
-      // For radio buttons, check if at least one option is selected
-      var fuelFlexOptions = document.getElementsByName('fuel_flex')
-      var selectedFuelFlex = false
-
-      for (var j = 0; j < fuelFlexOptions.length; j++) {
-        if (fuelFlexOptions[j].checked) {
-          selectedFuelFlex = true
-          break
-        }
-      }
-
-      if (!selectedFuelFlex) {
-        alert('Please select Fuel Flex option.')
-        console.error('Validation failed for field: ' + fieldId)
-        return false
-      }
-    } else if (
-      fieldId === 'year' ||
-      fieldId === 'a_vkt' ||
-      fieldId === 'a_fuel' ||
-      fieldId === 'quantity'
-    ) {
-      // For 'Year', 'Annual VKT', 'Annual Fuel' and 'Quantity, check if the value is an integer
-      value = document.getElementById(fieldId).value.trim()
-      if (!Number.isInteger(Number(value))) {
-        alert('Please enter a valid integer for ' + fieldId)
-        document.getElementById(fieldId).focus()
-        console.error('Validation failed for field: ' + fieldId)
-        return false
-      }
-    } else {
-      // For other fields, check if the value is not an empty string
-      value = document.getElementById(fieldId).value.trim()
-      if (value === '') {
-        alert('Please fill in all fields.\nField: ' + fieldId)
-        console.error('Validation failed for field: ' + fieldId)
-        return false
-      }
-    }
   }
   return true
 }
 
-function clearForm() {
-  document.getElementById('description').value = ''
-  document.getElementById('type').value = ''
-  document.getElementById('year').selectedIndex = 0
-  document.getElementById('make').value = ''
-  document.getElementById('model').value = ''
-  document.getElementById('a_vkt').value = ''
-  document.getElementById('a_fuel').value = ''
-  document.getElementById('f_type').value = ''
-  document.getElementById('f_flex').selectedIndex = 0
-  document.getElementById('quantity').value = ''
+function isNumber(value) {
+  return !isNaN(parseFloat(value)) && isFinite(value)
 }
-// User Data Input's Add Functionality
+
+function saveDataToLocalStorage() {
+  let data = JSON.parse(localStorage.getItem('tableData')) || []
+  let rowData = {
+    description: description.value,
+    type: type.value,
+    year: year.value,
+    make: make.value,
+    model: model.value,
+    a_vkt: a_vkt.value,
+    a_fuel: a_fuel.value,
+    f_type: f_type.value,
+    fuel_flex: fuel_flex.value,
+    quantity: quantity.value,
+  }
+  data.push(rowData)
+  localStorage.setItem('tableData', JSON.stringify(data))
+}
+
+function loadDataFromLocalStorage() {
+  let data = JSON.parse(localStorage.getItem('tableData')) || []
+  data.forEach((rowData) => {
+    let newRow = table.insertRow(table.rows.length)
+    Object.values(rowData).forEach((value) => {
+      let cell = newRow.insertCell()
+      cell.innerHTML = value
+    })
+  })
+}
