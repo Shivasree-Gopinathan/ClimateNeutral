@@ -154,3 +154,108 @@ function loadDataFromLocalStorage() {
     })
   })
 }
+
+// ==== js ===
+
+function populateGreenOptions() {
+  // loadDataFromLocalStorage()
+
+  // Get records from local storage
+  var storedRecords = JSON.parse(localStorage.getItem('tableData')) || []
+
+  // Get the options container reference
+  var optionsContainer = document.querySelector('.green-options-table')
+
+  // Clear existing content
+  optionsContainer.innerHTML = ''
+
+  // Check if there are no records
+  if (storedRecords.length === 0) {
+    // Display a message in the options container
+    var noRecordsRow = optionsContainer.insertRow()
+    var noRecordsCell = noRecordsRow.insertCell()
+    noRecordsCell.textContent = 'No records'
+    return
+  }
+
+  // Create header row
+  var headerRow = optionsContainer.insertRow()
+  var fleetVehicleHeader = document.createElement('th')
+  fleetVehicleHeader.textContent = 'Fleet Vehicle'
+  headerRow.appendChild(fleetVehicleHeader)
+  var greenOptionsHeader = document.createElement('th')
+  greenOptionsHeader.textContent = 'Green Options'
+  headerRow.appendChild(greenOptionsHeader)
+
+  // Loop through stored records
+  for (var i = 0; i < storedRecords.length; i++) {
+    var record = storedRecords[i]
+
+    // Create a new row in the options container
+    var newRow = optionsContainer.insertRow()
+
+    // Concatenate the first five properties with "-"
+    var concatenatedValues = Object.values(record).slice(0, 5).join(' - ')
+
+    // Create a single cell for the concatenated values
+    var cell1 = newRow.insertCell()
+    cell1.textContent = concatenatedValues
+
+    // Create a cell for the dropdown (second cell)
+    var dropdownCell = newRow.insertCell()
+
+    // Create a dropdown based on the 'type', 'fuel_flex', and 'f_type' properties
+    var dropdown = document.createElement('select')
+    dropdown.className = 'custom-select'
+    var type = record.type
+    var fuelFlex = record.fuel_flex
+    var fuelType = record.f_type
+
+    // Customize the dropdown options based on the record's properties
+    if (type === 'Car' && fuelFlex === 'Yes' && fuelType === 'Gasoline') {
+      dropdown.innerHTML =
+        '<option value="EV Vehicle">Replace w/ EV Vehicle</option><option value="E85 Ethanol Usage">E85 Ethanol Usage</option>'
+    } else if (type === 'Car' && fuelFlex === 'No' && fuelType === 'Gasoline') {
+      dropdown.innerHTML =
+        '<option value="EV Car">Replace w/ EV Car</option><option value="Biofuel Car E85">Replace w/ Biofuel Car E85</option>'
+    } else if (
+      type === 'Light Duty Truck' &&
+      fuelFlex === 'No' &&
+      fuelType === 'Gasoline'
+    ) {
+      dropdown.innerHTML =
+        '<option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Biofuel E85 Light Duty Truck">Replace w/ Biofuel E85 Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel Car">Right Size to Biofuel Car</option>'
+    } else if (
+      type === 'Light Duty Truck' &&
+      fuelFlex === 'Yes' &&
+      fuelType === 'Gasoline'
+    ) {
+      dropdown.innerHTML =
+        '<option value="E85 Biofuel Usage">E85 Biofuel Usage</option><option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel Car">Right Size to Biofuel Car</option>'
+    } else if (
+      type === 'Light Duty Truck' &&
+      fuelFlex === 'No' &&
+      fuelType === 'Diesel'
+    ) {
+      dropdown.innerHTML =
+        '<option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Biofuel E85 Light Duty Truck">Replace w/ Biofuel E85 Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel E85 Car">Right Size to Biofuel E85 Car</option>'
+    } else if (
+      type === 'Light Duty Truck' &&
+      fuelFlex === 'Yes' &&
+      fuelType === 'Diesel'
+    ) {
+      dropdown.innerHTML =
+        '<option value="B20 Diesel Usage">B20 Diesel Usage</option><option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Biofuel E85 Light Duty Truck">Replace w/ Biofuel E85 Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel E85 Car">Right Size to Biofuel E85 Car</option>'
+    } else {
+      dropdown.innerHTML = '<option value="">No options available</option>'
+    }
+
+    // Append the dropdown to the cell
+    dropdownCell.appendChild(dropdown)
+  }
+}
+
+// Call the function to populate the options-container on page load
+document.addEventListener('DOMContentLoaded', function () {
+  populateGreenOptions()
+})

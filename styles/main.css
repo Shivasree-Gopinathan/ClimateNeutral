@@ -69,3 +69,43 @@ td {
 .custom-select:hover {
   cursor: pointer;
 }
+
+/* css ==== */
+
+/* green options */
+.container2 {
+  font-size: large;
+  color: white;
+}
+
+.container2 .options-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  background-color: #26b170;
+  padding: 2% 5%;
+}
+
+.options-container table,
+.options-container table tbody tr td {
+  border: none;
+  width: -webkit-fill-available;
+  padding: 10px 0;
+  text-align: left;
+}
+
+.options-container table tr th {
+  color: #0c1081;
+  font-size: larger;
+}
+
+.options-container .custom-select {
+  padding: 4px 0;
+  font-size: initial;
+  width: 100%;
+}
+
+.options-container .custom-select:hover {
+  cursor: pointer;
+}
