@@ -14,7 +14,7 @@
   <a href="javascript:void(0)" class="closebutton" onclick="closeSidebar()">X</a>
    <label for="province">Select a province:</label>
   <select name="province" id="province">
-    <option value="ontario">Ontario</option>
+    <option value="ontario" selected>Ontario</option>
     <option value="quebec">Quebec</option>
     <option value="newfound">Newfoundland and Labrador</option>
 	<option value="prince">Prince Edward Island</option>
@@ -125,6 +125,7 @@
       <button id="add-update-button" onclick="addRow();">Add</button>
       <button onclick="cancelRow();">Cancel</button>
     </div>
+	<button onclick="calculateGreenOptions()">Calculate Green Options</button>
   </div>
  <script>
     function Function1() {
@@ -188,5 +189,6 @@ function closeSidebar() {
 }
   </script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/greenOption.js"></script>
   </body>
 </html>
