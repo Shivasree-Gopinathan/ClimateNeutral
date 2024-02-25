@@ -235,53 +235,6 @@ function deleteRecord(r) {
   }
 }
 
-// Function to add a new row
-// function addRow() {
-//   if (validate()) {
-//     let newRow = table.insertRow(table.rows.length)
-//     console.log(newrow)
-//     let cells = []
-
-//     for (let i = 0; i < 10; i++) {
-//       cells[i] = newRow.insertCell(i)
-//       cells[i].innerHTML = i === 2 ? parseInt(year.value, 10) : getInputValue(i)
-//     }
-
-//     // Save data to local storage
-//     saveDataToLocalStorage()
-
-//     // Update indices in local storage
-//     let records = JSON.parse(localStorage.getItem('tableData')) || []
-//     for (let i = 0; i < records.length; i++) {
-//       records[i].Id = i + 1
-//     }
-//     localStorage.setItem('tableData', JSON.stringify(records))
-
-//     // Add update and delete buttons
-//     let updateButton = document.createElement('button')
-//     updateButton.innerHTML = 'Update'
-//     updateButton.onclick = function () {
-//       if (updateButton.innerHTML === 'Update') {
-//         edit(newRow.rowIndex)
-//       } else {
-//         update(newRow.rowIndex)
-//       }
-//     }
-//     cells[10] = newRow.insertCell(10)
-//     cells[10].appendChild(updateButton)
-
-//     let deleteButton = document.createElement('button')
-//     deleteButton.innerHTML = 'Delete'
-//     deleteButton.onclick = function () {
-//       deleteRecord(newRow)
-//     }
-//     cells[11] = newRow.insertCell(11)
-//     cells[11].appendChild(deleteButton)
-
-//     clearFields()
-//   }
-// }
-
 // Function to get the input element by index
 function getInputElement(index) {
   switch (index) {
