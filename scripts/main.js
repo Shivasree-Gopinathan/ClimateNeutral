@@ -63,8 +63,8 @@ function getInputValue(index) {
 function edit(index) {
   if (!isEditMode) {
     isEditMode = true
-    rowIndex = index + 1
-    selectedRow = table.rows[rowIndex]
+    rowIndex = index
+    selectedRow = table.rows[rowIndex + 1]
 
     // Check if a "Save" button already exists
     let saveButtonCell = table.rows[1].cells[10]
@@ -78,7 +78,9 @@ function edit(index) {
       saveButton.onclick = function () {
         update()
         removeSaveButton()
+        loadDataFromLocalStorage()
         clearFields() // Clear fields after updating
+        location.reload()
       }
     }
 
@@ -99,6 +101,8 @@ function edit(index) {
 // Function to add or update the "Save" button
 function addSaveButton() {
   let saveButtonCell = table.rows[1].insertCell(10)
+  saveButtonCell.colSpan = 2
+
   let saveButton = document.createElement('button')
   saveButton.innerHTML = 'Save'
   saveButton.onclick = function () {
@@ -139,6 +143,7 @@ function addRow() {
     updateButton.innerHTML = 'Update'
     updateButton.onclick = function () {
       let rowIndex = newRow.rowIndex - 1
+      console.log(rowIndex)
       edit(rowIndex)
     }
     cells[10] = newRow.insertCell(10)
@@ -153,6 +158,7 @@ function addRow() {
     cells[11].appendChild(deleteButton)
 
     clearFields()
+    location.reload()
   }
 }
 
@@ -179,10 +185,10 @@ function update() {
       records[rowIndex - 1] = updatedRecord
 
       // Remove the existing row from the table
-      table.deleteRow(rowIndex)
+      table.deleteRow(rowIndex - 1)
 
       // Insert the updated row in place of the deleted row
-      let newRow = table.insertRow(rowIndex)
+      let newRow = table.insertRow(rowIndex - 1)
       let cells = []
 
       for (let i = 0; i < 10; i++) {
