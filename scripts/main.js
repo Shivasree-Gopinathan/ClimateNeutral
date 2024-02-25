@@ -73,11 +73,13 @@ function edit(index) {
     if (!saveButton) {
       // If no "Save" button exists, create and add one
       addSaveButton()
+      addCancelButton()
     } else {
       // If a "Save" button exists, update its onclick function
       saveButton.onclick = function () {
         update()
         removeSaveButton()
+        removeCancelButton()
         loadDataFromLocalStorage()
         clearFields() // Clear fields after updating
         location.reload()
@@ -101,10 +103,11 @@ function edit(index) {
 // Function to add or update the "Save" button
 function addSaveButton() {
   let saveButtonCell = table.rows[1].insertCell(10)
-  saveButtonCell.colSpan = 2
+  saveButtonCell.colSpan = 0
 
   let saveButton = document.createElement('button')
-  saveButton.innerHTML = 'Save'
+  saveButton.innerHTML = '<img src="assests/images/check.png">'
+  saveButton.className = 'action-btn alter-btn'
   saveButton.onclick = function () {
     update()
     removeSaveButton()
@@ -114,6 +117,24 @@ function addSaveButton() {
   saveButtonCell.appendChild(saveButton)
 }
 
+// Function to add or update the "Save" button
+function addCancelButton() {
+  let cancelButtonCell = table.rows[1].insertCell(11)
+  cancelButtonCell.colSpan = 0
+
+  let cancelButton = document.createElement('button')
+  cancelButton.innerHTML = '<img src="assests/images/cross.png">'
+  cancelButton.className = 'action-btn alter-btn'
+  cancelButton.onclick = function () {
+    removeCancelButton()
+    removeSaveButton()
+    clearFields() // Clear fields after updating
+    location.reload()
+  }
+
+  cancelButtonCell.appendChild(cancelButton)
+}
+
 // Function to remove the "Save" button
 function removeSaveButton() {
   let saveButtonCell = table.rows[1].cells[10]
@@ -121,6 +142,16 @@ function removeSaveButton() {
 
   if (saveButton) {
     saveButtonCell.removeChild(saveButton)
+  }
+}
+
+// Function to remove the "Save" button
+function removeCancelButton() {
+  let cancelButtonCell = table.rows[1].cells[11]
+  let cancelButton = cancelButtonCell.querySelector('button')
+
+  if (cancelButton) {
+    cancelButtonCell.removeChild(cancelButton)
   }
 }
 
@@ -362,7 +393,8 @@ function loadDataFromLocalStorage() {
     // Add edit and delete buttons
     let editCell = newRow.insertCell()
     let editButton = document.createElement('button')
-    editButton.innerHTML = 'Edit'
+    editButton.className = 'action-btn edit-btn'
+    editButton.innerHTML = '<img src="assests/images/edit.png">'
     editButton.onclick = function () {
       edit(newRow.rowIndex - 1)
     }
@@ -370,7 +402,8 @@ function loadDataFromLocalStorage() {
 
     let deleteCell = newRow.insertCell()
     let deleteButton = document.createElement('button')
-    deleteButton.innerHTML = 'Delete'
+    deleteButton.className = 'action-btn delete-btn'
+    deleteButton.innerHTML = '<img src="assests/images/trash.png">'
     deleteButton.onclick = function () {
       deleteRecord(newRow)
     }
