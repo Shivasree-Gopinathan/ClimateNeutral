@@ -27,35 +27,280 @@ window.onload = function () {
   loadDataFromLocalStorage()
 }
 
+// Flag to indicate whether the button is in edit mode
+let isEditMode = false
+let rowIndex = -1
+
+// Function to get the input element value by index
+function getInputValue(index) {
+  switch (index) {
+    case 0:
+      return description.value
+    case 1:
+      return type.value
+    case 2:
+      return parseInt(year.value, 10)
+    case 3:
+      return make.value
+    case 4:
+      return model.value
+    case 5:
+      return a_vkt.value
+    case 6:
+      return a_fuel.value
+    case 7:
+      return f_type.value
+    case 8:
+      return fuel_flex.value
+    case 9:
+      return quantity.value
+    default:
+      return ''
+  }
+}
+
+// Function to edit a record
+function edit(index) {
+  if (!isEditMode) {
+    isEditMode = true
+    rowIndex = index + 1
+    selectedRow = table.rows[rowIndex]
+
+    // Check if a "Save" button already exists
+    let saveButtonCell = table.rows[1].cells[10]
+    let saveButton = saveButtonCell.querySelector('button')
+
+    if (!saveButton) {
+      // If no "Save" button exists, create and add one
+      addSaveButton()
+    } else {
+      // If a "Save" button exists, update its onclick function
+      saveButton.onclick = function () {
+        update()
+        removeSaveButton()
+        clearFields() // Clear fields after updating
+      }
+    }
+
+    // Set the input values for editing
+    description.value = selectedRow.cells[0].innerText
+    type.value = selectedRow.cells[1].innerText
+    year.value = selectedRow.cells[2].innerText
+    make.value = selectedRow.cells[3].innerText
+    model.value = selectedRow.cells[4].innerText
+    a_vkt.value = selectedRow.cells[5].innerText
+    a_fuel.value = selectedRow.cells[6].innerText
+    f_type.value = selectedRow.cells[7].innerText
+    fuel_flex.value = selectedRow.cells[8].innerText
+    quantity.value = selectedRow.cells[9].innerText
+  }
+}
+
+// Function to add or update the "Save" button
+function addSaveButton() {
+  let saveButtonCell = table.rows[1].insertCell(10)
+  let saveButton = document.createElement('button')
+  saveButton.innerHTML = 'Save'
+  saveButton.onclick = function () {
+    update()
+    removeSaveButton()
+    clearFields() // Clear fields after updating
+  }
+
+  saveButtonCell.appendChild(saveButton)
+}
+
+// Function to remove the "Save" button
+function removeSaveButton() {
+  let saveButtonCell = table.rows[1].cells[10]
+  let saveButton = saveButtonCell.querySelector('button')
+
+  if (saveButton) {
+    saveButtonCell.removeChild(saveButton)
+  }
+}
+
+// Function to add a new row
 function addRow() {
   if (validate()) {
     let newRow = table.insertRow(table.rows.length)
-    let cell1 = newRow.insertCell(0)
-    let cell2 = newRow.insertCell(1)
-    let cell3 = newRow.insertCell(2)
-    let cell4 = newRow.insertCell(3)
-    let cell5 = newRow.insertCell(4)
-    let cell6 = newRow.insertCell(5)
-    let cell7 = newRow.insertCell(6)
-    let cell8 = newRow.insertCell(7)
-    let cell9 = newRow.insertCell(8)
-    let cell10 = newRow.insertCell(9)
+    let cells = []
 
-    cell1.innerHTML = description.value
-    cell2.innerHTML = type.value
-    cell3.innerHTML = year.value
-    cell4.innerHTML = make.value
-    cell5.innerHTML = model.value
-    cell6.innerHTML = a_vkt.value
-    cell7.innerHTML = a_fuel.value
-    cell8.innerHTML = f_type.value
-    cell9.innerHTML = fuel_flex.value
-    cell10.innerHTML = quantity.value
+    for (let i = 0; i < 10; i++) {
+      cells[i] = newRow.insertCell(i)
+      cells[i].innerHTML = i === 2 ? parseInt(year.value, 10) : getInputValue(i)
+    }
 
     // Save data to local storage
     saveDataToLocalStorage()
 
+    // Add update and delete buttons
+    let updateButton = document.createElement('button')
+    updateButton.innerHTML = 'Update'
+    updateButton.onclick = function () {
+      let rowIndex = newRow.rowIndex - 1
+      edit(rowIndex)
+    }
+    cells[10] = newRow.insertCell(10)
+    cells[10].appendChild(updateButton)
+
+    let deleteButton = document.createElement('button')
+    deleteButton.innerHTML = 'Delete'
+    deleteButton.onclick = function () {
+      deleteRecord(newRow)
+    }
+    cells[11] = newRow.insertCell(11)
+    cells[11].appendChild(deleteButton)
+
     clearFields()
+  }
+}
+
+// Function to update or save a record
+function update() {
+  if (isEditMode) {
+    if (validate()) {
+      let records = JSON.parse(localStorage.getItem('tableData')) || []
+
+      // Update the selected row with the new values
+      let updatedRecord = {
+        description: description.value,
+        type: type.value,
+        year: year.value,
+        make: make.value,
+        model: model.value,
+        a_vkt: a_vkt.value,
+        a_fuel: a_fuel.value,
+        f_type: f_type.value,
+        fuel_flex: fuel_flex.value,
+        quantity: quantity.value,
+      }
+
+      records[rowIndex - 1] = updatedRecord
+
+      // Remove the existing row from the table
+      table.deleteRow(rowIndex)
+
+      // Insert the updated row in place of the deleted row
+      let newRow = table.insertRow(rowIndex)
+      let cells = []
+
+      for (let i = 0; i < 10; i++) {
+        cells[i] = newRow.insertCell(i)
+        cells[i].innerHTML =
+          i === 2
+            ? parseInt(year.value, 10)
+            : updatedRecord[Object.keys(updatedRecord)[i]]
+      }
+
+      // Save data to local storage
+      localStorage.setItem('tableData', JSON.stringify(records))
+
+      clearFields()
+      isEditMode = false
+      rowIndex = -1
+
+      // Reload the page after the update
+      location.reload()
+    }
+  } else {
+    // Handle adding a new row if not in edit mode
+    addRow()
+  }
+}
+
+// Function to delete a record
+function deleteRecord(r) {
+  if (confirm('Are you sure you want to delete this record?')) {
+    entries = JSON.parse(localStorage.getItem('tableData')) || []
+    selectedRow = r.parentElement.parentElement
+    rowIndex = selectedRow.rowIndex
+
+    entries.splice(rowIndex - 1, 1)
+
+    localStorage.setItem('tableData', JSON.stringify(entries))
+    // Call loadDataFromLocalStorage after updating local storage
+    loadDataFromLocalStorage()
+
+    table.deleteRow(rowIndex - 1) // Adjusted index to reflect the correct row
+
+    // Reload the page
+    location.reload()
+  }
+}
+
+// Function to add a new row
+// function addRow() {
+//   if (validate()) {
+//     let newRow = table.insertRow(table.rows.length)
+//     console.log(newrow)
+//     let cells = []
+
+//     for (let i = 0; i < 10; i++) {
+//       cells[i] = newRow.insertCell(i)
+//       cells[i].innerHTML = i === 2 ? parseInt(year.value, 10) : getInputValue(i)
+//     }
+
+//     // Save data to local storage
+//     saveDataToLocalStorage()
+
+//     // Update indices in local storage
+//     let records = JSON.parse(localStorage.getItem('tableData')) || []
+//     for (let i = 0; i < records.length; i++) {
+//       records[i].Id = i + 1
+//     }
+//     localStorage.setItem('tableData', JSON.stringify(records))
+
+//     // Add update and delete buttons
+//     let updateButton = document.createElement('button')
+//     updateButton.innerHTML = 'Update'
+//     updateButton.onclick = function () {
+//       if (updateButton.innerHTML === 'Update') {
+//         edit(newRow.rowIndex)
+//       } else {
+//         update(newRow.rowIndex)
+//       }
+//     }
+//     cells[10] = newRow.insertCell(10)
+//     cells[10].appendChild(updateButton)
+
+//     let deleteButton = document.createElement('button')
+//     deleteButton.innerHTML = 'Delete'
+//     deleteButton.onclick = function () {
+//       deleteRecord(newRow)
+//     }
+//     cells[11] = newRow.insertCell(11)
+//     cells[11].appendChild(deleteButton)
+
+//     clearFields()
+//   }
+// }
+
+// Function to get the input element by index
+function getInputElement(index) {
+  switch (index) {
+    case 0:
+      return 'description'
+    case 1:
+      return 'type'
+    case 2:
+      return 'year'
+    case 3:
+      return 'make'
+    case 4:
+      return 'model'
+    case 5:
+      return 'a_vkt'
+    case 6:
+      return 'a_fuel'
+    case 7:
+      return 'f_type'
+    case 8:
+      return 'fuel_flex'
+    case 9:
+      return 'quantity'
+    default:
+      return ''
   }
 }
 
@@ -146,39 +391,48 @@ function saveDataToLocalStorage() {
 
 function loadDataFromLocalStorage() {
   let data = JSON.parse(localStorage.getItem('tableData')) || []
-  data.forEach((rowData) => {
+  data.forEach((rowData, index) => {
     let newRow = table.insertRow(table.rows.length)
+
+    // Add cells for each property
     Object.values(rowData).forEach((value) => {
       let cell = newRow.insertCell()
       cell.innerHTML = value
     })
+
+    // Add edit and delete buttons
+    let editCell = newRow.insertCell()
+    let editButton = document.createElement('button')
+    editButton.innerHTML = 'Edit'
+    editButton.onclick = function () {
+      edit(newRow.rowIndex - 1)
+    }
+    editCell.appendChild(editButton)
+
+    let deleteCell = newRow.insertCell()
+    let deleteButton = document.createElement('button')
+    deleteButton.innerHTML = 'Delete'
+    deleteButton.onclick = function () {
+      deleteRecord(newRow)
+    }
+    deleteCell.appendChild(deleteButton)
   })
 }
 
-// ==== js ===
-
+// Function to populate Green Options
 function populateGreenOptions() {
-  // loadDataFromLocalStorage()
-
-  // Get records from local storage
   var storedRecords = JSON.parse(localStorage.getItem('tableData')) || []
-
-  // Get the options container reference
   var optionsContainer = document.querySelector('.green-options-table')
 
-  // Clear existing content
   optionsContainer.innerHTML = ''
 
-  // Check if there are no records
   if (storedRecords.length === 0) {
-    // Display a message in the options container
     var noRecordsRow = optionsContainer.insertRow()
     var noRecordsCell = noRecordsRow.insertCell()
     noRecordsCell.textContent = 'No records'
     return
   }
 
-  // Create header row
   var headerRow = optionsContainer.insertRow()
   var fleetVehicleHeader = document.createElement('th')
   fleetVehicleHeader.textContent = 'Fleet Vehicle'
@@ -187,31 +441,21 @@ function populateGreenOptions() {
   greenOptionsHeader.textContent = 'Green Options'
   headerRow.appendChild(greenOptionsHeader)
 
-  // Loop through stored records
   for (var i = 0; i < storedRecords.length; i++) {
     var record = storedRecords[i]
-
-    // Create a new row in the options container
     var newRow = optionsContainer.insertRow()
 
-    // Concatenate the first five properties with "-"
     var concatenatedValues = Object.values(record).slice(0, 5).join(' - ')
-
-    // Create a single cell for the concatenated values
     var cell1 = newRow.insertCell()
     cell1.textContent = concatenatedValues
 
-    // Create a cell for the dropdown (second cell)
     var dropdownCell = newRow.insertCell()
-
-    // Create a dropdown based on the 'type', 'fuel_flex', and 'f_type' properties
     var dropdown = document.createElement('select')
     dropdown.className = 'custom-select'
     var type = record.type
     var fuelFlex = record.fuel_flex
     var fuelType = record.f_type
 
-    // Customize the dropdown options based on the record's properties
     if (type === 'Car' && fuelFlex === 'Yes' && fuelType === 'Gasoline') {
       dropdown.innerHTML =
         '<option value="EV Vehicle">Replace w/ EV Vehicle</option><option value="E85 Ethanol Usage">E85 Ethanol Usage</option>'
@@ -250,7 +494,6 @@ function populateGreenOptions() {
       dropdown.innerHTML = '<option value="">No options available</option>'
     }
 
-    // Append the dropdown to the cell
     dropdownCell.appendChild(dropdown)
   }
 }
