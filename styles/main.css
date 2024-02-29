@@ -132,3 +132,25 @@ td {
 #alter-btns {
   display: none;
 }
+
+/* Hide n show with Next button */
+.nxt-btn {
+  margin-right: 1.5%;
+  float: right;
+  background-color: #26b170;
+  border: 0px;
+  border-radius: 10px;
+  padding: 8px 15px;
+  color: white;
+  font-size: medium;
+}
+
+.nxt-btn:hover {
+  background-color: #0c1081;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+  margin-top: 2%; /* Alter as per need */
+}

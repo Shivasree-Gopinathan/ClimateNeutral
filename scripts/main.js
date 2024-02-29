@@ -494,3 +494,23 @@ function populateGreenOptions() {
 document.addEventListener('DOMContentLoaded', function () {
   populateGreenOptions()
 })
+
+// Hide n Show using Next button
+document.getElementById('toggle').addEventListener('click', function () {
+  var firstElement = document.getElementById('target1')
+  var secondElement = document.getElementById('target2')
+
+  // Toggle the visibility of the first element
+  if (
+    firstElement.style.display === 'none' ||
+    firstElement.style.display === ''
+  ) {
+    firstElement.style.display = 'block'
+    secondElement.style.display = 'none'
+  } else {
+    firstElement.style.display = 'none'
+
+    // Show the second element after hiding the first one
+    secondElement.style.display = 'block'
+  }
+})

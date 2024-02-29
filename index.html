@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/styles/main.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="target1">
       <br />
       <table id="table-content">
         <tr class="table-tab">
@@ -70,13 +70,14 @@
         <button onclick="cancelRow();">Cancel</button>
       </div>
     </div>
-    <br />
-    <div class="container2">
+    <div class="container2 hidden" id="target2">
       <div class="options-container">
         <table class="green-options-table"></table>
       </div>
     </div>
-
+    <br />
+    <button class="nxt-btn" id="toggle">Next</button>
+    <br />
     <!-- scripts -->
     <script src="/scripts/main.js"></script>
   </body>
