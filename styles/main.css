@@ -46,19 +46,36 @@ a {
   padding: 10px;
   margin-left: 10px;
 }
-.car {
-  height: 200px; /* Adjust height of the car image */
-  animation: scrollCar 10s linear infinite; /* Adjust duration as needed */
+/* .car {
+  margin-top: 100px;
+  height: 200px; 
+  animation: scrollCar 10s linear 1; 
 }
 
 @keyframes scrollCar {
   0% {
-      transform: translateX(-100%); /* Start position (move off-screen left) */
+      transform: translateX(-100%); 
   }
   100% {
-      transform: translateX(100%); /* End position (move off-screen right) */
+      transform: translateX(100%); 
+  }
+} */
+
+.car {
+ margin-top: 150px;
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  animation: moveRight 5s linear forwards; /* Move car to the right */
+}
+
+@keyframes moveRight {
+  to {
+    left: calc(100% + 50px); /* Move car to the right side of the page */
   }
 }
+
 * {
   box-sizing: border-box;
   margin: 0px;
