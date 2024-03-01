@@ -117,7 +117,7 @@ function addSaveButton() {
   saveButtonCell.appendChild(saveButton)
 }
 
-// Function to add or update the "Save" button
+// Function to add or update the "Cancel" button
 function addCancelButton() {
   let cancelButtonCell = table.rows[1].insertCell(11)
   cancelButtonCell.colSpan = 0

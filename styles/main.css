@@ -9,8 +9,8 @@ body {
 header {
   background-color: #26b170;
   overflow: hidden;
-  padding-top: 20px;
-}
+  padding: 10px;
+} 
 
 .logo {
   float: left;
