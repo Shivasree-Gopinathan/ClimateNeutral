@@ -40,109 +40,165 @@
     </header>
   </div>
   <div id="pageBody">
-    <div id="DataEntry">
-      <!-- <p>Enter Your Data</p> -->
-      <h2 class="section-header">Enter Your Data</h2>
-      <!-- <div class="button-container" onclick="">
-        <label for="file-input" class="custom-upload-button" action="/Files/GreenInputData.xlsx">
-          <input type="file" class="file-upload-input" id="file-input" />
-          <img src="Images/download.svg" alt="file-upload-logo" width="20px" />
-          Download Excel
-        </label>
-        <div class="instruction">
-          (Note:Please Download excel file from here, fill it and upload it)
-        </div>
-      </div> -->
+ <div id="DataEntry" >
+ <!-- <p>Enter Your Data</p> -->
+ <h2 class="section-header">Enter Your Data</h2>
+ <div class="button-container" onclick="Function1()">
+  <label for="file-input" class="custom-upload-button">
+    <input type="file" class="file-upload-input" id="file-input" />
+    <img src="Images/download.svg" alt="file-upload-logo" width="20px" />
+    Download Excel
+  </label>     
+  <div class="instruction">
+    (Note: Please Download excel file from here, fill it and upload it)
+  </div>
+</div>
 
-      <div class="button-section">
-        <form method="get" action="/Files/GreenInputData.xlsx">
-          <button class="button">Download Excel</button>
-        </form>
+<div class="button-container" onclick="Function2()">
+  <div class="file-upload">
+    <label for="file-input" class="custom-upload-button">
+      <input type="file" class="file-upload-input" id="file-input" />
+      <img src="Images/icon1.svg" alt="file-upload-logo" width="20px" />
+      Upload File
+    </label>
+  </div>
+  <div class="instruction">(Upload it here)</div>
+</div>
 
-        <div class="instruction">
-          (Note : Download excel file from here, fill it and upload it)
-        </div>
+  <!-- <div class="button-container">
+    <button onclick="Function1()">Download Excel</button>
+    <br>
+    <button onclick="Function2()">Choose File</button>
+  </div> -->
+  <!-- <div class="container">
+    <br />
+    <table id="table-content">
+      <tr class="table-tab">
+        <td>Description</td>
+        <td>Type</td>
+        <td>Year</td>
+        <td>Make</td>
+        <td>Model</td>
+        <td>Annual VKT</td>
+        <td>Annual Fuel</td>
+        <td>Fuel Type</td>
+        <td>Fuel Flex</td>
+        <td>Quantity</td>
+      </tr>
+      <tr class="table-input">
+        <td><input type="text" id="description" /></td>
+        <td>
+          <select id="type" class="custom-select">
+            <option value=""></option>
+            <option value="Car">Car</option>
+            <option value="Light Duty Truck">Light Duty Truck</option>
+          </select>
+        </td>
+        <td>
+          <select id="year" class="custom-select">
+            <option value=""></option>
+          </select>
+        </td>
+        <td><input type="text" id="make" /></td>
+        <td><input type="text" id="model" /></td>
+        <td><input type="text" id="a_vkt" /></td>
+        <td><input type="text" id="a_fuel" /></td>
+        <td>
+          <select id="f_type" class="custom-select">
+            <option value=""></option>
+            <option value="Gasoline">Gasoline</option>
+            <option value="E10 Gasoline">E10 Gasoline</option>
+            <option value="Diesel">Diesel</option>
+          </select>
+        </td>
+        <td>
+          <select id="fuel-flex" class="custom-select">
+            <option value=""></option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </td>
+        <td><input type="text" id="quantity" /></td>
+		<td id="alter-btns"></td>
+      </tr>
+    </table>
+    <br />
+    <div class="table-btn">
+      <button id="add-update-button" onclick="addRow();">Add</button>
+      <button onclick="cancelRow();">Cancel</button>
+    </div>
+	<button id="calculate-green-btn" onclick="calculateGreenOptions()">Calculate Green Options</button>
+  </div>
+ </div> -->
+ <div class="container" id="target1">
+      <br />
+      <table id="table-content">
+        <tr class="table-tab">
+          <td>Description</td>
+          <td>Type</td>
+          <td>Year</td>
+          <td>Make</td>
+          <td>Model</td>
+          <td>Annual VKT</td>
+          <td>Annual Fuel</td>
+          <td>Fuel Type</td>
+          <td>Fuel Flex</td>
+          <td>Quantity</td>
+          <td colspan="2">Edit Record</td>
+        </tr>
+        <tr class="table-input">
+          <td><input type="text" id="description" /></td>
+          <td>
+            <select id="type" class="custom-select">
+              <option value=""></option>
+              <option value="Car">Car</option>
+              <option value="Light Duty Truck">Light Duty Truck</option>
+            </select>
+          </td>
+          <td>
+            <select id="year" class="custom-select">
+              <option value=""></option>
+            </select>
+          </td>
+          <td><input type="text" id="make" /></td>
+          <td><input type="text" id="model" /></td>
+          <td><input type="text" id="a_vkt" /></td>
+          <td><input type="text" id="a_fuel" /></td>
+          <td>
+            <select id="f_type" class="custom-select">
+              <option value=""></option>
+              <option value="Gasoline">Gasoline</option>
+              <option value="E10 Gasoline">E10 Gasoline</option>
+              <option value="Diesel">Diesel</option>
+            </select>
+          </td>
+          <td>
+            <select id="fuel-flex" class="custom-select">
+              <option value=""></option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+          <td><input type="text" id="quantity" /></td>
+          <td id="alter-btns"></td>
+        </tr>
+      </table>
+      <br />
+      <div class="table-btn">
+        <button id="add-update-button" onclick="addRow();">Add</button>
+        <button onclick="cancelRow();">Cancel</button>
       </div>
-
-      <div class="button-container" onclick="uploadFile()">
-        <div class="file-upload">
-          <label for="file-input" class="custom-upload-button">
-            <input type="file" class="file-upload-input" id="file-input" />
-            <img src="Images/icon1.svg" alt="file-upload-logo" width="20px" />
-            Upload File
-          </label>
-        </div>
-        <div class="instruction">(Upload it here)</div>
-      </div>
-      <div class="container" id="target1">
-        <br />
-        <table id="table-content">
-          <tr class="table-tab">
-            <td>Description</td>
-            <td>Type</td>
-            <td>Year</td>
-            <td>Make</td>
-            <td>Model</td>
-            <td>Annual VKT</td>
-            <td>Annual Fuel</td>
-            <td>Fuel Type</td>
-            <td>Fuel Flex</td>
-            <td>Quantity</td>
-            <td colspan="2">Edit Record</td>
-          </tr>
-          <tr class="table-input">
-            <td><input type="text" id="description" /></td>
-            <td>
-              <select id="type" class="custom-select">
-                <option value=""></option>
-                <option value="Car">Car</option>
-                <option value="Light Duty Truck">Light Duty Truck</option>
-              </select>
-            </td>
-            <td>
-              <select id="year" class="custom-select">
-                <option value=""></option>
-              </select>
-            </td>
-            <td><input type="text" id="make" /></td>
-            <td><input type="text" id="model" /></td>
-            <td><input type="text" id="a_vkt" /></td>
-            <td><input type="text" id="a_fuel" /></td>
-            <td>
-              <select id="f_type" class="custom-select">
-                <option value=""></option>
-                <option value="Gasoline">Gasoline</option>
-                <option value="E10 Gasoline">E10 Gasoline</option>
-                <option value="Diesel">Diesel</option>
-              </select>
-            </td>
-            <td>
-              <select id="fuel-flex" class="custom-select">
-                <option value=""></option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td><input type="text" id="quantity" /></td>
-            <td id="alter-btns"></td>
-          </tr>
-        </table>
-        <br />
-        <div class="table-btn">
-          <button id="add-update-button" onclick="addRow();">Add</button>
-          <button onclick="cancelRow();">Cancel</button>
-        </div>
-      </div>
-      <div class="car">
-        <img src="Images/carimage.png" alt="Car" class="car-image" id="carImage">
-      </div>
-      <div class="choose-green-section" id="greenOptionsDiv1" style="display: none;">
-        <div class="line"> </div>
-        <h2 class="choose-green-text">Choose Green Options</h2>
-      </div>
-      <div class="section-vehicle-fleet" id="greenOptionsDiv2" style="display: none;">
-        <div class="drop-down-container">
-          <div class="left-container">
+    </div>
+ <div class="car">
+  <img src="Images/carimage.png" alt="Car" class="car-image" id="carImage">
+</div>
+  <div class="choose-green-section" id="greenOptionsDiv1" style="display: none;">
+    <div class="line"> </div>
+    <h2 class="choose-green-text">Choose Green Options</h2>
+</div>
+<div class="section-vehicle-fleet" id="greenOptionsDiv2" style="display: none;">
+    <div class="drop-down-container">
+        <div class="left-container">
             <div style="display: flex; justify-content: center; width: 100%;">
               <h2>Fleet Vehicle</h2>
             </div>
@@ -156,12 +212,67 @@
             </div>
             <select id="green-option-selector" name="option">
               <!-- Green options will be populated here -->
-            </select>
-          </div>
+          </select>
         </div>
-      </div>
+    </div>
+</div>
 
-      <script>
+ <script>
+ 
+	//Clear page content on reload
+	/*document.addEventListener("DOMContentLoaded", function() {
+      localStorage.clear();
+    });*/
+	
+    function Function1() {
+      
+      alert('Download button clicked!');
+    }
+
+    // function Function2() {
+      
+    //   alert('Upload button clicked!');
+    // }
+
+function Function2() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.xlsx';
+  input.onchange = function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      
+      const table = document.getElementById('table-content');
+
+      // Remove existing rows
+      for (let i = table.rows.length - 1; i > 0; i--) {
+        table.deleteRow(i);
+      }
+
+      // Add new rows from Excel file
+      jsonData.slice(1).forEach((row) => {
+        const newRow = table.insertRow(-1);
+        row.forEach((cellData, index) => {
+          const cell = newRow.insertCell(index);
+          cell.textContent = cellData;
+        });
+      });
+
+      // Show input row for manual data entry
+      document.querySelector('.table-input').style.display = 'table-row';
+    };
+    reader.readAsArrayBuffer(file);
+  };
+  input.click();
+}
+
+
 
         function openSidebar() {
           document.getElementById("sidebar").style.width = "250px";
