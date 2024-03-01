@@ -9,7 +9,7 @@ header {
   background-color: #26b170;
   overflow: hidden;
   padding: 10px;
-} 
+}
 
 .logo {
   float: left;
@@ -82,15 +82,15 @@ a {
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  border-right: 1px solid #0c1081;
 }
 
 .sidebar .closebutton {
   position: absolute;
   color: #0c1081;
-  top: 0;
-  right: 25px;
-  font-size: 20px;
-  margin-left: 50px;
+  top: 4px;
+  right: 10px;
+  font-size: 22px;
   text-decoration: none;
 }
 
@@ -127,7 +127,7 @@ a {
 .container table,
 tr,
 td {
-  border: 1.6px solid black;
+  border: 1.6px solid #0c1081;
   border-collapse: collapse;
 }
 
@@ -200,7 +200,6 @@ td {
 .file-upload-input {
   display: none;
 }
-
 
 .custom-upload-button {
   color: #000;
@@ -303,7 +302,7 @@ input {
   padding: 25px;
 }
 
-.right-container select{
+.right-container select {
   margin: 1em 0em;
   border: none;
   padding: 10px;
@@ -314,7 +313,7 @@ input {
   margin-top: 40px;
   transform: translate(-50%, -50%);
 }
- 
+
 .right-container h2 {
   margin-top: -10px;
 }
@@ -330,16 +329,16 @@ input {
   width: -webkit-fill-available;
   font-size: medium;
 }
- 
+
 .action-btn:hover {
   background-color: #0c1081;
 }
- 
+
 .action-btn img {
   width: 20px;
   height: 20px;
 }
- 
+
 #alter-btns {
   display: none;
 }
@@ -384,4 +383,30 @@ input {
 
 .footer-section2 ul li a {
   color: white;
+}
+
+.openbutton {
+  background-color: transparent;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  margin-left: 1%;
+}
+
+.sidebar-content {
+  margin-left: 7%;
+}
+
+.sidebar-content-head {
+  font-size: large;
+}
+
+#province {
+  margin-top: 5%;
+  padding: 10px;
+}
+
+#province option {
+  font-size: medium;
 }
