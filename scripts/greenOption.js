@@ -27,8 +27,8 @@ document.getElementById("province").addEventListener("change", handleDropdownCha
 
 //Calculating green options
 function calculateGreenOptions() {
-    console.log("Inside calculateGreenOptions"); 
-
+    console.log("Inside calculateGreenOptions");
+    
     var table = document.getElementById('table-content');
     var tbody = table.querySelector('tbody');
     var rows = tbody.querySelectorAll('tr:not(.table-tab):not(.table-input)');
@@ -41,8 +41,18 @@ function calculateGreenOptions() {
         var type = cells[1].textContent.trim();
         var flexFuel = cells[8].textContent.trim();
         var fuelType = cells[7].textContent.trim();
+
+        // Creating a new <h3> element for each vehicle
+        var vehicleHeading = document.createElement('h3');
+        vehicleHeading.textContent = "Vehicle " + (index + 1) + " - " + type;
+
+        // Appending the vehicle details to the container
+        document.getElementById('vehicle-container').appendChild(vehicleHeading);
+
 		
         console.log("Type::", type, ", Flex Fuel::", flexFuel, ", Fuel Type::", fuelType); 
+        // Call the function to populate green options into the dropdown
+        populateGreenOptions(type, flexFuel,fuelType); // Example values, replace with actual data
 
         try {
             var greenOptions = getGreenOptions(type, flexFuel, fuelType);
@@ -98,3 +108,33 @@ function getGreenOptions(type, flexFuel, fuelType) {
 
     return greenOptions;
 }
+
+// Function to populate green options into the dropdown
+function populateGreenOptions(type, flexFuel, fuelType) {
+    var dropdown = document.getElementById("green-option-selector");
+    dropdown.innerHTML = ""; // Clear existing options
+
+    var greenOptions = getGreenOptions(type, flexFuel, fuelType); // Calculate green options
+
+    greenOptions.forEach(function(option) {
+        var optionElement = document.createElement("option");
+        optionElement.value = option;
+        optionElement.textContent = option;
+        dropdown.appendChild(optionElement);
+    });
+}
+
+
+var calculateGreenBtn = document.getElementById("calculate-green-btn");
+var sectionAbove = document.getElementById("DataEntry");
+var greenOptionsDiv1 = document.getElementById("greenOptionsDiv1");
+var greenOptionsDiv2 = document.getElementById("greenOptionsDiv2");
+calculateGreenBtn.addEventListener("click", function() {
+        // Hide the section above
+        sectionAbove.style.display = "none";
+        // Show the green options div
+        greenOptionsDiv1.style.display = "block";
+        greenOptionsDiv2.style.display = "block";
+    });
+
+
