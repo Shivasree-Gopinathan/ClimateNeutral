@@ -186,23 +186,21 @@ td {
 } */
 .button-container {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
 }
 
-.button-container div.instruction {
-  margin-left: 14px;
-  font-size: 14px;
+.download-button,
+.upload-button {
+  margin-right: 10px; /* Adjust as needed */
 }
+
 .file-upload {
   position: relative;
-  display: flex;
-  justify-content: center;
 }
 
 .file-upload-input {
   display: none;
 }
+
 
 .custom-upload-button {
   color: #000;
@@ -352,7 +350,6 @@ input {
   color: white;
   font-size: medium;
   padding: 2% 2%;
-  margin-top: 20px;
 }
 
 .footer-content {
@@ -375,8 +372,8 @@ input {
   font-weight: 600;
 }
 
-.footer-section2 {
-  margin-left: 2%;
+.footer-section2 h2 {
+  margin-left: 7%;
 }
 
 .footer-section2 ul li {
