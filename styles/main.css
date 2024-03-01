@@ -47,18 +47,18 @@ a {
   margin-left: 10px;
 }
 .car {
-  height: 200px; /* Adjust height of the car image */
-  animation: scrollCar 10s linear infinite; /* Adjust duration as needed */
+  position: relative;
+  top: 50%;
+  left: -50px;
+  animation: moveRight 5s linear forwards; /* Move car to the right */
 }
 
-@keyframes scrollCar {
-  0% {
-      transform: translateX(-100%); /* Start position (move off-screen left) */
-  }
-  100% {
-      transform: translateX(100%); /* End position (move off-screen right) */
+@keyframes moveRight {
+  to {
+    left: calc(100% + 50px); /* Move car to the right side of the page */
   }
 }
+
 
 * {
   box-sizing: border-box;
