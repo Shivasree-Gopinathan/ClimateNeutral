@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Earth Pulse</title>
 	<link href="styles/main.css" rel="stylesheet">
+  
   </head>
   <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
@@ -39,7 +40,7 @@
     </header>
     </div>
   <div id="pageBody">
-  
+ <div id="DataEntry" >
  <!-- <p>Enter Your Data</p> -->
  <h2 class="section-header">Enter Your Data</h2>
  <div class="button-container" onclick="Function1()">
@@ -125,8 +126,34 @@
       <button id="add-update-button" onclick="addRow();">Add</button>
       <button onclick="cancelRow();">Cancel</button>
     </div>
-	<button onclick="calculateGreenOptions()">Calculate Green Options</button>
+	<button id="calculate-green-btn" onclick="calculateGreenOptions()">Calculate Green Options</button>
   </div>
+ </div>
+  <div class="choose-green-section" id="greenOptionsDiv1" style="display: none;">
+    <div class="line"> </div>
+    <h2 class="choose-green-text">Choose Green Options</h2>
+</div>
+<div class="section-vehicle-fleet" id="greenOptionsDiv2" style="display: none;">
+    <div class="drop-down-container">
+        <div class="left-container">
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <h2>Fleet Vehicle</h2>
+            </div>
+            <div id="vehicle-container">
+              <!-- Vehicle details will be populated here -->
+          </div>
+        </div>
+        <div class="right-container">
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <h2>Green Option</h2>
+            </div>
+            <select id="green-option-selector" name="option">
+              <!-- Green options will be populated here -->
+          </select>
+        </div>
+    </div>
+</div>
+
  <script>
  
 	//Clear page content on reload
