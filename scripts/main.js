@@ -1,4 +1,3 @@
-
 // Dynamically generating list of years for User's Data Input
 var currentYear = new Date().getFullYear()
 var selectYear = document.getElementById('year')
@@ -154,6 +153,3 @@ function loadDataFromLocalStorage() {
     })
   })
 }
-
-
-
