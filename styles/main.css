@@ -59,6 +59,7 @@ a {
       transform: translateX(100%); /* End position (move off-screen right) */
   }
 }
+
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -241,4 +242,78 @@ input {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px; /* Adjust margin as needed */
+}
+
+.choose-green-section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  background-image: url('Images/background.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding: 25px 25px;
+}
+
+.line {
+  border-bottom: 7px solid #fff;
+  width: 25%;
+}
+
+.choose-green-text {
+  color: #fff;
+  font-size: 24px;
+}
+
+.section-vehicle-fleet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 25px 10px;
+}
+
+.drop-down-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 10px;
+  background-color: #26b170;
+  color: #fff;
+  border-radius: 7px;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 25px;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 50%;
+  padding: 25px;
+}
+
+.right-container select{
+  margin: 1em 0em;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 250px;
+  position: absolute;
+  left: 73%;
+  margin-top: 40px;
+  transform: translate(-50%, -50%);
+}
+ 
+.right-container h2 {
+  margin-top: -10px;
 }
