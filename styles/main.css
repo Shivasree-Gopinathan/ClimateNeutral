@@ -3,6 +3,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   padding: 0px;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 header {
@@ -46,19 +47,22 @@ a {
   padding: 10px;
   margin-left: 10px;
 }
+
 .car {
   position: relative;
-  top: 50%;
-  left: -50px;
+  left: 0;
+  opacity: 1; /* Initially visible */
   animation: moveRight 5s linear forwards; /* Move car to the right */
 }
 
 @keyframes moveRight {
-  to {
-    left: calc(100% + 50px); /* Move car to the right side of the page */
+  95% {
+    left: calc(100vw - 50px); /* Move car to the right side of the window */
+  }
+  100% {
+    opacity: 0; /* Vanish at the end */
   }
 }
-
 
 * {
   box-sizing: border-box;
