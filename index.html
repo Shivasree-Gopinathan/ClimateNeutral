@@ -43,28 +43,25 @@
  <div id="DataEntry" >
  <!-- <p>Enter Your Data</p> -->
  <h2 class="section-header">Enter Your Data</h2>
- <div class="button-container" onclick="Function1()">
-  <label for="file-input" class="custom-upload-button">
-    <input type="file" class="file-upload-input" id="file-input" />
-    <img src="Images/download.svg" alt="file-upload-logo" width="20px" />
-    Download Excel
-  </label>     
-  <div class="instruction">
-    (Note: Please Download excel file from here, fill it and upload it)
+ <div class="button-container">
+  <div class="download-button" onclick="Function1()">
+    <label for="download-input" class="custom-upload-button">
+      <input type="file" class="file-upload-input" id="download-input" style="display: none;" />
+      <img src="Images/download.svg" alt="file-upload-logo" width="20px" />
+      Download Excel
+    </label>     
+  </div>
+  <div class="upload-button" onclick="Function2()">
+    <div class="file-upload">
+      <label for="upload-input" class="custom-upload-button">
+        <input type="file" class="file-upload-input" id="upload-input" style="display: none;" />
+        <img src="Images/icon1.svg" alt="file-upload-logo" width="20px" />
+        Upload File
+      </label>
+    </div>
   </div>
 </div>
-
-<div class="button-container" onclick="Function2()">
-  <div class="file-upload">
-    <label for="file-input" class="custom-upload-button">
-      <input type="file" class="file-upload-input" id="file-input" />
-      <img src="Images/icon1.svg" alt="file-upload-logo" width="20px" />
-      Upload File
-    </label>
-  </div>
-  <div class="instruction">(Upload it here)</div>
 </div>
-
   <!-- <div class="button-container">
     <button onclick="Function1()">Download Excel</button>
     <br>
@@ -192,6 +189,7 @@
  <div class="car">
   <img src="Images/carimage.png" alt="Car" class="car-image" id="carImage">
 </div>
+</div>
   <div class="choose-green-section" id="greenOptionsDiv1" style="display: none;">
     <div class="line"> </div>
     <h2 class="choose-green-text">Choose Green Options</h2>
@@ -216,7 +214,30 @@
         </div>
     </div>
 </div>
+<div class="footer">
+  <div class="footer-content">
+    <div class="footer-section1">
+    <h2>Get in Touch</h2>
+    <p>Don’t miss any updates from us!</p>
+    <form>
+      <input
+        type="email"
+        placeholder="Email"
+      />
+      <button type="submit">Subscribe</button>
+    </form>
+</div>
 
+<div class="footer-section2">
+    <h2>Help</h2>
+    <ul>
+      <li><a href="">Term &amp; conditions</a></li>
+      <li><a href="">Support Policy</a></li>
+      <li><a href="">Privacy</a></li>
+    </ul>
+  </div>
+</div>
+</div>
  <script>
  
 	//Clear page content on reload
