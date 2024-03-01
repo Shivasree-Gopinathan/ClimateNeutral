@@ -321,3 +321,28 @@ input {
 .right-container h2 {
   margin-top: -10px;
 }
+
+/* Table Actions - Alter Records */
+.action-btn {
+  padding: 4px 1px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: #26b170;
+  width: -webkit-fill-available;
+  font-size: medium;
+}
+ 
+.action-btn:hover {
+  background-color: #0c1081;
+}
+ 
+.action-btn img {
+  width: 20px;
+  height: 20px;
+}
+ 
+#alter-btns {
+  display: none;
+}

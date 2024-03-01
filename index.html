@@ -70,7 +70,7 @@
     <br>
     <button onclick="Function2()">Choose File</button>
   </div> -->
-  <div class="container">
+  <!-- <div class="container">
     <br />
     <table id="table-content">
       <tr class="table-tab">
@@ -119,6 +119,7 @@
           </select>
         </td>
         <td><input type="text" id="quantity" /></td>
+		<td id="alter-btns"></td>
       </tr>
     </table>
     <br />
@@ -128,7 +129,66 @@
     </div>
 	<button id="calculate-green-btn" onclick="calculateGreenOptions()">Calculate Green Options</button>
   </div>
- </div>
+ </div> -->
+ <div class="container" id="target1">
+      <br />
+      <table id="table-content">
+        <tr class="table-tab">
+          <td>Description</td>
+          <td>Type</td>
+          <td>Year</td>
+          <td>Make</td>
+          <td>Model</td>
+          <td>Annual VKT</td>
+          <td>Annual Fuel</td>
+          <td>Fuel Type</td>
+          <td>Fuel Flex</td>
+          <td>Quantity</td>
+          <td colspan="2">Edit Record</td>
+        </tr>
+        <tr class="table-input">
+          <td><input type="text" id="description" /></td>
+          <td>
+            <select id="type" class="custom-select">
+              <option value=""></option>
+              <option value="Car">Car</option>
+              <option value="Light Duty Truck">Light Duty Truck</option>
+            </select>
+          </td>
+          <td>
+            <select id="year" class="custom-select">
+              <option value=""></option>
+            </select>
+          </td>
+          <td><input type="text" id="make" /></td>
+          <td><input type="text" id="model" /></td>
+          <td><input type="text" id="a_vkt" /></td>
+          <td><input type="text" id="a_fuel" /></td>
+          <td>
+            <select id="f_type" class="custom-select">
+              <option value=""></option>
+              <option value="Gasoline">Gasoline</option>
+              <option value="E10 Gasoline">E10 Gasoline</option>
+              <option value="Diesel">Diesel</option>
+            </select>
+          </td>
+          <td>
+            <select id="fuel-flex" class="custom-select">
+              <option value=""></option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+          <td><input type="text" id="quantity" /></td>
+          <td id="alter-btns"></td>
+        </tr>
+      </table>
+      <br />
+      <div class="table-btn">
+        <button id="add-update-button" onclick="addRow();">Add</button>
+        <button onclick="cancelRow();">Cancel</button>
+      </div>
+    </div>
  <div class="car">
   <img src="Images/carimage.png" alt="Car" class="car-image" id="carImage">
 </div>
@@ -160,9 +220,9 @@
  <script>
  
 	//Clear page content on reload
-	document.addEventListener("DOMContentLoaded", function() {
+	/*document.addEventListener("DOMContentLoaded", function() {
       localStorage.clear();
-    });
+    });*/
 	
     function Function1() {
       
