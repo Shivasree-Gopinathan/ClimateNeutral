@@ -2,7 +2,6 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  padding: 0px;
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
@@ -52,7 +51,7 @@ a {
   position: relative;
   left: 0;
   opacity: 1; /* Initially visible */
-  animation: moveRight 5s linear forwards; /* Move car to the right */
+  animation: moveRight 5s linear forwards 1; /* Move car to the right */
 }
 
 @keyframes moveRight {
@@ -345,4 +344,47 @@ input {
  
 #alter-btns {
   display: none;
+}
+
+.footer {
+  /* background-color: #26b170; */
+  background-color: #0c1081;
+  color: white;
+  font-size: medium;
+  padding: 2% 2%;
+  margin-top: 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.footer-section1 form input {
+  padding: 8px 2px;
+  width: -webkit-fill-available;
+}
+
+.footer-section1 form button {
+  margin-top: 5%;
+  background-color: #26b170;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.footer-section2 {
+  margin-left: 2%;
+}
+
+.footer-section2 ul li {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+}
+
+.footer-section2 ul li a {
+  color: white;
 }
