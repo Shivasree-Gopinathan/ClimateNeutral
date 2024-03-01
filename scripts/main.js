@@ -1,12 +1,4 @@
-window.onload = function() {
-  createCar();
-};
 
-function createCar() {
-  const car = document.createElement('div');
-  car.classList.add('car');
-  document.body.appendChild(car);
-}
 // Dynamically generating list of years for User's Data Input
 var currentYear = new Date().getFullYear()
 var selectYear = document.getElementById('year')
