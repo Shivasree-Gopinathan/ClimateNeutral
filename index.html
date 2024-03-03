@@ -43,9 +43,9 @@
  <div id="DataEntry" >
  <!-- <p>Enter Your Data</p> -->
  <h2 class="section-header">Enter Your Data</h2>
- <div class="button-container" onclick="Function1()">
+ <div class="button-container">
   <label for="file-input" class="custom-upload-button">
-    <input type="file" class="file-upload-input" id="file-input" />
+    <input type="file" class="file-upload-input" onclick="window.open('Files/GreenInputData.xlsx')" id="file-input" />
     <img src="Images/download.svg" alt="file-upload-logo" width="20px" />
     Download Excel
   </label>     
@@ -54,10 +54,10 @@
   </div>
 </div>
 
-<div class="button-container" onclick="Function2()">
+<div class="button-container">
   <div class="file-upload">
-    <label for="file-input" class="custom-upload-button">
-      <input type="file" class="file-upload-input" id="file-input" />
+    <label for="file-upload-input" class="custom-upload-button">
+      <input type="file" class="file-upload-input" accept=".xls,.xlsx" id="file-upload-input" />
       <img src="Images/icon1.svg" alt="file-upload-logo" width="20px" />
       Upload File
     </label>
@@ -224,55 +224,53 @@
       localStorage.clear();
     });*/
 	
-    function Function1() {
+    // function Function1() {
       
-      alert('Download button clicked!');
-    }
+    //   alert('Download button clicked!');
+    // }
 
     // function Function2() {
       
     //   alert('Upload button clicked!');
     // }
 
-function Function2() {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = '.xlsx';
-  input.onchange = function() {
-    const file = this.files[0];
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const data = new Uint8Array(e.target.result);
-      const workbook = XLSX.read(data, { type: 'array' });
-      const sheetName = workbook.SheetNames[0];
-      const sheet = workbook.Sheets[sheetName];
-      const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+// function Function2() {
+//   const input = document.createElement('input');
+//   input.type = 'file';
+//   input.accept = '.xlsx';
+//   input.onchange = function() {
+//     const file = this.files[0];
+//     const reader = new FileReader();
+//     reader.onload = function(e) {
+//       const data = new Uint8Array(e.target.result);
+//       const workbook = XLSX.read(data, { type: 'array' });
+//       const sheetName = workbook.SheetNames[0];
+//       const sheet = workbook.Sheets[sheetName];
+//       const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
       
-      const table = document.getElementById('table-content');
+//       const table = document.getElementById('table-content');
 
-      // Remove existing rows
-      for (let i = table.rows.length - 1; i > 0; i--) {
-        table.deleteRow(i);
-      }
+//       // Remove existing rows
+//       for (let i = table.rows.length - 1; i > 0; i--) {
+//         table.deleteRow(i);
+//       }
 
-      // Add new rows from Excel file
-      jsonData.slice(1).forEach((row) => {
-        const newRow = table.insertRow(-1);
-        row.forEach((cellData, index) => {
-          const cell = newRow.insertCell(index);
-          cell.textContent = cellData;
-        });
-      });
+//       // Add new rows from Excel file
+//       jsonData.slice(1).forEach((row) => {
+//         const newRow = table.insertRow(-1);
+//         row.forEach((cellData, index) => {
+//           const cell = newRow.insertCell(index);
+//           cell.textContent = cellData;
+//         });
+//       });
 
-      // Show input row for manual data entry
-      document.querySelector('.table-input').style.display = 'table-row';
-    };
-    reader.readAsArrayBuffer(file);
-  };
-  input.click();
-}
-
-
+//       // Show input row for manual data entry
+//       document.querySelector('.table-input').style.display = 'table-row';
+//     };
+//     reader.readAsArrayBuffer(file);
+//   };
+//   input.click();
+// }
 
         function openSidebar() {
           document.getElementById("sidebar").style.width = "250px";
