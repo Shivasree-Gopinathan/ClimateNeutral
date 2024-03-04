@@ -1,218 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earth Pulse</title>
+    <link href="styles/main.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Earth Pulse</title>
-  <link href="styles/main.css" rel="stylesheet" />
-</head>
-
-<body>
-  <!--Side bar-->
-  <div class="sidebar" id="sidebar">
-    <a href="javascript:void(0)" class="closebutton" onclick="closeSidebar()">X</a>
-    <div class="sidebar-content">
-      <label for="province" class="sidebar-content-head">Select a province:</label>
-      <select name="province" id="province">
-        <option value="ontario" selected>Ontario</option>
-        <option value="quebec">Quebec</option>
-        <option value="newfound">Newfoundland and Labrador</option>
-        <option value="prince">Prince Edward Island</option>
-        <option value="nova">Nova Scotia</option>
-        <option value="brunswick">New Brunswick</option>
-        <option value="manitoba">Manitoba</option>
-        <option value="saskatchewan">Saskatchewan</option>
-        <option value="alberta">Alberta</option>
-        <option value="columbia">British Columbia</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Menu Bar -->
-  <div class="top-bar">
-    <header>
-      <button class="openbutton" onclick="openSidebar()">☰</button>
-      <nav>
-        <ul>
-          <li><a href="index.html">Data Input</a></li>
-          <li><a href="#green-option">Green Option</a></li>
-          <li><a href="#results">Results</a></li>
-        </ul>
-      </nav>
-    </header>
-  </div>
-
-  <div id="pageBody">
-    <!-- Buttons -->
-    <div id="DataEntry">
-      <!-- <p>Enter Your Data</p> -->
-      <h2 class="section-header">Enter Your Data</h2>
-      <div class="button-container">
-        <label for="file-input" class="custom-upload-button">
-          <input type="file" class="file-upload-input" onclick="window.open('Files/GreenInputData.xlsx')" id="file-input" />
-          <img src="Images/download.svg" alt="file-upload-logo" width="20px" />
-          Download Excel
-        </label>     
-        <div class="instruction">
-          (Note: Please Download excel file from here, fill it and upload it)
-        </div>
-      </div>
-      
-      <div class="button-container">
-        <div class="file-upload">
-          <label for="file-upload-input" class="custom-upload-button">
-            <input type="file" class="file-upload-input" accept=".xls,.xlsx" id="file-upload-input" />
-            <img src="Images/icon1.svg" alt="file-upload-logo" width="20px" />
-            Upload File
-          </label>
-        </div>
-        <div class="instruction">(Upload it here)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Data Input Table -->
-  <div class="container" id="target1">
-    <br />
-    <table id="table-content">
-      <tr class="table-tab">
-        <td>Description</td>
-        <td>Type</td>
-        <td>Year</td>
-        <td>Make</td>
-        <td>Model</td>
-        <td>Annual VKT</td>
-        <td>Annual Fuel</td>
-        <td>Fuel Type</td>
-        <td>Fuel Flex</td>
-        <td>Quantity</td>
-        <td colspan="2">Edit Record</td>
-      </tr>
-      <tr class="table-input">
-        <td><input type="text" id="description" /></td>
-        <td>
-          <select id="type" class="custom-select">
-            <option value=""></option>
-            <option value="Car">Car</option>
-            <option value="Light Duty Truck">Light Duty Truck</option>
-          </select>
-        </td>
-        <td>
-          <select id="year" class="custom-select">
-            <option value=""></option>
-          </select>
-        </td>
-        <td><input type="text" id="make" /></td>
-        <td><input type="text" id="model" /></td>
-        <td><input type="text" id="a_vkt" /></td>
-        <td><input type="text" id="a_fuel" /></td>
-        <td>
-          <select id="f_type" class="custom-select">
-            <option value=""></option>
-            <option value="Gasoline">Gasoline</option>
-            <option value="E10 Gasoline">E10 Gasoline</option>
-            <option value="Diesel">Diesel</option>
-          </select>
-        </td>
-        <td>
-          <select id="fuel-flex" class="custom-select">
-            <option value=""></option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </td>
-        <td><input type="text" id="quantity" /></td>
-        <td id="alter-btns"></td>
-      </tr>
-    </table>
-    <br />
-    <div class="table-btn">
-      <button id="add-update-button" onclick="addRow();">Add</button>
-      <button onclick="cancelRow();">Cancel</button>
-    </div>
-  </div>
-
-  <!-- Animation -->
-  <div class="car">
-    <img src="Images/carimage.png" alt="Car" class="car-image" id="carImage" />
-  </div>
-  </div>
-
-  <!-- Green Options -->
-  <div class="choose-green-section" id="greenOptionsDiv1" style="display: none">
-    <div class="line"></div>
-    <h2 class="choose-green-text">Choose Green Options</h2>
-  </div>
-  <div class="section-vehicle-fleet" id="greenOptionsDiv2" style="display: none">
-    <div class="drop-down-container">
-      <div class="left-container">
-        <div style="display: flex; justify-content: center; width: 100%">
-          <h2>Fleet Vehicle</h2>
-        </div>
-        <div id="vehicle-container">
-          <!-- Vehicle details will be populated here -->
-        </div>
-      </div>
-      <div class="right-container">
-        <div style="display: flex; justify-content: center; width: 100%">
-          <h2>Green Option</h2>
-        </div>
-        <select id="green-option-selector" name="option">
-          <!-- Green options will be populated here -->
+  <body>
+    <!--Side bar-->
+    <div class="sidebar" id="sidebar">
+      <a href="javascript:void(0)" class="closebutton" onclick="closeSidebar()"
+        >X</a
+      >
+      <div class="sidebar-content">
+        <label for="province" class="sidebar-content-head"
+          >Select a province:</label
+        >
+        <select name="province" id="province">
+          <option value="ontario" selected>Ontario</option>
+          <option value="quebec">Quebec</option>
+          <option value="newfound">Newfoundland and Labrador</option>
+          <option value="prince">Prince Edward Island</option>
+          <option value="nova">Nova Scotia</option>
+          <option value="brunswick">New Brunswick</option>
+          <option value="manitoba">Manitoba</option>
+          <option value="saskatchewan">Saskatchewan</option>
+          <option value="alberta">Alberta</option>
+          <option value="columbia">British Columbia</option>
         </select>
       </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <div class="footer-content">
-      <div class="footer-section1">
-        <h2>Get in Touch</h2>
-        <p>Don’t miss any updates from us!</p>
-        <form>
-          <input type="email" placeholder="Email" />
-          <button type="submit">Subscribe</button>
-        </form>
+    <!-- Menu Bar -->
+    <div class="top-bar">
+      <header>
+        <button class="openbutton" onclick="openSidebar()">☰</button>
+        <nav>
+          <ul>
+            <li><a href="index.html">Data Input</a></li>
+            <li><a href="#green-option">Green Option</a></li>
+            <li><a href="#results">Results</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+    <div id="pageBody">
+      <!-- Buttons -->
+      <div id="DataEntry">
+        <!-- <p>Enter Your Data</p> -->
+        <h2 class="section-header">Enter Your Data</h2>
+        <div class="button-container">
+          <label for="file-input" class="custom-upload-button">
+            <input
+              type="file"
+              class="file-upload-input"
+              onclick="window.open('Files/GreenInputData.xlsx')"
+              id="file-input"
+            />
+            <img
+              src="Images/download.svg"
+              alt="file-upload-logo"
+              width="20px"
+            />
+            Download Excel
+          </label>
+          <div class="instruction">
+            (Note: Please Download excel file from here, fill it and upload it)
+          </div>
+        </div>
+
+        <div class="button-container">
+          <div class="file-upload">
+            <label for="file-upload-input" class="custom-upload-button">
+              <input
+                type="file"
+                class="file-upload-input"
+                accept=".xls,.xlsx"
+                id="file-upload-input"
+              />
+              <img src="Images/icon1.svg" alt="file-upload-logo" width="20px" />
+              Upload File
+            </label>
+          </div>
+          <div class="instruction">(Upload it here)</div>
+        </div>
       </div>
 
-      <div class="footer-section2">
-        <h2>Help</h2>
-        <ul>
-          <li><a href="">Term &amp; conditions</a></li>
-          <li><a href="">Support Policy</a></li>
-          <li><a href="">Privacy</a></li>
-        </ul>
+      <!-- Data Input Table -->
+      <div class="container" id="target1">
+        <br />
+        <table id="table-content">
+          <tr class="table-tab">
+            <td>Description</td>
+            <td>Type</td>
+            <td>Year</td>
+            <td>Make</td>
+            <td>Model</td>
+            <td>Annual VKT</td>
+            <td>Annual Fuel</td>
+            <td>Fuel Type</td>
+            <td>Fuel Flex</td>
+            <td>Quantity</td>
+            <td colspan="2">Edit Record</td>
+          </tr>
+          <tr class="table-input">
+            <td><input type="text" id="description" /></td>
+            <td>
+              <select id="type" class="custom-select">
+                <option value=""></option>
+                <option value="Car">Car</option>
+                <option value="Light Duty Truck">Light Duty Truck</option>
+              </select>
+            </td>
+            <td>
+              <select id="year" class="custom-select">
+                <option value=""></option>
+              </select>
+            </td>
+            <td><input type="text" id="make" /></td>
+            <td><input type="text" id="model" /></td>
+            <td><input type="text" id="a_vkt" /></td>
+            <td><input type="text" id="a_fuel" /></td>
+            <td>
+              <select id="f_type" class="custom-select">
+                <option value=""></option>
+                <option value="Gasoline">Gasoline</option>
+                <option value="E10 Gasoline">E10 Gasoline</option>
+                <option value="Diesel">Diesel</option>
+              </select>
+            </td>
+            <td>
+              <select id="fuel-flex" class="custom-select">
+                <option value=""></option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </td>
+            <td><input type="text" id="quantity" /></td>
+            <td id="alter-btns"></td>
+          </tr>
+        </table>
+        <br />
+        <div class="table-btn" id="table-btn">
+          <button id="add-update-button" onclick="addRow();">Add</button>
+          <button onclick="cancelRow();">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Animation -->
+      <div class="car">
+        <img
+          src="Images/carimage.png"
+          alt="Car"
+          class="car-image"
+          id="carImage"
+        />
       </div>
     </div>
-  </div>
 
-  <!-- Scripts -->
-  <script>
-    //Clear page content on reload
-    /*document.addEventListener("DOMContentLoaded", function() {
+    <!-- Green Options -->
+    <div
+      class="choose-green-section"
+      id="greenOptionsDiv1"
+      style="display: none"
+    >
+      <div class="line"></div>
+      <h2 class="choose-green-text">Choose Green Options</h2>
+    </div>
+    <div
+      class="section-vehicle-fleet"
+      id="greenOptionsDiv2"
+      style="display: none"
+    >
+      <div class="drop-down-container">
+        <div class="left-container">
+          <div style="display: flex; justify-content: center; width: 100%">
+            <h2>Fleet Vehicle</h2>
+          </div>
+          <div id="vehicle-container">
+            <!-- Vehicle details will be populated here -->
+          </div>
+        </div>
+        <div class="right-container">
+          <div style="display: flex; justify-content: center; width: 100%">
+            <h2>Green Option</h2>
+          </div>
+          <select id="green-option-selector" name="option">
+            <!-- Green options will be populated here -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-section1">
+          <h2>Get in Touch</h2>
+          <p>Don’t miss any updates from us!</p>
+          <form>
+            <input type="email" placeholder="Email" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+        <div class="footer-section2">
+          <h2>Help</h2>
+          <ul>
+            <li><a href="">Term &amp; conditions</a></li>
+            <li><a href="">Support Policy</a></li>
+            <li><a href="">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      //Clear page content on reload
+      /*document.addEventListener("DOMContentLoaded", function() {
     localStorage.clear();
   });*/
 
-    function Function1() {
-      alert('Download button clicked!')
-    }
+      function Function1() {
+        alert('Download button clicked!')
+      }
 
-    function openSidebar() {
-      document.getElementById('sidebar').style.width = '250px'
-      document.getElementById('pageBody').style.marginLeft = '250px'
-    }
+      function openSidebar() {
+        document.getElementById('sidebar').style.width = '250px'
+        document.getElementById('pageBody').style.marginLeft = '250px'
+        document.getElementById('table-btn').style.marginLeft = '88%'
+      }
 
-    function closeSidebar() {
-      document.getElementById('sidebar').style.width = '0'
-      document.getElementById('pageBody').style.marginLeft = '0'
-    }
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
-  <script src="scripts/main.js"></script>
-  <script src="scripts/uploadjs.js"></script>
-  <script src="scripts/greenOption.js"></script>
-</body>
-
+      function closeSidebar() {
+        document.getElementById('sidebar').style.width = '0'
+        document.getElementById('pageBody').style.marginLeft = '0'
+        document.getElementById('table-btn').style.marginLeft = '90%'
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/uploadjs.js"></script>
+    <script src="scripts/greenOption.js"></script>
+  </body>
 </html>
