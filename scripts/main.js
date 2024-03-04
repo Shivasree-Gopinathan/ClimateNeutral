@@ -247,22 +247,17 @@ function update() {
 }
 
 // Function to delete a record
-function deleteRecord(r) {
+function deleteRecord(row) {
   if (confirm('Are you sure you want to delete this record?')) {
-    entries = JSON.parse(localStorage.getItem('tableData')) || []
-    selectedRow = r.parentElement.parentElement
-    rowIndex = selectedRow.rowIndex
+    let rowIndex = row.rowIndex
 
-    entries.splice(rowIndex - 1, 1)
+    let records = JSON.parse(localStorage.getItem('tableData')) || []
 
-    localStorage.setItem('tableData', JSON.stringify(entries))
-    // Call loadDataFromLocalStorage after updating local storage
-    loadDataFromLocalStorage()
+    records.splice(rowIndex - 2, 1) // Adjusted index to account for header and 0-based index
 
-    table.deleteRow(rowIndex - 1) // Adjusted index to reflect the correct row
+    localStorage.setItem('tableData', JSON.stringify(records))
 
-    // Reload the page
-    location.reload()
+    table.deleteRow(rowIndex)
   }
 }
 
