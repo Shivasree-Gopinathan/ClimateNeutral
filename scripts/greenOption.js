@@ -1,30 +1,3 @@
-function handleDropdownChange() {
-	var jsonData = {
-            "ontario": 29,
-            "quebec": 1.7,
-            "newfound": 17,
-            "prince": 123,
-            "nova": 690,
-            "brunswick": 300,
-            "manitoba": 2,
-            "saskatchewan": 123,
-            "alberta": 540,
-            "columbia": 15
-        };
-
-            var dropdown = document.getElementById("province");
-            var selectedValue = dropdown.options[dropdown.selectedIndex].value;
-            console.log("Selected Value: " + selectedValue);
-            
-			 var correspondingValue = jsonData[selectedValue];
-            console.log("Corresponding Value: " + correspondingValue);
-}
-
-//Event listener for the dropdown
-document.getElementById("province").addEventListener("change", handleDropdownChange);
-//"Ontario" as the default selected option
-//document.getElementById("province").selectedIndex = 0;
-
 //Calculating green options
 function calculateGreenOptions() {
     console.log("Inside calculateGreenOptions");
@@ -52,7 +25,7 @@ function calculateGreenOptions() {
 		
         console.log("Type::", type, ", Flex Fuel::", flexFuel, ", Fuel Type::", fuelType); 
         // Call the function to populate green options into the dropdown
-        populateGreenOptions(type, flexFuel,fuelType); // Example values, replace with actual data
+        populateGreenOptions(type, flexFuel,fuelType);
 
         try {
             var greenOptions = getGreenOptions(type, flexFuel, fuelType);

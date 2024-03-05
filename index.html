@@ -14,9 +14,7 @@
         >X</a
       >
       <div class="sidebar-content">
-        <label for="province" class="sidebar-content-head"
-          >Select a province:</label
-        >
+        <label for="province" class="sidebar-content-head">Select a province:</label>
         <select name="province" id="province">
           <option value="ontario" selected>Ontario</option>
           <option value="quebec">Quebec</option>
@@ -147,6 +145,7 @@
           <button id="add-update-button" onclick="addRow();">Add</button>
           <button onclick="cancelRow();">Cancel</button>
         </div>
+		<button onclick="calculateEmissionIntensity();">Emission Intensity</button>
       </div>
 
       <!-- Animation -->
@@ -244,5 +243,6 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/uploadjs.js"></script>
     <script src="scripts/greenOption.js"></script>
+	<script src="scripts/emissionIntensity.js"></script>
   </body>
 </html>
