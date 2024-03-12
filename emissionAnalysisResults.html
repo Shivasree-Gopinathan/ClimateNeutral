@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emission Savings Result Analysis</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .header {
+        background-color: #0c1081;
+        color: white;
+        padding: 20px;
+        text-align: left;
+        width: 100%;
+      }
+
+      .table-container {
+        margin-top: 20px;
+        width: 80%;
+        border: 1px solid black;
+        border-radius: 2px;
+        background-color: #4caf50;
+        color: white;
+        border-radius: 16px;
+      }
+
+      table,
+      th,
+      td {
+        border-collapse: collapse;
+        padding: 16px;
+        width: -webkit-fill-available;
+        border-radius: 16px;
+      }
+      thead {
+        font-size: 32px;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      .download-section {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+        width: 80%;
+      }
+
+      .download-section button {
+        margin-left: 10px;
+        padding: 10px 20px;
+        background-color: #ddd;
+        border: none;
+        cursor: pointer;
+        background-color: #4caf50;
+      }
+
+      .download-section button:hover {
+        background-color: #ccc;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Emission Savings Result Analysis</h1>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Fleet Vehicle</th>
+              <th>Action Applied</th>
+              <th>Emissions Savings (TCO2e)</th>
+              <th>% Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vehicle 1 - Ford SUV</td>
+              <td>Biofuel Usage (E85)</td>
+              <td>Biofuel Usage (E85)</td>
+              <td>80-83%</td>
+            </tr>
+            <tr>
+              <td>Vehicle 2 Mercedes Benz 2018</td>
+              <td>Down Size</td>
+              <td>Down Size</td>
+              <td>50-53%</td>
+            </tr>
+            <tr>
+              <td>Vehicle 3- Volkswagen</td>
+              <td>Electric Vehicle Replacement</td>
+              <td>Electric Vehicle Replacement</td>
+              <td>85-89%</td>
+            </tr>
+            <tr>
+              <td>Vehicle 4 - Honda Civic</td>
+              <td>Biofuel</td>
+              <td>Biofuel</td>
+              <td>65-72%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="download-section">
+        <button>Download CSV</button>
+        <button>Download PDF</button>
+      </div>
+    </div>
+  </body>
+</html>
