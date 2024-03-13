@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Earth Pulse</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link href="styles/main.css" rel="stylesheet" />
   </head>
 
@@ -15,7 +18,9 @@
         >X</a
       >
       <div class="sidebar-content">
-        <label for="province" class="sidebar-content-head">Select a province:</label>
+        <label for="province" class="sidebar-content-head"
+          >Select a province:</label
+        >
         <select name="province" id="province">
           <option value="ontario" selected>Ontario</option>
           <option value="quebec">Quebec</option>
@@ -32,25 +37,25 @@
     </div>
     <!-- Menu Bar -->
     <div class="top-bar">
-      <header>        
+      <header>
         <nav>
           <button class="openbutton" onclick="openSidebar()">☰</button>
-        <div class="menu">
-          <a href="main.html">Home</a>
-          <a href="">Data Input</a>
-          <a href="#">Green Option</a>
-          <a href="#">Results</a>
-          <a href="#">Contact</a>
-      </div>
+          <div class="menu">
+            <a href="main.html">Home</a>
+            <a href="">Data Input</a>
+            <a href="#">Green Option</a>
+            <a href="#">Results</a>
+            <a href="#">Contact</a>
+          </div>
 
-      <div class="social">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-      </nav>
-  </header>
-  </div>
+          <div class="social">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </nav>
+      </header>
+    </div>
 
     <div id="pageBody">
       <!-- Buttons -->
@@ -73,7 +78,7 @@
             Download Excel
           </label>
           <div class="instruction">
-            (Note: Download the Excel file to fill the  information)
+            (Note: Download the Excel file to fill the information)
           </div>
         </div>
 
@@ -153,7 +158,6 @@
           <button id="add-update-button" onclick="addRow();">Add</button>
           <button onclick="cancelRow();">Cancel</button>
         </div>
-		<button onclick="calculateEmissionIntensity();">Emission Intensity</button>
       </div>
 
       <!-- Animation -->
@@ -164,6 +168,25 @@
           class="car-image"
           id="carImage"
         />
+      </div>
+    </div>
+
+    <button onclick="calculateEmissionIntensity(); toggleVisibility();">
+      Emission Intensity
+    </button>
+    <div class="emission-intensity">
+      <div class="graphs-head">
+        <h1>Current Emission Analysis</h1>
+      </div>
+      <div class="graphs">
+        <div class="graph1">
+          <h2 id="totalEmissionsTitle">Total Emissions by Vehicles</h2>
+          <canvas id="emissionChart" width="600" height="300"></canvas>
+        </div>
+        <div class="graph2">
+          <h2 id="emissionIntensityTitle">Emissions Intensity by Vehicles</h2>
+          <canvas id="emissionIntensityChart" width="600" height="300"></canvas>
+        </div>
       </div>
     </div>
 
@@ -210,7 +233,7 @@
           </div>
         </div>
       </footer>
-      </div>
+    </div>
 
     <!-- Scripts -->
     <script>
@@ -239,6 +262,6 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/uploadjs.js"></script>
     <script src="scripts/greenOption.js"></script>
-	<script src="scripts/emissionIntensity.js"></script>
+    <script src="scripts/emissionIntensity.js"></script>
   </body>
 </html>
