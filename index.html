@@ -157,6 +157,7 @@
         <div class="table-btn" id="table-btn">
           <button id="add-update-button" onclick="addRow();">Add</button>
           <button onclick="cancelRow();">Cancel</button>
+          <button id="calculate-green-btn" onclick="calculateGreenOptions();">Green-Options</button>
         </div>
       </div>
 
@@ -171,10 +172,10 @@
       </div>
     </div>
 
-    <button onclick="calculateEmissionIntensity(); toggleVisibility();">
+    <button id="emission-intensity" onclick="calculateEmissionIntensity(); toggleVisibility();">
       Emission Intensity
     </button>
-    <div class="emission-intensity">
+    <div id="EmissionIntensity" class="emission-intensity">
       <div class="graphs-head">
         <h1>Current Emission Analysis</h1>
       </div>
@@ -191,38 +192,14 @@
     </div>
 
     <!-- Green Options -->
-    <div
-      class="choose-green-section"
-      id="greenOptionsDiv1"
-      style="display: none"
-    >
-      <div class="line"></div>
-      <h2 class="choose-green-text">Choose Green Options</h2>
-    </div>
-    <div
-      class="section-vehicle-fleet"
-      id="greenOptionsDiv2"
-      style="display: none"
-    >
-      <div class="drop-down-container">
-        <div class="left-container">
-          <div style="display: flex; justify-content: center; width: 100%">
-            <h2>Fleet Vehicle</h2>
-          </div>
-          <div id="vehicle-container">
-            <!-- Vehicle details will be populated here -->
-          </div>
-        </div>
-        <div class="right-container">
-          <div style="display: flex; justify-content: center; width: 100%">
-            <h2>Green Option</h2>
-          </div>
-          <select id="green-option-selector" name="option">
-            <!-- Green options will be populated here -->
-          </select>
+    <div id="green-option" style="display: none;">
+      <div class="container2" id="target2">
+        <div class="options-container">
+          <table class="green-options-table"></table>
         </div>
       </div>
     </div>
+
 
     <!-- Footer -->
     <div class="footer">
