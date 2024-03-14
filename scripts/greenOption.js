@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const rowIndex = dropdown.closest('tr').rowIndex;
         //selectedOptions[rowIndex] = dropdown.value;
 		selectedOptions[rowIndex] = {
+			car: "",
             option: dropdown.value,
             emissionsIntensity: 0
         };
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const rowIndex = target.closest('tr').rowIndex;
             //selectedOptions[rowIndex] = target.value;
 			selectedOptions[rowIndex] = {
+			car: "",
             option: target.value,
             emissionsIntensity: 0
         };
@@ -44,9 +46,11 @@ function calculateGreenOptions() {
 
     var cells = row.querySelectorAll('td')
     var type = cells[1].textContent.trim()
+	var make = cells[3].textContent.trim()
+	var model = cells[4].textContent.trim()
     var flexFuel = cells[8].textContent.trim()
     var fuelType = cells[7].textContent.trim()
-
+	
     // Creating a new <h3> element for each vehicle
     var vehicleHeading = document.createElement('h3')
     vehicleHeading.textContent = 'Vehicle ' + (index + 1) + ' - ' + type
@@ -110,7 +114,15 @@ function populateGreenOptions() {
     var vehicleNumber = "Vehicle " + (i + 1);
     var cell1 = newRow.insertCell()
     cell1.textContent = vehicleNumber + ' - ' + record.type + ' - ' + record.make + ' - ' + record.model;
-
+	
+	// Initialize selectedOptions[i + 1] if it's undefined
+    if (!selectedOptions[i + 1]) {
+        selectedOptions[i + 1] = {};
+    }
+	
+	selectedOptions[i + 1].car = record.make + ' '+ record.model;
+	console.log(selectedOptions)
+	
     var dropdownCell = newRow.insertCell()
     var dropdown = document.createElement('select')
     dropdown.className = 'custom-select'
