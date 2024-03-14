@@ -36,18 +36,19 @@ function iterateThroughList(){
     if (Object.hasOwnProperty.call(selectedOptions, key)) {
         const item = selectedOptions[key];
         console.log("Row::", key);
-        console.log(`Option: ${item.option}`);
+        console.log("Option::", item.option);
+		console.log("Car Model::", item.car);
         console.log("Emissions Intensity::", item.emissionsIntensity);
-		calculateSavings(item.option, item.emissionsIntensity);
+		calculateSavings(item.car, item.option, item.emissionsIntensity);
     }
 }
 }
 
- function calculateSavings(str, EI) {
+ function calculateSavings(car, opt, ei) {
 	
 	if(Val==="EV Vehicle"){
 		console.log("-----Inside EV-----");
-		calculateEV(EI)
+		calculateEV(car, ei)
 	}
 	
 	if(Val==="B20 DIESEL"){
@@ -55,7 +56,7 @@ function iterateThroughList(){
 	}
 } 
 
-/*function calculateEV(EmissionsIntensity){
+/*function calculateEV(carModel, EmissionsIntensity){
 	electricalEfficiency = litreEquivalent * 
 	evEmissionsIntensity = electricalEfficiency * ProvincialEECoefficient;
 	savings = (EmissionsIntensity - evEmissionsIntensity) / (EmissionsIntensity)
