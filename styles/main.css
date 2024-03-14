@@ -384,7 +384,7 @@ td {
   border: none;
   width: -webkit-fill-available;
   padding: 10px;
-  text-align: center;
+  text-align: left;
   font-size: 1.1em;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -411,6 +411,17 @@ td {
 
 .options-container .custom-select:hover {
   cursor: pointer;
+}
+
+.line {
+  border-bottom: 7px solid #fff;
+  width: 25%;
+}
+
+.choose-green-text {
+  color: #fff;
+  font-size: 22px;
+  padding-top: 10px;
 }
 
 /* .options-container th {
