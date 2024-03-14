@@ -43,7 +43,10 @@
           <div class="menu">
             <a href="main.html">Home</a>
             <a href="">Data Input</a>
-            <a href="#">Green Option</a>
+            <a 
+              href="#" 
+              onclick="visibility(); populateGreenOptions();"
+              >Green Option</a>
             <a
               href="#"
               onclick="calculateEmissionIntensity(); toggleVisibility();"
@@ -170,7 +173,7 @@
           id="calculate-green-btn"
           src="Images/right-arrow.png"
           alt="Next"
-          onclick="populateGreenOptions();"
+	  onclick="populateGreenOptions(); visibility();"
           class="hover-right"
         />
       </div>
