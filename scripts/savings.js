@@ -1,4 +1,5 @@
 var ProvincialEECoefficient = 0;
+var litreEquivalent = 8.9;
 
 var province = {
             "ontario": 29,
@@ -12,7 +13,6 @@ var province = {
             "alberta": 540,
             "columbia": 15
 };
-
 
 ProvincialEECoefficient = province["ontario"];
 console.log("Default Provincial Electricity Emissions Coefficient:: " + ProvincialEECoefficient);
@@ -37,16 +37,17 @@ function iterateThroughList(){
         const item = selectedOptions[key];
         console.log("Row::", key);
         console.log(`Option: ${item.option}`);
-        console.log(`Emissions Intensity: ${item.emissionsIntensity}`);
-		calculateSavings(item.option);
+        console.log("Emissions Intensity::", item.emissionsIntensity);
+		calculateSavings(item.option, item.emissionsIntensity);
     }
 }
 }
 
- function calculateSavings(Val) {
+ function calculateSavings(str, EI) {
 	
 	if(Val==="EV Vehicle"){
 		console.log("-----Inside EV-----");
+		calculateEV(EI)
 	}
 	
 	if(Val==="B20 DIESEL"){
@@ -54,14 +55,15 @@ function iterateThroughList(){
 	}
 } 
 
-/*function calculateEV(){
-	evEmissionsIntensity = * ProvincialEECoefficient;
-	savings = (Emissions Intensity - EV Emissions Intensity) / (EmissionsIntensity)
+/*function calculateEV(EmissionsIntensity){
+	electricalEfficiency = litreEquivalent * 
+	evEmissionsIntensity = electricalEfficiency * ProvincialEECoefficient;
+	savings = (EmissionsIntensity - evEmissionsIntensity) / (EmissionsIntensity)
 	Total Emissions Savings = %Savings * Annual Emissions
 New Annual Emissions = Annual Emissions - (Total Emissions Savings)
 }
 
-function calculateE85(){
+/*function calculateE85(){
 	savings = 79;
 	totalEmissionsSavings = annualEmissions * 0.80
 }
