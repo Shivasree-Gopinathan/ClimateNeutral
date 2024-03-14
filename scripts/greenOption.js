@@ -1,7 +1,7 @@
 //Calculating green options
 function calculateGreenOptions() {
     console.log("Inside calculateGreenOptions");
-    
+
     var table = document.getElementById('table-content');
     var tbody = table.querySelector('tbody');
     var rows = tbody.querySelectorAll('tr:not(.table-tab):not(.table-input)');
@@ -19,13 +19,12 @@ function calculateGreenOptions() {
         var vehicleHeading = document.createElement('h3');
         vehicleHeading.textContent = "Vehicle " + (index + 1) + " - " + type;
 
-        // Appending the vehicle details to the container
-        document.getElementById('vehicle-container').appendChild(vehicleHeading);
+        // Appending the vehicle details to the left container
+        document.getElementById('left-container').appendChild(vehicleHeading);
 
-		
         console.log("Type::", type, ", Flex Fuel::", flexFuel, ", Fuel Type::", fuelType); 
         // Call the function to populate green options into the dropdown
-        populateGreenOptions(type, flexFuel,fuelType);
+        populateGreenOptions();
 
         try {
             var greenOptions = getGreenOptions(type, flexFuel, fuelType);
@@ -36,78 +35,97 @@ function calculateGreenOptions() {
     });
 }
 
-//Values for Green Options
-function getGreenOptions(type, flexFuel, fuelType) {
-    var greenOptions = [];
-
-    if (type === "Car" && flexFuel === "Yes" && fuelType === "Gasoline") {
-        greenOptions.push("Replace w/ EV Vehicle");
-        greenOptions.push("E85 Ethanol Usage");
+//Values for Green Optionsfunction 
+function populateGreenOptions() {
+    var storedRecords = JSON.parse(localStorage.getItem('tableData')) || []
+    var optionsContainer = document.querySelector('.green-options-table')
+  
+    optionsContainer.innerHTML = ''
+  
+    if (storedRecords.length === 0) {
+      var noRecordsRow = optionsContainer.insertRow()
+      var noRecordsCell = noRecordsRow.insertCell()
+      noRecordsCell.textContent = 'No records'
+      return
     }
-
-    if (type === "Car" && flexFuel === "No" && fuelType === "Gasoline") {
-        greenOptions.push("Replace w/ EV Car");
-        greenOptions.push("Replace w/ Biofuel Car E85");
+  
+    var headerRow = optionsContainer.insertRow()
+    var fleetVehicleHeader = document.createElement('th')
+    fleetVehicleHeader.textContent = 'Fleet Vehicle'
+    headerRow.appendChild(fleetVehicleHeader)
+    var greenOptionsHeader = document.createElement('th')
+    greenOptionsHeader.textContent = 'Green Options'
+    headerRow.appendChild(greenOptionsHeader)
+  
+    for (var i = 0; i < storedRecords.length; i++) {
+      var record = storedRecords[i]
+      var newRow = optionsContainer.insertRow()
+  
+      var concatenatedValues = Object.values(record).slice(0, 5).join(' - ')
+      var cell1 = newRow.insertCell()
+      cell1.textContent = record.type
+  
+      var dropdownCell = newRow.insertCell()
+      var dropdown = document.createElement('select')
+      dropdown.className = 'custom-select'
+      var type = record.type
+      var fuelFlex = record.fuel_flex
+      var fuelType = record.f_type
+  
+      if (type === 'Car' && fuelFlex === 'Yes' && fuelType === 'Gasoline') {
+        dropdown.innerHTML =
+          '<option value="EV Vehicle">Replace w/ EV Vehicle</option><option value="E85 Ethanol Usage">E85 Ethanol Usage</option>'
+      } else if (type === 'Car' && fuelFlex === 'No' && fuelType === 'Gasoline') {
+        dropdown.innerHTML =
+          '<option value="EV Car">Replace w/ EV Car</option><option value="Biofuel Car E85">Replace w/ Biofuel Car E85</option>'
+      } else if (
+        type === 'Light Duty Truck' &&
+        fuelFlex === 'No' &&
+        fuelType === 'Gasoline'
+      ) {
+        dropdown.innerHTML =
+          '<option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Biofuel E85 Light Duty Truck">Replace w/ Biofuel E85 Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel Car">Right Size to Biofuel Car</option>'
+      } else if (
+        type === 'Light Duty Truck' &&
+        fuelFlex === 'Yes' &&
+        fuelType === 'Gasoline'
+      ) {
+        dropdown.innerHTML =
+          '<option value="E85 Biofuel Usage">E85 Biofuel Usage</option><option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel Car">Right Size to Biofuel Car</option>'
+      } else if (
+        type === 'Light Duty Truck' &&
+        fuelFlex === 'No' &&
+        fuelType === 'Diesel'
+      ) {
+        dropdown.innerHTML =
+          '<option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Biofuel E85 Light Duty Truck">Replace w/ Biofuel E85 Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel E85 Car">Right Size to Biofuel E85 Car</option>'
+      } else if (
+        type === 'Light Duty Truck' &&
+        fuelFlex === 'Yes' &&
+        fuelType === 'Diesel'
+      ) {
+        dropdown.innerHTML =
+          '<option value="B20 Diesel Usage">B20 Diesel Usage</option><option value="EV Light Duty Truck">Replace w/ EV Light Duty Truck</option><option value="Biofuel E85 Light Duty Truck">Replace w/ Biofuel E85 Light Duty Truck</option><option value="Right Size to Car">Right Size to Car</option><option value="Right Size to Biofuel E85 Car">Right Size to Biofuel E85 Car</option>'
+      } else {
+        dropdown.innerHTML = '<option value="">No options available</option>'
+      }
+  
+      dropdownCell.appendChild(dropdown)
     }
-
-    if (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Gasoline") {
-        greenOptions.push("Replace w/ EV Light Duty Truck");
-        greenOptions.push("Replace w/ Biofuel E85 Light Duty Truck");
-        greenOptions.push("Right Size to Car");
-        greenOptions.push("Right Size to Biofuel Car");
-    }
-
-    if (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Gasoline") {
-        greenOptions.push("E85 Biofuel Usage");
-        greenOptions.push("Replace w/ EV Light Duty Truck");
-        greenOptions.push("Right Size to Car");
-        greenOptions.push("Right Size to Biofuel Car");
-    }
-
-    if (type === "Light Duty Truck" && flexFuel === "No" && fuelType === "Diesel") {
-        greenOptions.push("Replace w/ EV Light Duty Truck");
-        greenOptions.push("Replace w/ Biofuel E85 Light Duty Truck");
-        greenOptions.push("Right Size to Car");
-        greenOptions.push("Right Size to Biofuel E85 Car");
-    }
-
-    if (type === "Light Duty Truck" && flexFuel === "Yes" && fuelType === "Diesel") {
-        greenOptions.push("B20 Diesel Usage");
-        greenOptions.push("Replace w/ EV Light Duty Truck");
-        greenOptions.push("Replace w/ Biofuel E85 Light Duty Truck");
-        greenOptions.push("Right Size to Car");
-        greenOptions.push("Right Size to Biofuel E85 Car");
-    }
-
-    return greenOptions;
-}
-
-// Function to populate green options into the dropdown
-function populateGreenOptions(type, flexFuel, fuelType) {
-    var dropdown = document.getElementById("green-option-selector");
-    dropdown.innerHTML = ""; // Clear existing options
-
-    var greenOptions = getGreenOptions(type, flexFuel, fuelType); // Calculate green options
-
-    greenOptions.forEach(function(option) {
-        var optionElement = document.createElement("option");
-        optionElement.value = option;
-        optionElement.textContent = option;
-        dropdown.appendChild(optionElement);
-    });
-}
-
-
+  }
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    populateGreenOptions()
+  })
+  
 var calculateGreenBtn = document.getElementById("calculate-green-btn");
-var sectionAbove = document.getElementById("DataEntry");
-var greenOptionsDiv1 = document.getElementById("greenOptionsDiv1");
-var greenOptionsDiv2 = document.getElementById("greenOptionsDiv2");
+var sectionAbove = document.getElementById("pageBody");
+var greenOptionsDiv1 = document.getElementById('green-option');
+var emissionIntensity = document.getElementById('EmissionIntensity')
+var emission = document.getElementById('emission-intensity')
 calculateGreenBtn.addEventListener("click", function() {
-        // Hide the section above
         sectionAbove.style.display = "none";
-        // Show the green options div
+        emissionIntensity.style.display = "none"
+        emission.style.display = "none"
         greenOptionsDiv1.style.display = "block";
-        greenOptionsDiv2.style.display = "block";
     });
-
-
