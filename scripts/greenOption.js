@@ -75,8 +75,9 @@ function populateGreenOptions() {
     var newRow = optionsContainer.insertRow()
 
     var concatenatedValues = Object.values(record).slice(0, 5).join(' - ')
+    var vehicleNumber = "Vehicle " + (i + 1);
     var cell1 = newRow.insertCell()
-    cell1.textContent = record.type
+    cell1.textContent = vehicleNumber + ' - ' + record.type + ' - ' + record.make + ' - ' + record.model;
 
     var dropdownCell = newRow.insertCell()
     var dropdown = document.createElement('select')
@@ -126,10 +127,6 @@ function populateGreenOptions() {
     dropdownCell.appendChild(dropdown)
   }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  populateGreenOptions()
-})
 
 var calculateGreenBtn = document.getElementById('calculate-green-btn')
 var sectionAbove = document.getElementById('pageBody')
