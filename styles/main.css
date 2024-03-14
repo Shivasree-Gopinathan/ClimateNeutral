@@ -370,13 +370,26 @@ td {
 
 /* Page 2 */
 /*green options*/
+.choose-green-section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  /* background-image: url('Images/background.png'); */
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding: 50px 60px;
+}
+
 .container2 {
   font-size: large;
   color: white;
+  
 }
 
 .container2 .options-container {
-  width: 90%;
+  width: 75%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
@@ -388,24 +401,38 @@ margin-bottom: 9%;
 
 .options-container table,
 .options-container table tbody tr td {
-  border: none;
-  width: -webkit-fill-available;
-  padding: 10px 0;
-  text-align: center;
+    border: none;
+    width: -webkit-fill-available;
+    padding: 10px ;
+    text-align: center;
+    font-size: 1.17em;
+    margin-block-start: 2em;
+    margin-block-end: 2em;
+    margin-inline-start: 10px;
+    margin-inline-end: 10px;
+    font-weight: bold;
 }
 
 .options-container table tr th {
-  color: #0c1081;
-  font-size: larger;
+  font-size: 40px;
+  padding-bottom: 3%;
 }
 
 .options-container .custom-select {
   padding: 4px 0;
   font-size: initial;
-  width: 55%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 63%;
+
 }
 
 .options-container .custom-select:hover {
   cursor: pointer;
+}
+
+.options-container th {
+  color: #0c1c81;
 }
 
