@@ -341,82 +341,6 @@ td {
   text-align: center;
 } */
 
-/* Page 2 */
-/* Green Options */
-.choose-green-section {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  background-image: url('Images/background.png');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  padding: 25px 25px;
-}
-
-.line {
-  border-bottom: 7px solid #fff;
-  width: 25%;
-}
-
-.choose-green-text {
-  color: #fff;
-  font-size: 24px;
-}
-
-.section-vehicle-fleet {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 25px 10px;
-}
-
-.drop-down-container {
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 10px;
-  background-color: #26b170;
-  color: #fff;
-  border-radius: 7px;
-}
-
-.left-container {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  padding: 25px;
-}
-
-.right-container {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  width: 50%;
-  padding: 25px;
-}
-
-.right-container select {
-  margin: 1em 0em;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  width: 250px;
-  position: absolute;
-  left: 73%;
-  margin-top: 40px;
-  transform: translate(-50%, -50%);
-}
-
-.right-container h2 {
-  margin-top: -10px;
-}
-
 .graphs {
   margin-top: 2rem;
   display: flex;
@@ -443,3 +367,45 @@ td {
   color: #0c1081;
   display: none;
 }
+
+/* Page 2 */
+/*green options*/
+.container2 {
+  font-size: large;
+  color: white;
+}
+
+.container2 .options-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  background-color: #26b170;
+  padding: 2% 5%;
+  margin-top: 9%;
+margin-bottom: 9%;
+}
+
+.options-container table,
+.options-container table tbody tr td {
+  border: none;
+  width: -webkit-fill-available;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.options-container table tr th {
+  color: #0c1081;
+  font-size: larger;
+}
+
+.options-container .custom-select {
+  padding: 4px 0;
+  font-size: initial;
+  width: 55%;
+}
+
+.options-container .custom-select:hover {
+  cursor: pointer;
+}
+
