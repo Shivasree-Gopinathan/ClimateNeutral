@@ -44,7 +44,11 @@
             <a href="main.html">Home</a>
             <a href="">Data Input</a>
             <a href="#">Green Option</a>
-            <a href="#">Results</a>
+            <a
+              href="#"
+              onclick="calculateEmissionIntensity(); toggleVisibility();"
+              >Results</a
+            >
             <a href="#">Contact</a>
           </div>
 
@@ -57,10 +61,10 @@
       </header>
     </div>
 
+    <!-- Data Entry -->
     <div id="pageBody">
       <!-- Buttons -->
       <div id="DataEntry">
-        <!-- <p>Enter Your Data</p> -->
         <h2 class="section-header">Enter Your Data</h2>
         <div class="button-container">
           <label for="file-input" class="custom-upload-button">
@@ -160,10 +164,15 @@
         </div>
       </div>
 
-      <div class="btns">
-        <button id="calculate-green-btn" onclick="populateGreenOptions();">
-          Next
-        </button>
+      <!-- Nav Buttons -->
+      <div class="btns" id="btns">
+        <img
+          id="calculate-green-btn"
+          src="/Images/right-arrow.png"
+          alt="Next"
+          onclick="populateGreenOptions();"
+          class="hover-right"
+        />
       </div>
 
       <!-- Animation -->
@@ -192,12 +201,19 @@
         </div>
       </div>
       <div class="btns">
-        <button
+        <img
+          src="/Images/left-arrow.png"
+          alt="Previous"
+          class="hover-left"
+          onclick="backToMain();"
+        />
+        <img
           id="emission-intensity"
+          src="/Images/right-arrow.png"
+          alt="Next"
           onclick="calculateEmissionIntensity(); toggleVisibility();"
-        >
-          Next
-        </button>
+          class="hover-right"
+        />
       </div>
     </div>
 
@@ -219,7 +235,13 @@
         <h3>Average Emission Intensity for Fleet</h3>
       </div>
       <div class="btns">
-        <button>Next</button>
+        <img
+          src="/Images/left-arrow.png"
+          alt="Previous"
+          class="hover-left"
+          onclick="backToGreenOptions();"
+        />
+        <img src="/Images/right-arrow.png" alt="Next" class="hover-right" />
       </div>
     </div>
 

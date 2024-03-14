@@ -343,6 +343,10 @@ td {
 
 /* Page 2 */
 /*green options*/
+#green-option {
+  min-height: 79.8vh;
+}
+
 .choose-green-section {
   display: flex;
   color: white;
@@ -430,6 +434,10 @@ td {
 
 /* Page 3 */
 /* Emission Intensity */
+#EmissionIntensity {
+  min-height: 75.5vh;
+}
+
 .graphs {
   margin-top: 2rem;
   display: flex;
@@ -469,21 +477,35 @@ td {
   color: gray;
 }
 
+#btns {
+  margin-top: 1rem;
+  margin-left: 96%;
+}
+
 .btns {
-  margin: 1rem 0;
-  margin-left: 94.5%;
+  margin: 2rem 0;
+  margin-left: 90%;
 }
 
-.btns button {
-  background-color: #26b170;
-  border: 0px;
-  border-radius: 10px;
-  padding: 8px 15px;
-  color: white;
-  font-size: medium;
+.btns img {
+  margin: 0.5rem;
+  width: 25px;
+  height: 25px;
 }
 
-.btns button:hover {
-  background-color: #0c1081;
+.btns img:hover {
   cursor: pointer;
+}
+
+.hover-right,
+.hover-left {
+  transition: transform 0.3s ease;
+}
+
+.hover-right:hover {
+  transform: translateX(10px);
+}
+
+.hover-left:hover {
+  transform: translateX(-10px);
 }

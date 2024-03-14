@@ -509,3 +509,19 @@ document.addEventListener('DOMContentLoaded', function () {
 //     secondElement.style.display = 'block'
 //   }
 // })
+
+function backToMain() {
+  var dataEntry = document.getElementById('pageBody')
+  var greenOption = document.getElementById('green-option')
+
+  dataEntry.style.display = 'block'
+  greenOption.style.display = 'none'
+}
+
+function backToGreenOptions() {
+  var greenOption = document.getElementById('green-option')
+  var emissionIntensity = document.getElementById('EmissionIntensity')
+
+  greenOption.style.display = 'block'
+  emissionIntensity.style.display = 'none'
+}
