@@ -422,6 +422,10 @@ td {
   padding-top: 10px;
 }
 
+#green-option {
+  min-height : 43rem;
+}
+
 /* .options-container th {
   color: #0c1c81;
 }  */
