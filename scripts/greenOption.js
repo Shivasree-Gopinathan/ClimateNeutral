@@ -4,7 +4,11 @@ const selectedOptions = {};
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.custom-select').forEach(function(dropdown) {
         const rowIndex = dropdown.closest('tr').rowIndex;
-        selectedOptions[rowIndex] = dropdown.value;
+        //selectedOptions[rowIndex] = dropdown.value;
+		selectedOptions[rowIndex] = {
+            option: dropdown.value,
+            emissionsIntensity: 0
+        };
     });
 
     //Adding event listener to the dropdown elements
