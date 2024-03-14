@@ -13,6 +13,7 @@ var province = {
             "columbia": 15
 };
 
+
 ProvincialEECoefficient = province["ontario"];
 console.log("Default Provincial Electricity Emissions Coefficient:: " + ProvincialEECoefficient);
 
