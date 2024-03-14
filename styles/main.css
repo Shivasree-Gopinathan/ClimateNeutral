@@ -359,11 +359,6 @@ td {
 }
 
 .container2 {
-  font-size: large;
-  color: white;
-}
-
-.container2 {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
@@ -372,6 +367,9 @@ td {
   padding: 2% 5%;
   margin-top: 3%;
   margin-bottom: 2%;
+  min-height: 80%;
+  font-size: large;
+  color: white;
 }
 
 .options-container {
