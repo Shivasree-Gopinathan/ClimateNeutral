@@ -12,18 +12,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //Calculating Emission Intensity
 function calculateEmissionIntensity() {
-  console.log('Inside calculateEmissionIntensity')
+  // console.log('Inside calculateEmissionIntensity')
 
   var table = document.getElementById('table-content')
   var tbody = table.querySelector('tbody')
   var rows = tbody.querySelectorAll('tr:not(.table-tab):not(.table-input)')
-  console.log('Number of rows found::', rows.length)
+  // console.log('Number of rows found::', rows.length)
 
   var annualEmissionsData = []
   var emissionsIntensityData = []
 
   rows.forEach(function (row, index) {
-    console.log('Row::', index + 1)
+    // console.log('Row::', index + 1)
 
     var cells = row.querySelectorAll('td')
     var annualFuelConsumption = cells[6].textContent.trim()
@@ -38,16 +38,16 @@ function calculateEmissionIntensity() {
 
     annualEmissionsData.push({ label: type, value: annualEmissions })
     emissionsIntensityData.push({ label: type, value: emissionsIntensity })
-    console.log(
-      'Feul Efficieny::',
-      fuelEfficiency,
-      'Fuel Type::',
-      fuelType,
-      'Fuel Annual Emission::',
-      annualEmissions,
-      'Emissions Intensity::',
-      emissionsIntensity
-    )
+    // console.log(
+    //   'Feul Efficieny::',
+    //   fuelEfficiency,
+    //   'Fuel Type::',
+    //   fuelType,
+    //   'Fuel Annual Emission::',
+    //   annualEmissions,
+    //   'Emissions Intensity::',
+    //   emissionsIntensity
+    // )
   })
   // Call a function to draw the chart
   drawHorizontalBarChart('emissionChart', annualEmissionsData)
@@ -67,6 +67,11 @@ function calculateEmissionIntensity() {
 function drawHorizontalBarChart(canvasId, data) {
   var canvas = document.getElementById(canvasId)
   var ctx = canvas.getContext('2d')
+
+  var requiredHeight = data.length * 75 // Adjust the factor (50) as needed
+
+  // Set the canvas height dynamically
+  canvas.height = requiredHeight
 
   // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -127,7 +132,11 @@ function drawHorizontalBarChart(canvasId, data) {
 function toggleVisibility() {
   var totalEmissionsTitle = document.getElementById('totalEmissionsTitle')
   var emissionIntensityTitle = document.getElementById('emissionIntensityTitle')
+  var emissionIntensityDiv = document.getElementById('EmissionIntensity')
+  var greenOption = document.getElementById('green-option')
 
   totalEmissionsTitle.style.display = 'block'
   emissionIntensityTitle.style.display = 'block'
+  emissionIntensityDiv.style.display = 'block'
+  greenOption.style.display = 'none'
 }

@@ -157,55 +157,74 @@
         <div class="table-btn" id="table-btn">
           <button id="add-update-button" onclick="addRow();">Add</button>
           <button onclick="cancelRow();">Cancel</button>
-          <button id="calculate-green-btn" onclick="calculateGreenOptions();">Green-Options</button>
         </div>
       </div>
-    </div>
 
-    <button id="emission-intensity" onclick="calculateEmissionIntensity(); toggleVisibility();">
-      Emission Intensity
-    </button>
-    <div id="EmissionIntensity" class="emission-intensity">
-      <div class="graphs-head">
-        <h1>Current Emission Analysis</h1>
+      <div class="btns">
+        <button id="calculate-green-btn" onclick="calculateGreenOptions();">
+          Next
+        </button>
       </div>
-      <div class="graphs">
-        <div class="graph1">
-          <h2 id="totalEmissionsTitle">Total Emissions by Vehicles</h2>
-          <canvas id="emissionChart" width="600" height="300"></canvas>
-        </div>
-        <div class="graph2">
-          <h2 id="emissionIntensityTitle">Emissions Intensity by Vehicles</h2>
-          <canvas id="emissionIntensityChart" width="600" height="300"></canvas>
-        </div>
+
+      <!-- Animation -->
+      <div class="car">
+        <img
+          src="Images/carimage.png"
+          alt="Car"
+          class="car-image"
+          id="carImage"
+        />
       </div>
     </div>
 
     <!-- Green Options -->
-    <div id="green-option" style="display: none;">
-      <div class="choose-green-section" style="background-image: url('Images/background.png');">
-        <div class="line"> </div>
+    <div id="green-option" style="display: none">
+      <div
+        class="choose-green-section"
+        style="background-image: url('Images/background.png')"
+      >
+        <div class="line"></div>
         <h2 class="choose-green-text">Choose Green Options</h2>
-    </div>
+      </div>
       <div class="container2" id="target2">
         <div class="options-container">
           <table class="green-options-table"></table>
         </div>
       </div>
+      <div class="btns">
+        <button
+          id="emission-intensity"
+          onclick="calculateEmissionIntensity(); toggleVisibility();"
+        >
+          Next
+        </button>
+      </div>
     </div>
 
-            <!-- Animation -->
-            <div class="car">
-              <img
-                src="Images/carimage.png"
-                alt="Car"
-                class="car-image"
-                id="carImage"
-              />
-            </div>
+    <div id="EmissionIntensity" class="emission-intensity">
+      <div class="graphs-head">
+        <h1>Current Emission Analysis</h1>
+      </div>
+      <div class="emission">
+        <div class="graphs">
+          <div class="graph1">
+            <h2 id="totalEmissionsTitle">Total Emissions by Vehicles</h2>
+            <canvas id="emissionChart" width="600"></canvas>
+          </div>
+          <div class="graph2">
+            <h2 id="emissionIntensityTitle">Emissions Intensity by Vehicles</h2>
+            <canvas id="emissionIntensityChart" width="600"></canvas>
+          </div>
+        </div>
+        <h3>Average Emission Intensity for Fleet</h3>
+      </div>
+      <div class="btns">
+        <button>Next</button>
+      </div>
+    </div>
+
     <!-- Footer -->
     <div class="footer">
-
       <footer class="footer">
         <div class="footer-content">
           <div class="copyright-section">
