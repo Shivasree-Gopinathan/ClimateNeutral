@@ -172,15 +172,13 @@ function populateGreenOptions() {
   }
 }
 
+function visibility(){
 var calculateGreenBtn = document.getElementById('calculate-green-btn')
 var sectionAbove = document.getElementById('pageBody')
 var greenOptionsDiv1 = document.getElementById('green-option')
 var emissionIntensity = document.getElementById('EmissionIntensity')
-// var emission = document.getElementById('emission-intensity')
 
-calculateGreenBtn.addEventListener('click', function () {
-  sectionAbove.style.display = 'none'
-  emissionIntensity.style.display = 'none'
-  // emission.style.display = "none"
-  greenOptionsDiv1.style.display = 'block'
-})
+sectionAbove.style.display = 'none'
+emissionIntensity.style.display = 'none'
+greenOptionsDiv1.style.display = 'block'
+}
