@@ -1,4 +1,8 @@
-// Dynamically generating list of years
+document.querySelectorAll('.hover-right').forEach(button => {
+  button.addEventListener('click', function() {
+    document.querySelector('.car').classList.add('move-once');
+  });
+});// Dynamically generating list of years
 var currentYear = new Date().getFullYear()
 var selectYear = document.getElementById('year')
 

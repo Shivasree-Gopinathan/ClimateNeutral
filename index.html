@@ -85,7 +85,7 @@
             Download Excel
           </label>
           <div class="instruction">
-            (Note: Download the Excel file to fill the information)
+            (Download the Excel file to fill the information)
           </div>
         </div>
 
@@ -218,6 +218,14 @@
           class="hover-right"
         />
       </div>
+      <div class="car">
+        <img
+          src="Images/carimage.png"
+          alt="Car"
+          class="car-image"
+          id="carImage"
+        />
+      </div>
     </div>
 
     <div id="EmissionIntensity" class="emission-intensity">
@@ -235,7 +243,7 @@
             <canvas id="emissionIntensityChart" width="600"></canvas>
           </div>
         </div>
-        <h3>Average Emission Intensity for Fleet</h3>
+        <h3 style="font-size: 28px;">Average Emission Intensity for Fleet</h3>
       </div>
       <div class="btns">
         <img
@@ -249,6 +257,14 @@
           alt="Next"
           class="hover-right"
           onclick="iterateThroughList();"
+        />
+      </div>
+      <div class="car">
+        <img
+          src="Images/carimage.png"
+          alt="Car"
+          class="car-image"
+          id="carImage"
         />
       </div>
     </div>
@@ -270,6 +286,12 @@
       /*document.addEventListener("DOMContentLoaded", function() {
     localStorage.clear();
   });*/
+// Event listener for right arrow buttons in each section
+document.querySelectorAll('.hover-right').forEach(button => {
+  button.addEventListener('click', function() {
+    document.querySelector('.car').classList.add('move-once');
+  });
+});
 
       function Function1() {
         alert('Download button clicked!')

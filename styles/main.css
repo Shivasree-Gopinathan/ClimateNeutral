@@ -100,6 +100,7 @@ a {
 
 .car {
   position: relative;
+  background-color: transparent;
   left: 0;
   opacity: 1; /* Initially visible */
   animation: moveRight 5s linear forwards 1; /* Move car to the right */
@@ -114,6 +115,9 @@ a {
   }
 }
 
+.move-once {
+  animation: moveRightOnce 5s linear forwards;
+}
 /* The side navigation menu */
 .sidebar {
   height: 100%;
@@ -304,7 +308,7 @@ td {
   background-color: #0c1081;
   color: white;
   font-size: 14px;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
 }
 
@@ -476,7 +480,9 @@ td {
 .emission h3 {
   text-align: center;
   color: #0c1081;
-  color: gray;
+  margin-top: 20px;
+  font-style: italic;
+
 }
 
 #btns {

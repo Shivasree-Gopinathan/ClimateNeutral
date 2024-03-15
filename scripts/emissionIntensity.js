@@ -1,4 +1,8 @@
-var FuelEmissionsCoefficient = 0
+document.querySelectorAll('.hover-right').forEach(button => {
+  button.addEventListener('click', function() {
+    document.querySelector('.car').classList.add('move-once');
+  });
+});var FuelEmissionsCoefficient = 0
 
 var fuelEmissionsCoefficient = {
   Gasoline: 2299,
