@@ -39,29 +39,53 @@ function iterateThroughList(){
         console.log("Option::", item.option);
 		console.log("Car Model::", item.car);
         console.log("Emissions Intensity::", item.emissionsIntensity);
-		calculateSavings(item.car, item.option, item.emissionsIntensity);
+		console.log("Annual Emission::", item.annualEmissions);
+		calculateSavings(item.car, item.option, item.annualEmissions, item.emissionsIntensity);
     }
 }
 }
 
- function calculateSavings(car, opt, ei) {
+function getCombinedKWh(makeModel) {
+	for (let i = 0; i < EVData.length; i++) {
+        // Access the current object
+        const vehicle = EVData[i];
+        //console.log("--------",vehicle["Make Model"])
+			
+        // Check if the "Make Model" property of the current object matches the input make model
+        if (vehicle["Make Model"] === makeModel) {
+            // Match found, return the value of "Combined (kWh/100 km)"
+			console.log("----Found Match----")
+			console.log("----Value----", vehicle["Combined Fuel"])
+            return vehicle["Combined Fuel"];
+        }
+    }
+
+    //No car match found
+    return null;
+}
+
+ function calculateSavings(car, opt, ae, ei) {
 	
-	if(Val==="EV Vehicle"){
+	if(opt==="EV Vehicle"){
 		console.log("-----Inside EV-----");
-		calculateEV(car, ei)
+		calculateEV(car, ae, ei)
 	}
 	
-	if(Val==="B20 DIESEL"){
+	if(opt==="B20 DIESEL"){
 		savings = 15;
 	}
 } 
 
-/*function calculateEV(carModel, EmissionsIntensity){
-	electricalEfficiency = litreEquivalent * 
+function calculateEV(carModel, annualEmission, EmissionsIntensity){
+	CombinedKWh = getCombinedKWh(carModel);
+	if(CombinedKWh != null){
+	electricalEfficiency = litreEquivalent * CombinedKWh;
 	evEmissionsIntensity = electricalEfficiency * ProvincialEECoefficient;
-	savings = (EmissionsIntensity - evEmissionsIntensity) / (EmissionsIntensity)
-	Total Emissions Savings = %Savings * Annual Emissions
-New Annual Emissions = Annual Emissions - (Total Emissions Savings)
+	savings = (EmissionsIntensity - evEmissionsIntensity) / (EmissionsIntensity) *100
+	totalEmissionsSavings = savings * annualEmission
+	newAnnualEmissions = annualEmission - totalEmissionsSavings
+	console.log("Savings::", savings);
+	}
 }
 
 /*function calculateE85(){

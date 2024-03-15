@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		selectedOptions[rowIndex] = {
 			car: "",
             option: dropdown.value,
+			annualEmissions:0,
             emissionsIntensity: 0
         };
     });
@@ -22,11 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			selectedOptions[rowIndex] = {
 			car: "",
             option: target.value,
+			annualEmissions:0,
             emissionsIntensity: 0
         };
-            console.log('Selected option for row ' + rowIndex + ':', selectedOptions[rowIndex]);
+            /* console.log('Selected option for row ' + rowIndex + ':', selectedOptions[rowIndex]);
 			console.log('New selectedOptions::');
-			console.log(selectedOptions);
+			console.log(selectedOptions); */
         }
     });
 });
@@ -121,7 +123,7 @@ function populateGreenOptions() {
     }
 	
 	selectedOptions[i + 1].car = record.make + ' '+ record.model;
-	console.log(selectedOptions)
+	//console.log(selectedOptions)
 	
     var dropdownCell = newRow.insertCell()
     var dropdown = document.createElement('select')
