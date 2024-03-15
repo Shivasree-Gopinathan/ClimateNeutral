@@ -1,5 +1,6 @@
 var ProvincialEECoefficient = 0;
 var litreEquivalent = 8.9;
+var totalEmissionsSavings =0;
 
 var province = {
             "ontario": 29,
@@ -64,15 +65,24 @@ function getCombinedKWh(makeModel) {
     return null;
 }
 
- function calculateSavings(car, opt, ae, ei) {
+ function calculateSavings(car, opt, annualEmm, emmisionInt) {
 	
 	if(opt==="EV Vehicle"){
 		console.log("-----Inside EV-----");
-		calculateEV(car, ae, ei)
+		calculateEV(car, annualEmm, emmisionInt)
 	}
 	
-	if(opt==="B20 DIESEL"){
+	else if(opt.includes("B20")){
 		savings = 15;
+		console.log("Savings::", savings);
+		totalEmissionsSavings = 0
+	}
+	
+	else if(opt.includes("E85")){
+		//Could change in future
+		savings = 79
+		console.log("Savings::", savings);
+		totalEmissionsSavings = annualEmm * 0.80
 	}
 } 
 
