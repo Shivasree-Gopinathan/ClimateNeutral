@@ -3,7 +3,8 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: 'Lato', sans-serif;
+  /* font-family: 'Lato', sans-serif; */
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -14,7 +15,6 @@ body {
 
 header {
   background-color: #26b170;
-  /* overflow: fixed; */
   padding: 10px;
 }
 
@@ -35,19 +35,21 @@ nav .menu a {
   font-size: 16px;
   position: relative;
   font-weight: 200;
+  text-decoration: none;
 }
-/* nav .menu a::after{
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color:  #0c1c81;
-    transition: 0.4s;
-} */
-nav .menu a:hover {
-  color: #0c1081;
+
+nav .menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #0c1c81;
+  transition: 0.4s;
+}
+nav .menu a:hover::after {
+  width: 100%;
 }
 
 nav .social a i {
@@ -64,33 +66,6 @@ nav .social a i:hover {
 .logo {
   float: left;
 }
-
-/* .logo img {
-  height: 30px;
-} */
-
-/* nav {
-  float: right;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin-left: 20px;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  display: block;
-  font-size: 18px;
-} */
 
 .section-header {
   color: #0c1c81;
@@ -482,7 +457,6 @@ td {
   color: #0c1081;
   margin-top: 20px;
   font-style: italic;
-
 }
 
 #btns {
