@@ -47,11 +47,11 @@ function iterateThroughList(){
 
 function getCombinedKWh(makeModel) {
 	for (let i = 0; i < EVData.length; i++) {
-        // Access the current object
+        //Accessing the current object
         const vehicle = EVData[i];
         //console.log("--------",vehicle["Make Model"])
 			
-        // Check if the "Make Model" property of the current object matches the input make model
+        //Check if the "Make Model" match is found
         if (vehicle["Make Model"] === makeModel) {
             // Match found, return the value of "Combined (kWh/100 km)"
 			console.log("----Found Match----")
@@ -60,7 +60,7 @@ function getCombinedKWh(makeModel) {
         }
     }
 
-    //No car match found
+    //No car model match found
     return null;
 }
 
