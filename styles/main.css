@@ -25,14 +25,16 @@ header nav {
   justify-content: space-between;
   height: 30px;
 }
+
 header nav .menu {
   display: flex;
   align-items: center;
 }
+
 nav .menu a {
   color: white;
   margin-left: 30px;
-  font-size: 16px;
+  font-size: medium;
   position: relative;
   font-weight: 200;
   text-decoration: none;
