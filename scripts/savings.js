@@ -1,4 +1,8 @@
-var ProvincialEECoefficient = 0;
+document.querySelectorAll('.hover-right').forEach(button => {
+  button.addEventListener('click', function() {
+    document.querySelector('.car').classList.add('move-once');
+  });
+});var ProvincialEECoefficient = 0;
 var litreEquivalent = 8.9;
 var totalEmissionsSavings =0;
 

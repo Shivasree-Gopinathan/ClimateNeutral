@@ -1,4 +1,8 @@
-//Storing values for each row
+document.querySelectorAll('.hover-right').forEach(button => {
+  button.addEventListener('click', function() {
+    document.querySelector('.car').classList.add('move-once');
+  });
+});//Storing values for each row
 const selectedOptions = {};
 
 document.addEventListener('DOMContentLoaded', function () {
