@@ -9,6 +9,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/emission.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -251,6 +252,32 @@
           onclick="iterateThroughList();"
         />
       </div>
+    </div>
+    <div class="emission-container" id="emissionContainer" style="display: none;">
+      <div class="header">
+        <h1>Emission Savings Result Analysis</h1>
+      </div>
+      <div class="emission-data-container">
+        <div class="table-container">
+          <table id="emission-table">
+            <thead>
+              <tr>
+                <th>Fleet Vehicle</th>
+                <th>Action Applied</th>
+                <th>Emissions Savings (TCO2e)</th>
+                <th>% Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="download-section">
+          <button>Download CSV</button>
+          <button>Download PDF</button>
+        </div>
+    </div>
     </div>
 
     <!-- Footer -->

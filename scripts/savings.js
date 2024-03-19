@@ -30,21 +30,67 @@ function handleDropdownChange() {
 
 //Event listener for the dropdown
 document.getElementById("province").addEventListener("change", handleDropdownChange);
-
-function iterateThroughList(){
-	
+function iterateThroughList() {
+	var table = document.getElementById("emission-table");
+	var emissionIntensityDiv = document.getElementById('EmissionIntensity');
+	emissionIntensityDiv.style.display = 'none'
+  
+	var emissionContainer = document.getElementById('emissionContainer');
+	emissionContainer.style.display = 'block';
+  
+	console.log(selectedOptions);
+  
 	for (const key in selectedOptions) {
-    if (Object.hasOwnProperty.call(selectedOptions, key)) {
-        const item = selectedOptions[key];
-        console.log("Row::", key);
-        console.log("Option::", item.option);
+	  if (Object.hasOwnProperty.call(selectedOptions, key)) {
+		const item = selectedOptions[key];
+		console.log("Row::", key);
+		console.log("Option::", item.option);
 		console.log("Car Model::", item.car);
-        console.log("Emissions Intensity::", item.emissionsIntensity);
+		console.log("Emissions Intensity::", item.emissionsIntensity);
 		console.log("Annual Emission::", item.annualEmissions);
-		calculateSavings(item.car, item.option, item.annualEmissions, item.emissionsIntensity);
-    }
-}
-}
+		
+  
+		var row = document.createElement("tr");
+		var car = document.createElement("td");
+		var option = document.createElement("td");
+		var annualEmissions = document.createElement("td");
+		var emissionsIntensity = document.createElement("td");
+  
+		car.textContent = selectedOptions[key].car;
+		option.textContent = selectedOptions[key].option || "None";
+		annualEmissions.textContent = selectedOptions[key].annualEmissions;
+		emissionsIntensity.textContent = selectedOptions[key].emissionsIntensity;
+  
+		row.appendChild(car);
+		row.appendChild(option);
+		row.appendChild(annualEmissions);
+		row.appendChild(emissionsIntensity);
+  
+		table.appendChild(row);
+		calculateSavings(
+		  item.car,
+		  item.option,
+		  item.annualEmissions,
+		  item.emissionsIntensity
+		);
+	  }
+	}
+  }
+
+// function iterateThroughList() {
+
+// 	for (const key in selectedOptions) {
+// 		if (Object.hasOwnProperty.call(selectedOptions, key)) {
+// 			const item = selectedOptions[key];
+// 			console.log("Row::", key);
+// 			console.log("Option::", item.option);
+// 			console.log("Car Model::", item.car);
+// 			console.log("Emissions Intensity::", item.emissionsIntensity);
+// 			console.log("Annual Emission::", item.annualEmissions);
+// 			calculateSavings(item.car, item.option, item.annualEmissions, item.emissionsIntensity);
+// 		}
+// 	}
+// }
 
 function getCombinedKWh(makeModel) {
 	for (let i = 0; i < EVData.length; i++) {
@@ -69,7 +115,7 @@ function getCombinedKWh(makeModel) {
 	
 	if(opt==="EV Vehicle"){
 		console.log("-----Inside EV-----");
-		calculateEV(car, annualEmm, emmisionInt)
+		savings = calculateEV(car, annualEmm, emmisionInt)
 	}
 	
 	else if(opt.includes("B20")){
@@ -95,7 +141,9 @@ function calculateEV(carModel, annualEmission, EmissionsIntensity){
 	totalEmissionsSavings = savings * annualEmission
 	newAnnualEmissions = annualEmission - totalEmissionsSavings
 	console.log("Savings::", savings);
+	return savings;
 	}
+	return 0;
 }
 
 /*function calculateE85(){
