@@ -36,6 +36,8 @@ function calculateEmissionIntensity() {
     var annualEmissions =
       annualFuelConsumption * fuelEmissionsCoefficient[fuelType]
     var emissionsIntensity = annualEmissions / annualVKT
+	selectedOptions[index + 1].annualEmissions = annualEmissions
+    selectedOptions[index + 1].emissionsIntensity = emissionsIntensity
 
     annualEmissionsData.push({ label: description, value: annualEmissions })
     emissionsIntensityData.push({
