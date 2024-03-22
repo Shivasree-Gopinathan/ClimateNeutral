@@ -1,46 +1,46 @@
-document.querySelectorAll('.hover-right').forEach(button => {
-  button.addEventListener('click', function() {
-    document.querySelector('.car').classList.add('move-once');
-  });
-});//Storing values for each row
-const selectedOptions = {};
+document.querySelectorAll('.hover-right').forEach((button) => {
+  button.addEventListener('click', function () {
+    document.querySelector('.car').classList.add('move-once')
+  })
+}) //Storing values for each row
+const selectedOptions = {}
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.custom-select').forEach(function(dropdown) {
-        const rowIndex = dropdown.closest('tr').rowIndex;
-        //selectedOptions[rowIndex] = dropdown.value;
-		selectedOptions[rowIndex] = {
-			car: "",
-            option: dropdown.value,
-			annualEmissions:0,
-            emissionsIntensity: 0
-        };
-    });
+  document.querySelectorAll('.custom-select').forEach(function (dropdown) {
+    const rowIndex = dropdown.closest('tr').rowIndex
+    //selectedOptions[rowIndex] = dropdown.value;
+    selectedOptions[rowIndex] = {
+      car: '',
+      option: dropdown.value,
+      annualEmissions: 0,
+      emissionsIntensity: 0,
+    }
+  })
 
-    //Adding event listener to the dropdown elements
-    document.addEventListener('change', function(event) {
-        const target = event.target;
-        if (target.tagName === 'SELECT' && target.className === 'custom-select') {
-            //Getting the row index
-            const rowIndex = target.closest('tr').rowIndex;
-            //selectedOptions[rowIndex] = target.value;
-			selectedOptions[rowIndex] = {
-			car: "",
-            option: target.value,
-			annualEmissions:0,
-            emissionsIntensity: 0
-        };
-            /* console.log('Selected option for row ' + rowIndex + ':', selectedOptions[rowIndex]);
+  //Adding event listener to the dropdown elements
+  document.addEventListener('change', function (event) {
+    const target = event.target
+    if (target.tagName === 'SELECT' && target.className === 'custom-select') {
+      //Getting the row index
+      const rowIndex = target.closest('tr').rowIndex
+      //selectedOptions[rowIndex] = target.value;
+      selectedOptions[rowIndex] = {
+        car: '',
+        option: target.value,
+        annualEmissions: 0,
+        emissionsIntensity: 0,
+      }
+      /* console.log('Selected option for row ' + rowIndex + ':', selectedOptions[rowIndex]);
 			console.log('New selectedOptions::');
 			console.log(selectedOptions); */
-        }
-    });
-});
+    }
+  })
+})
 
 //Calculating green options
 function calculateGreenOptions() {
   console.log('Inside calculateGreenOptions')
-  console.log(selectedOptions);
+  console.log(selectedOptions)
 
   var table = document.getElementById('table-content')
   var tbody = table.querySelector('tbody')
@@ -52,11 +52,11 @@ function calculateGreenOptions() {
 
     var cells = row.querySelectorAll('td')
     var type = cells[1].textContent.trim()
-	var make = cells[3].textContent.trim()
-	var model = cells[4].textContent.trim()
+    var make = cells[3].textContent.trim()
+    var model = cells[4].textContent.trim()
     var flexFuel = cells[8].textContent.trim()
     var fuelType = cells[7].textContent.trim()
-	
+
     // Creating a new <h3> element for each vehicle
     var vehicleHeading = document.createElement('h3')
     vehicleHeading.textContent = 'Vehicle ' + (index + 1) + ' - ' + type
@@ -117,18 +117,25 @@ function populateGreenOptions() {
     var newRow = optionsContainer.insertRow()
 
     var concatenatedValues = Object.values(record).slice(0, 5).join(' - ')
-    var vehicleNumber = "Vehicle " + (i + 1);
+    var vehicleNumber = 'Vehicle ' + (i + 1)
     var cell1 = newRow.insertCell()
-    cell1.textContent = vehicleNumber + ' - ' + record.type + ' - ' + record.make + ' - ' + record.model;
-	
-	// Initialize selectedOptions[i + 1] if it's undefined
+    cell1.textContent =
+      vehicleNumber +
+      ' - ' +
+      record.type +
+      ' - ' +
+      record.make +
+      ' - ' +
+      record.model
+
+    // Initialize selectedOptions[i + 1] if it's undefined
     if (!selectedOptions[i + 1]) {
-        selectedOptions[i + 1] = {};
+      selectedOptions[i + 1] = {}
     }
-	
-	selectedOptions[i + 1].car = record.make + ' '+ record.model;
-	//console.log(selectedOptions)
-	
+
+    selectedOptions[i + 1].car = record.make + ' ' + record.model
+    //console.log(selectedOptions)
+
     var dropdownCell = newRow.insertCell()
     var dropdown = document.createElement('select')
     dropdown.className = 'custom-select'
@@ -178,13 +185,20 @@ function populateGreenOptions() {
   }
 }
 
-function visibility(){
-var calculateGreenBtn = document.getElementById('calculate-green-btn')
-var sectionAbove = document.getElementById('pageBody')
-var greenOptionsDiv1 = document.getElementById('green-option')
-var emissionIntensity = document.getElementById('EmissionIntensity')
+function visibility() {
+  var calculateGreenBtn = document.getElementById('calculate-green-btn')
+  var sectionAbove = document.getElementById('pageBody')
+  var greenOptionsDiv1 = document.getElementById('green-option')
+  var emissionIntensity = document.getElementById('EmissionIntensity')
 
-sectionAbove.style.display = 'none'
-emissionIntensity.style.display = 'none'
-greenOptionsDiv1.style.display = 'block'
+  sectionAbove.style.display = 'none'
+  emissionIntensity.style.display = 'none'
+  greenOptionsDiv1.style.display = 'block'
+
+  var emissionContainer = document.getElementById('emissionContainer')
+  var contactContainer = document.getElementById('contact-container')
+  // var dataEntry = document.getElementById('pageBody')
+
+  emissionContainer.style.display = 'none'
+  contactContainer.style.display = 'none'
 }

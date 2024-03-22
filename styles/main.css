@@ -373,7 +373,7 @@ td {
   margin-block-end: 1em;
   margin-inline-start: 10px;
   margin-inline-end: 10px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .options-container table tr th {
@@ -492,4 +492,69 @@ td {
 
 .hover-left:hover {
   transform: translateX(-10px);
+}
+
+.contact-form-container {
+  margin-top: 2rem;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  font-size: medium;
+  min-height: 82.5vh;
+}
+
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 2rem auto;
+}
+
+.contact-form-container form table,
+.contact-form-container form table tr,
+.contact-form-container form table td {
+  border: none;
+}
+
+.contact-form-container input[type='text'],
+.contact-form-container input[type='email'],
+.contact-form-container textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact-form-container button {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #26b170;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+.contact-form-container button:hover {
+  background-color: #0c1081;
+}
+
+.contact-form-container .formdiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.contact-form-container .formdiv label {
+  margin-right: 1rem;
+}
+
+.contact-form-container form table input,
+.contact-form-container form table textarea {
+  width: -webkit-fill-available;
+}
+
+.contact-form-container h2 {
+  text-align: center;
+  color: #0c1081;
 }

@@ -1,71 +1,69 @@
 .emission-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 0 auto;
-  }
-  
-  .emission-container .header {
-    background-color: #0c1081;
-    color: white;
-    padding: 20px;
-    text-align: left;
-    width: 100%;
-  }
-  .emission-container .emission-data-container {
-      margin-left: 10%;
-      margin-bottom: 5%;
-  }
-  
-  .emission-container .table-container {
-    margin-top: 20px;
-    width: 80%;
-    border: 1px solid black;
-    border-radius: 2px;
-    background-color: #4caf50;
-    color: white;
-    border-radius: 16px;
-  }
-  
-  .emission-container table,
-  .emission-container th,
-  .emission-container td {
-    border-collapse: collapse;
-    padding: 16px;
-    width: -webkit-fill-available;
-    border-radius: 16px;
-  }
-  .emission-container  thead {
-    font-size: 32px;
-  }
-  
-  .emission-container th {
-    text-align: left;
-  }
-  
-  .emission-container .download-section {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-    width: 80%;
-  }
-  
-  .emission-container .download-section button {
-    margin-left: 10px;
-    padding: 10px 20px;
-    background-color: #ddd;
-    border: none;
-    cursor: pointer;
-    background-color: #4caf50;
-  }
-  
-  .emission-container .download-section button:hover {
-    background-color: #ccc;
-  }
-  
-  .emission-container th {
-    background-color: #4caf50;
-    color: white;
-    font-weight: bold;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.emission-container .header {
+  background-color: #0c1081;
+  color: white;
+  padding: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.emission-container .emission-data-container {
+  margin-top: 2rem;
+}
+
+.emission-container .table-container {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #26b170;
+  color: white;
+  border: 2px solid #0c1081;
+  border-radius: 2rem;
+  font-size: large;
+  text-align: center;
+}
+
+.emission-container table,
+.emission-container th,
+.emission-container td {
+  border: none;
+  padding: 16px;
+  width: -webkit-fill-available;
+}
+
+.emission-container .download-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.emission-container .download-section button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+}
+
+.emission-container .download-section button:hover {
+  background-color: #ccc;
+}
+
+.emission-container th {
+  color: white;
+  color: #0c1081;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.download-section {
+  float: right;
+  margin-right: 10rem;
+}

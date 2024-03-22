@@ -1,8 +1,8 @@
-document.querySelectorAll('.hover-right').forEach(button => {
-  button.addEventListener('click', function() {
-    document.querySelector('.car').classList.add('move-once');
-  });
-});// Dynamically generating list of years
+document.querySelectorAll('.hover-right').forEach((button) => {
+  button.addEventListener('click', function () {
+    document.querySelector('.car').classList.add('move-once')
+  })
+}) // Dynamically generating list of years
 var currentYear = new Date().getFullYear()
 var selectYear = document.getElementById('year')
 
@@ -529,3 +529,92 @@ function backToGreenOptions() {
   greenOption.style.display = 'block'
   emissionIntensity.style.display = 'none'
 }
+
+function backToEmissions() {
+  var emissionIntensity = document.getElementById('EmissionIntensity')
+  var emissionContainer = document.getElementById('emissionContainer')
+
+  emissionIntensity.style.display = 'block'
+  emissionContainer.style.display = 'none'
+}
+
+function goToContact() {
+  var emissionContainer = document.getElementById('emissionContainer')
+  var contactContainer = document.getElementById('contact-container')
+  var dataEntry = document.getElementById('pageBody')
+
+  emissionContainer.style.display = 'none'
+  contactContainer.style.display = 'block'
+  dataEntry.style.display = 'none'
+}
+
+function downloadCSV() {
+  const table = document.getElementById('emission-table')
+  let csv = []
+  for (let i = 0; i < table.rows.length; i++) {
+    let row = [],
+      cols = table.rows[i].querySelectorAll('td, th')
+    for (let j = 0; j < cols.length; j++) {
+      row.push(cols[j].innerText)
+    }
+    csv.push(row.join(','))
+  }
+  const csvFile = new Blob([csv.join('\n')], { type: 'text/csv' })
+  const downloadLink = document.createElement('a')
+  downloadLink.download = 'emissions_data.csv'
+  downloadLink.href = window.URL.createObjectURL(csvFile)
+  downloadLink.style.display = 'none'
+  document.body.appendChild(downloadLink)
+  downloadLink.click()
+  document.body.removeChild(downloadLink)
+}
+
+function downloadPDF() {
+  const pdf = new jspdf.jsPDF()
+  const table = document.getElementById('emission-table')
+  let yPosition = 20
+
+  // Add a title for the PDF
+  pdf.setFontSize(16)
+  pdf.text('Emission Savings Result Analysis', 14, yPosition)
+  yPosition += 10
+
+  // Set the font size for the table content
+  pdf.setFontSize(10)
+
+  // Iterate over each row of the table
+  for (let i = 0; i < table.rows.length; i++) {
+    let xPosition = 14
+    const row = table.rows[i]
+    const cols = row.querySelectorAll('td, th')
+
+    // Iterate over each cell in the row
+    for (let j = 0; j < cols.length; j++) {
+      const text = cols[j].innerText
+      // Add the cell text to the PDF. Adjust `xPosition` and `yPosition` as needed.
+      pdf.text(text, xPosition, yPosition)
+
+      // Adjust xPosition for the next cell. The value depends on your table's layout.
+      xPosition += 40 // Adjust based on the width of your columns
+    }
+
+    // Move to the next row position
+    yPosition += 10
+  }
+
+  // Save the created PDF
+  pdf.save('emissions_data.pdf')
+}
+
+document
+  .getElementById('contactForm')
+  .addEventListener('submit', function (event) {
+    event.preventDefault() // Prevent the default form submission
+
+    // Simulate a successful form submission
+    document.getElementById('result').innerHTML =
+      '<p>Thank you for contacting us. We will get back to you soon!</p>'
+
+    // Optionally, clear the form fields
+    this.reset()
+  })

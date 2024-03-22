@@ -52,7 +52,7 @@
               onclick="calculateEmissionIntensity(); toggleVisibility();"
               >Results</a
             >
-            <a href="#">Contact</a>
+            <a href="#" onclick="goToContact();">Contact</a>
           </div>
 
           <div class="social">
@@ -228,6 +228,7 @@
       </div>
     </div>
 
+    <!-- Results - Emission Intensity -->
     <div id="EmissionIntensity" class="emission-intensity">
       <div
         class="choose-green-section"
@@ -275,9 +276,22 @@
         />
       </div>
     </div>
-    <div class="emission-container" id="emissionContainer" style="display: none;">
-      <div class="header">
+
+    <!-- Results - Savings -->
+    <div
+      class="emission-container"
+      id="emissionContainer"
+      style="display: none"
+    >
+      <!-- <div class="header">
         <h1>Emission Savings Result Analysis</h1>
+      </div> -->
+      <div
+        class="choose-green-section"
+        style="background-image: url('Images/background.png')"
+      >
+        <div class="line"></div>
+        <h2 class="choose-green-text">Emission Savings Result Analysis</h2>
       </div>
       <div class="emission-data-container">
         <div class="table-container">
@@ -290,16 +304,109 @@
                 <th>% Savings</th>
               </tr>
             </thead>
-            <tbody>
-              
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
         <div class="download-section">
-          <button>Download CSV</button>
-          <button>Download PDF</button>
+          <div class="button-container">
+            <div class="file-upload">
+              <label
+                for="file-upload-input"
+                class="custom-upload-button"
+                onclick="downloadCSV()"
+              >
+                <img src="Images/csv.png" alt="file-upload-logo" width="20px" />
+                Download CSV
+              </label>
+            </div>
+          </div>
+          <div class="button-container">
+            <div class="file-upload">
+              <label
+                for="file-upload-input"
+                class="custom-upload-button"
+                onclick="downloadPDF()"
+              >
+                <img src="Images/pdf.png" alt="file-upload-logo" width="20px" />
+                Download PDF
+              </label>
+            </div>
+          </div>
+          <!-- <button>Download CSV</button> -->
+          <!-- <button>Download PDF</button> -->
         </div>
+      </div>
+      <div class="btns">
+        <img
+          src="Images/left-arrow.png"
+          alt="Previous"
+          class="hover-left"
+          onclick="backToEmissions();"
+        />
+        <img
+          src="Images/right-arrow.png"
+          alt="Next"
+          class="hover-right"
+          onclick="goToContact()"
+        />
+      </div>
+      <div class="car">
+        <img
+          src="Images/carimage.png"
+          alt="Car"
+          class="car-image"
+          id="carImage"
+        />
+      </div>
     </div>
+
+    <div
+      class="contact-form-container"
+      style="display: none"
+      id="contact-container"
+    >
+      <h2>Contact Form</h2>
+      <form id="contactForm">
+        <table>
+          <tr>
+            <td><label for="name">Name:</label></td>
+            <td><input type="text" id="name" name="name" required /></td>
+          </tr>
+          <tr>
+            <td><label for="email">Email:</label></td>
+            <td><input type="email" id="email" name="email" required /></td>
+          </tr>
+          <tr>
+            <td><label for="subject">Subject:</label></td>
+            <td><input type="text" id="subject" name="subject" required /></td>
+          </tr>
+          <tr>
+            <td><label for="message">Message:</label></td>
+            <td>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
+            </td>
+          </tr>
+          <tr style="text-align: center">
+            <td colspan="2">
+              <button type="submit">Submit</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <div id="result"></div>
+      <div class="car">
+        <img
+          src="Images/carimage.png"
+          alt="Car"
+          class="car-image"
+          id="carImage"
+        />
+      </div>
     </div>
 
     <!-- Footer -->
@@ -342,6 +449,8 @@
         document.getElementById('table-btn').style.marginLeft = '90%'
       }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/uploadjs.js"></script>
