@@ -72,20 +72,28 @@ function iterateThroughList() {
       car.textContent = selectedOptions[key].car
       option.textContent = selectedOptions[key].option || 'None'
       annualEmissions.textContent = selectedOptions[key].annualEmissions
-      emissionsIntensity.textContent = selectedOptions[key].emissionsIntensity
+      
 
+      savings = calculateSavings(
+        item.car,
+        item.option,
+        item.annualEmissions,
+        item.emissionsIntensity
+      )
+      console.log('Savings::',savings)
+      emissionsIntensity.textContent = savings
       row.appendChild(car)
       row.appendChild(option)
       row.appendChild(annualEmissions)
       row.appendChild(emissionsIntensity)
 
       table.appendChild(row)
-      calculateSavings(
-        item.car,
-        item.option,
-        item.annualEmissions,
-        item.emissionsIntensity
-      )
+      // calculateSavings(
+      //   item.car,
+      //   item.option,
+      //   item.annualEmissions,
+      //   item.emissionsIntensity
+      // )
     }
   }
 }
@@ -128,15 +136,18 @@ function calculateSavings(car, opt, annualEmm, emmisionInt) {
   if (opt === 'EV Vehicle') {
     console.log('-----Inside EV-----')
     savings = calculateEV(car, annualEmm, emmisionInt)
+    return savings
   } else if (opt.includes('B20')) {
     savings = 15
     console.log('Savings::', savings)
     totalEmissionsSavings = 0
+    return savings
   } else if (opt.includes('E85')) {
     //Could change in future
     savings = 79
     console.log('Savings::', savings)
     totalEmissionsSavings = annualEmm * 0.8
+    return savings
   }
 }
 
