@@ -558,3 +558,22 @@ td {
   text-align: center;
   color: #0c1081;
 }
+
+.card-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+}
+
+.cards {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1.5rem;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.cards p {
+  text-align: center;
+}
