@@ -577,3 +577,7 @@ td {
 .cards p {
   text-align: center;
 }
+
+.center-content {
+  text-align: center !important;
+}
