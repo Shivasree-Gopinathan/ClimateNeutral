@@ -101,6 +101,7 @@ function populateGreenOptions() {
     var noRecordsRow = optionsContainer.insertRow()
     var noRecordsCell = noRecordsRow.insertCell()
     noRecordsCell.textContent = 'No records'
+    noRecordsCell.classList.add('center-content')	  
     return
   }
 
