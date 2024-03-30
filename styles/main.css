@@ -7,6 +7,10 @@
   font-family: Arial, sans-serif;
 }
 
+.social {
+  margin-right: -60px !important;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -117,7 +121,7 @@ nav .social a i:hover {
   color: white;
   top: 4px;
   right: 10px;
-  font-size: 22px;
+  font-size: 15px;
   text-decoration: none;
 }
 
@@ -134,6 +138,10 @@ nav .social a i:hover {
   cursor: pointer;
   border: none;
   margin-left: -3%;
+}
+
+#provincebutton {
+margin-left: -70px;
 }
 
 .sidebar-content {
