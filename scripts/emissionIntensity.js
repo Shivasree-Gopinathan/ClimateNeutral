@@ -36,7 +36,7 @@ function calculateEmissionIntensity() {
     var annualEmissions =
       annualFuelConsumption * fuelEmissionsCoefficient[fuelType]
     var emissionsIntensity = annualEmissions / annualVKT
-	selectedOptions[index + 1].annualEmissions = annualEmissions
+    selectedOptions[index + 1].annualEmissions = annualEmissions
     selectedOptions[index + 1].emissionsIntensity = emissionsIntensity
 
     annualEmissionsData.push({ label: description, value: annualEmissions })
@@ -145,10 +145,12 @@ function toggleVisibility() {
   var emissionIntensityDiv = document.getElementById('EmissionIntensity')
   var greenOption = document.getElementById('green-option')
   var dataEntry = document.getElementById('pageBody')
+  var contact = document.getElementById('contact-container')
 
   totalEmissionsTitle.style.display = 'block'
   emissionIntensityTitle.style.display = 'block'
   emissionIntensityDiv.style.display = 'block'
   greenOption.style.display = 'none'
   dataEntry.style.display = 'none'
+  contact.style.display = 'none'
 }

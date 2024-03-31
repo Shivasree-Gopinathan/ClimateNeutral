@@ -54,7 +54,8 @@ nav .menu a::after {
   background-color: #0c1c81;
   transition: 0.4s;
 }
-nav .menu a:hover::after {
+nav .menu a:hover::after,
+nav .menu a.active::after {
   width: 100%;
 }
 
@@ -141,7 +142,7 @@ nav .social a i:hover {
 }
 
 #provincebutton {
-margin-left: -70px;
+  margin-left: -70px;
 }
 
 .sidebar-content {

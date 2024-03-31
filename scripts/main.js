@@ -539,10 +539,12 @@ function backToEmissions() {
 }
 
 function goToContact() {
+  var emissionIntensity = document.getElementById('EmissionIntensity')
   var emissionContainer = document.getElementById('emissionContainer')
   var contactContainer = document.getElementById('contact-container')
   var dataEntry = document.getElementById('pageBody')
 
+  emissionIntensity.style.display = 'none'
   emissionContainer.style.display = 'none'
   contactContainer.style.display = 'block'
   dataEntry.style.display = 'none'
@@ -618,3 +620,18 @@ document
     // Optionally, clear the form fields
     this.reset()
   })
+
+document.addEventListener('DOMContentLoaded', function () {
+  const menuLinks = document.querySelectorAll('nav .menu a')
+
+  menuLinks.forEach((link) => {
+    link.addEventListener('click', function () {
+      // Remove 'active' class from all links
+      menuLinks.forEach((link) => {
+        link.classList.remove('active')
+      })
+      // Add 'active' class to the clicked link
+      this.classList.add('active')
+    })
+  })
+})
