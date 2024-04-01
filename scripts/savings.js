@@ -1,4 +1,10 @@
-const result = [];
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 document.querySelectorAll('.hover-right').forEach((button) => {
   button.addEventListener('click', function () {
@@ -54,7 +60,7 @@ function iterateThroughList() {
   var contactContainer = document.getElementById('contact-container')
   contactContainer.style.display = 'none'
 
-  console.log(selectedOptions)
+  //console.log(selectedOptions)
 
   for (const key in selectedOptions) {
     if (Object.hasOwnProperty.call(selectedOptions, key)) {
@@ -124,8 +130,8 @@ function getCombinedKWh(makeModel) {
     //Check if the "Make Model" match is found
     if (vehicle['Make Model'] === makeModel) {
       // Match found, return the value of "Combined (kWh/100 km)"
-      console.log('----Found Match----')
-      console.log('----Value----', vehicle['Combined Fuel'])
+      //console.log('----Found Match----')
+      //console.log('----Value----', vehicle['Combined Fuel'])
       return vehicle['Combined Fuel']
     }
   }
@@ -182,8 +188,9 @@ function calculateB20Diesel(){
 }*/
 
 function calculateRightCar(carModel) {
+	const result = [];
+	
 	console.log("------Inside calculateRightCar------")
-	console.log("---carModel---", carModel)
 	var vehicleCO2 = 0
     
 	for (let i = 0; i < FeulData.length; i++) {
@@ -192,7 +199,7 @@ function calculateRightCar(carModel) {
 
     //Check if the "Make Model" match is found
     if (vehicle['Make Model'] === carModel) {
-		console.log("---carModel---", vehicle['Make Model'])
+		//console.log("---carModel---", vehicle['Make Model'])
 		vehicleCO2 = vehicle['CO2 emissions']
 		console.log("---vehicleCO2---", vehicleCO2)
 		break;
@@ -200,17 +207,30 @@ function calculateRightCar(carModel) {
 	}	
 	
 	// Find cars with lower CO2 emissions
-  for (let i = 0; i < FeulData.length; i++) {
+/*   for (let i = 0; i < FeulData.length; i++) {
     const vehicle = FeulData[i];
     if (vehicle['CO2 emissions'] < vehicleCO2 && vehicle['Make Model'] !== carModel) {
-	   console.log(vehicle['Make Model'])
+	   //console.log(vehicle['Make Model'])
        result.push({
         makeModel: vehicle['Make Model'],
         CO2Emissions: vehicle['CO2 emissions']
       });
       if (result.length === 10) break;
     }
+  } */
+  // Shuffle the FeulData array
+const shuffledFeulData = shuffleArray(FeulData);
+
+  for (let i = 0; i < shuffledFeulData.length; i++) {
+  const vehicle = shuffledFeulData[i];
+  if (vehicle['CO2 emissions'] < vehicleCO2 && vehicle['Make Model'] !== carModel) {
+    result.push({
+      makeModel: vehicle['Make Model'],
+      CO2Emissions: vehicle['CO2 emissions']
+    });
+    if (result.length === 10) break;
   }
+}
   
   console.log(result)
 	

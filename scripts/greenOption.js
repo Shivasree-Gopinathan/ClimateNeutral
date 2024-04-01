@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   //Adding event listener to the dropdown elements
-  document.addEventListener('change', function (event) {
+  /* document.addEventListener('change', function (event) {
     const target = event.target
     if (target.tagName === 'SELECT' && target.className === 'custom-select') {
       //Getting the row index
@@ -32,9 +32,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       /* console.log('Selected option for row ' + rowIndex + ':', selectedOptions[rowIndex]);
 			console.log('New selectedOptions::');
-			console.log(selectedOptions); */
+			console.log(selectedOptions); 
     }
-  })
+  }) */
+  
+  document.addEventListener('change', function (event) {
+  const target = event.target;
+  if (target.tagName === 'SELECT' && target.className === 'custom-select') {
+    // Getting the row index
+    const rowIndex = target.closest('tr').rowIndex;
+    // Update only the option property in selectedOptions[rowIndex]
+    selectedOptions[rowIndex].option = target.value;
+  }
+});
+
 })
 
 //Calculating green options
@@ -135,7 +146,8 @@ function populateGreenOptions() {
     }
 	
 	console.log("--------", record.make + ' ' + record.model)
-    selectedOptions[i + 1].car = (record.make + ' ' + record.model)
+	var carName = record.make + ' ' + record.model
+    selectedOptions[i + 1].car = carName
     console.log(selectedOptions)
 
     var dropdownCell = newRow.insertCell()
