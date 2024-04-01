@@ -133,9 +133,10 @@ function populateGreenOptions() {
     if (!selectedOptions[i + 1]) {
       selectedOptions[i + 1] = {}
     }
-
-    selectedOptions[i + 1].car = record.make + ' ' + record.model
-    //console.log(selectedOptions)
+	
+	console.log("--------", record.make + ' ' + record.model)
+    selectedOptions[i + 1].car = (record.make + ' ' + record.model)
+    console.log(selectedOptions)
 
     var dropdownCell = newRow.insertCell()
     var dropdown = document.createElement('select')

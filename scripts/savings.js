@@ -1,3 +1,5 @@
+const result = [];
+
 document.querySelectorAll('.hover-right').forEach((button) => {
   button.addEventListener('click', function () {
     document.querySelector('.car').classList.add('move-once')
@@ -149,6 +151,10 @@ function calculateSavings(car, opt, annualEmm, emmisionInt) {
     totalEmissionsSavings = annualEmm * 0.8
     return savings
   }
+  else if (opt.includes('Right Size')) {
+	  console.log("---car---", car)
+	  calculateRightCar(car)
+  }
 }
 
 function calculateEV(carModel, annualEmission, EmissionsIntensity) {
@@ -174,3 +180,38 @@ function calculateEV(carModel, annualEmission, EmissionsIntensity) {
 function calculateB20Diesel(){
 	savings = 15;
 }*/
+
+function calculateRightCar(carModel) {
+	console.log("------Inside calculateRightCar------")
+	console.log("---carModel---", carModel)
+	var vehicleCO2 = 0
+    
+	for (let i = 0; i < FeulData.length; i++) {
+    const vehicle = FeulData[i]
+	//console.log("--------",vehicle["Make Model"])
+
+    //Check if the "Make Model" match is found
+    if (vehicle['Make Model'] === carModel) {
+		console.log("---carModel---", vehicle['Make Model'])
+		vehicleCO2 = vehicle['CO2 emissions']
+		console.log("---vehicleCO2---", vehicleCO2)
+		break;
+	}
+	}	
+	
+	// Find cars with lower CO2 emissions
+  for (let i = 0; i < FeulData.length; i++) {
+    const vehicle = FeulData[i];
+    if (vehicle['CO2 emissions'] < vehicleCO2 && vehicle['Make Model'] !== carModel) {
+	   console.log(vehicle['Make Model'])
+       result.push({
+        makeModel: vehicle['Make Model'],
+        CO2Emissions: vehicle['CO2 emissions']
+      });
+      if (result.length === 10) break;
+    }
+  }
+  
+  console.log(result)
+	
+}
