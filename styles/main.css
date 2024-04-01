@@ -590,3 +590,9 @@ td {
 .center-content {
   text-align: center !important;
 }
+
+#myChart{
+
+  width: 900px !important;
+  height: 500px !important;
+}
