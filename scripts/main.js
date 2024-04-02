@@ -541,12 +541,38 @@ function backToEmissions() {
 function goToContact() {
   var emissionIntensity = document.getElementById('EmissionIntensity')
   var emissionContainer = document.getElementById('emissionContainer')
+  var charts = document.getElementById('chart-container')
   var contactContainer = document.getElementById('contact-container')
   var dataEntry = document.getElementById('pageBody')
 
   emissionIntensity.style.display = 'none'
   emissionContainer.style.display = 'none'
+  charts.style.display = 'none'
   contactContainer.style.display = 'block'
+  dataEntry.style.display = 'none'
+}
+
+function goToGraph() {
+  var emissionIntensity = document.getElementById('EmissionIntensity')
+  var emissionContainer = document.getElementById('emissionContainer')
+  var graphContainer = document.getElementById('chart-container')
+  var dataEntry = document.getElementById('pageBody')
+
+  emissionIntensity.style.display = 'none'
+  emissionContainer.style.display = 'none'
+  graphContainer.style.display = 'block'
+  dataEntry.style.display = 'none'
+}
+
+function backToResult() {
+  var emissionIntensity = document.getElementById('EmissionIntensity')
+  var emissionContainer = document.getElementById('emissionContainer')
+  var graphContainer = document.getElementById('chart-container')
+  var dataEntry = document.getElementById('pageBody')
+
+  emissionIntensity.style.display = 'none'
+  emissionContainer.style.display = 'block'
+  graphContainer.style.display = 'none'
   dataEntry.style.display = 'none'
 }
 
