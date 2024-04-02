@@ -230,8 +230,45 @@ const shuffledFeulData = shuffleArray(FeulData);
     });
     if (result.length === 10) break;
   }
+displayBarGraph(result);
 }
   
-  console.log(result)
+console.log(result)
+
 	
 }
+
+function displayBarGraph(result) {
+  const makeModels = result.map(item => item.makeModel);
+  const co2Emissions = result.map(item => item.CO2Emissions);
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  // Destroy existing chart if it exists
+  if (window.myChart instanceof Chart) {
+    window.myChart.destroy();
+  }
+  
+  window.myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: makeModels,
+      datasets: [{
+        label: 'CO2 Emissions',
+        data: co2Emissions,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: 'y', // Set the index axis to 'y' for horizontal bars
+      scales: {
+        x: {
+          beginAtZero: true // Optionally, start the x-axis at zero
+        }
+      }
+    }
+  });
+}
+
