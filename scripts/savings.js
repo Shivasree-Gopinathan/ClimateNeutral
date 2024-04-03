@@ -54,6 +54,13 @@ function iterateThroughList() {
   var emissionIntensityDiv = document.getElementById('EmissionIntensity')
   emissionIntensityDiv.style.display = 'none'
 
+  const totalEmissionsSavings= document.getElementById("totalEmissionsSavings");
+  const emissionsSavingsPercentage=document.getElementById("emissionsSavingsPercentage");
+
+  let totalEmissionsSavingsAverage =0;
+  let emissionsSavingsPercentageAverage=0;
+  let count=0;
+
   var emissionContainer = document.getElementById('emissionContainer')
   emissionContainer.style.display = 'block'
 
@@ -61,7 +68,10 @@ function iterateThroughList() {
   contactContainer.style.display = 'none'
 
   //console.log(selectedOptions)
-
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
+  
   for (const key in selectedOptions) {
     if (Object.hasOwnProperty.call(selectedOptions, key)) {
       const item = selectedOptions[key]
@@ -70,6 +80,9 @@ function iterateThroughList() {
       console.log('Car Model::', item.car)
       console.log('Emissions Intensity::', item.emissionsIntensity)
       console.log('Annual Emission::', item.annualEmissions)
+
+      count++;
+      totalEmissionsSavingsAverage+=item.annualEmissions;
 
       var row = document.createElement('tr')
       var car = document.createElement('td')
@@ -89,6 +102,9 @@ function iterateThroughList() {
         item.emissionsIntensity
       )
       console.log('Savings::',savings)
+
+      emissionsSavingsPercentageAverage+=savings;
+
       emissionsIntensity.textContent = savings
       row.appendChild(car)
       row.appendChild(option)
@@ -104,6 +120,11 @@ function iterateThroughList() {
       // )
     }
   }
+  totalEmissionsSavingsAverage=totalEmissionsSavingsAverage/count;
+  emissionsSavingsPercentageAverage=emissionsSavingsPercentageAverage/count;
+
+  totalEmissionsSavings.textContent=`${totalEmissionsSavingsAverage.toFixed(2)} Tonnes/Year`;
+  emissionsSavingsPercentage.innerHTML=`${emissionsSavingsPercentageAverage.toFixed(2)}%`;
 }
 
 // function iterateThroughList() {
