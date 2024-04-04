@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', function () {
   calculateEmissionIntensity()
 })
 
+function getEmissionsIntensityRange(val) {
+  let range = Math.floor(Math.random() * 3);
+  
+  let lower = val - rangeNumber;
+  let upper = val + rangeNumber;
+
+}
+
 //Calculating Emission Intensity
 function calculateEmissionIntensity() {
   var table = document.getElementById('table-content')
@@ -35,7 +43,7 @@ function calculateEmissionIntensity() {
     var fuelEfficiency = annualFuelConsumption / annualVKT
     var annualEmissions =
       annualFuelConsumption * fuelEmissionsCoefficient[fuelType]
-    var emissionsIntensity = annualEmissions / annualVKT
+    var emissionsIntensity = Math.floor(annualEmissions / annualVKT)
     selectedOptions[index + 1].annualEmissions = annualEmissions/1000
     selectedOptions[index + 1].emissionsIntensity = emissionsIntensity
 

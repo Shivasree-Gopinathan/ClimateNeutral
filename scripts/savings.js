@@ -127,21 +127,6 @@ function iterateThroughList() {
   emissionsSavingsPercentage.innerHTML=`${emissionsSavingsPercentageAverage.toFixed(2)}%`;
 }
 
-// function iterateThroughList() {
-
-// 	for (const key in selectedOptions) {
-// 		if (Object.hasOwnProperty.call(selectedOptions, key)) {
-// 			const item = selectedOptions[key];
-// 			console.log("Row::", key);
-// 			console.log("Option::", item.option);
-// 			console.log("Car Model::", item.car);
-// 			console.log("Emissions Intensity::", item.emissionsIntensity);
-// 			console.log("Annual Emission::", item.annualEmissions);
-// 			calculateSavings(item.car, item.option, item.annualEmissions, item.emissionsIntensity);
-// 		}
-// 	}
-// }
-
 function getCombinedKWh(makeModel) {
   for (let i = 0; i < EVData.length; i++) {
     //Accessing the current object

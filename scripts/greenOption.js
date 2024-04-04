@@ -16,25 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
       emissionsIntensity: 0,
     }
   })
-
-  //Adding event listener to the dropdown elements
-  /* document.addEventListener('change', function (event) {
-    const target = event.target
-    if (target.tagName === 'SELECT' && target.className === 'custom-select') {
-      //Getting the row index
-      const rowIndex = target.closest('tr').rowIndex
-      //selectedOptions[rowIndex] = target.value;
-      selectedOptions[rowIndex] = {
-        car: '',
-        option: target.value,
-        annualEmissions: 0,
-        emissionsIntensity: 0,
-      }
-      /* console.log('Selected option for row ' + rowIndex + ':', selectedOptions[rowIndex]);
-			console.log('New selectedOptions::');
-			console.log(selectedOptions); 
-    }
-  }) */
   
   document.addEventListener('change', function (event) {
   const target = event.target;
