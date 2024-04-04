@@ -155,19 +155,30 @@ function calculateSavings(car, opt, annualEmm, emmisionInt) {
   if (opt === 'EV Vehicle') {
     console.log('-----Inside EV-----')
     savings = calculateEV(car, annualEmm, emmisionInt)
+    calculateRightCar(car)
     return savings
   } else if (opt.includes('B20')) {
     savings = 15
     console.log('Savings::', savings)
     totalEmissionsSavings = 0
+    calculateRightCar(car)
     return savings
   } else if (opt.includes('E85')) {
     //Could change in future
     savings = 79
     console.log('Savings::', savings)
     totalEmissionsSavings = annualEmm * 0.8
+    calculateRightCar(car)
     return savings
   } else if (opt.includes('Right Size')) {
+    console.log('---car---', car)
+    calculateRightCar(car)
+  }
+  else if (opt.includes('Biofuel')) {
+    console.log('---car---', car)
+    calculateRightCar(car)
+  }
+  else if (opt.includes('EV')) {
     console.log('---car---', car)
     calculateRightCar(car)
   }
