@@ -7,7 +7,7 @@
 }
 
 .emission-container .header {
-  background-color: #0c1081;
+  background-color: #0c1c81;
   color: white;
   padding: 20px;
   text-align: left;
@@ -23,7 +23,7 @@
   width: 80%;
   background-color: #26b170;
   color: white;
-  border: 2px solid #0c1081;
+  border: 2px solid #0c1c81;
   border-radius: 2rem;
   font-size: large;
   text-align: center;
@@ -58,7 +58,7 @@
 
 .emission-container th {
   color: white;
-  color: #0c1081;
+  color: #0c1c81;
   font-weight: bold;
   font-size: x-large;
 }
