@@ -1,9 +1,9 @@
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
   }
-  return array;
+  return array
 }
 
 document.querySelectorAll('.hover-right').forEach((button) => {
@@ -54,12 +54,14 @@ function iterateThroughList() {
   var emissionIntensityDiv = document.getElementById('EmissionIntensity')
   emissionIntensityDiv.style.display = 'none'
 
-  const totalEmissionsSavings= document.getElementById("totalEmissionsSavings");
-  const emissionsSavingsPercentage=document.getElementById("emissionsSavingsPercentage");
+  const totalEmissionsSavings = document.getElementById('totalEmissionsSavings')
+  const emissionsSavingsPercentage = document.getElementById(
+    'emissionsSavingsPercentage'
+  )
 
-  let totalEmissionsSavingsAverage =0;
-  let emissionsSavingsPercentageAverage=0;
-  let count=0;
+  let totalEmissionsSavingsAverage = 0
+  let emissionsSavingsPercentageAverage = 0
+  let count = 0
 
   var emissionContainer = document.getElementById('emissionContainer')
   emissionContainer.style.display = 'block'
@@ -69,9 +71,9 @@ function iterateThroughList() {
 
   //console.log(selectedOptions)
   while (table.rows.length > 1) {
-    table.deleteRow(1);
+    table.deleteRow(1)
   }
-  
+
   for (const key in selectedOptions) {
     if (Object.hasOwnProperty.call(selectedOptions, key)) {
       const item = selectedOptions[key]
@@ -81,8 +83,8 @@ function iterateThroughList() {
       console.log('Emissions Intensity::', item.emissionsIntensity)
       console.log('Annual Emission::', item.annualEmissions)
 
-      count++;
-      totalEmissionsSavingsAverage+=item.annualEmissions;
+      count++
+      totalEmissionsSavingsAverage += item.annualEmissions
 
       var row = document.createElement('tr')
       var car = document.createElement('td')
@@ -93,7 +95,6 @@ function iterateThroughList() {
       car.textContent = selectedOptions[key].car
       option.textContent = selectedOptions[key].option || 'None'
       annualEmissions.textContent = selectedOptions[key].annualEmissions
-      
 
       savings = calculateSavings(
         item.car,
@@ -101,9 +102,9 @@ function iterateThroughList() {
         item.annualEmissions,
         item.emissionsIntensity
       )
-      console.log('Savings::',savings)
+      console.log('Savings::', savings)
 
-      emissionsSavingsPercentageAverage+=savings;
+      emissionsSavingsPercentageAverage += savings
 
       emissionsIntensity.textContent = savings
       row.appendChild(car)
@@ -120,11 +121,15 @@ function iterateThroughList() {
       // )
     }
   }
-  totalEmissionsSavingsAverage=totalEmissionsSavingsAverage/count;
-  emissionsSavingsPercentageAverage=emissionsSavingsPercentageAverage/count;
+  totalEmissionsSavingsAverage = totalEmissionsSavingsAverage / count
+  emissionsSavingsPercentageAverage = emissionsSavingsPercentageAverage / count
 
-  totalEmissionsSavings.textContent=`${totalEmissionsSavingsAverage.toFixed(2)} Tonnes/Year`;
-  emissionsSavingsPercentage.innerHTML=`${emissionsSavingsPercentageAverage.toFixed(2)}%`;
+  totalEmissionsSavings.textContent = `${totalEmissionsSavingsAverage.toFixed(
+    2
+  )} Tonnes/Year`
+  emissionsSavingsPercentage.innerHTML = `${emissionsSavingsPercentageAverage.toFixed(
+    2
+  )}%`
 }
 
 // function iterateThroughList() {
@@ -177,10 +182,9 @@ function calculateSavings(car, opt, annualEmm, emmisionInt) {
     console.log('Savings::', savings)
     totalEmissionsSavings = annualEmm * 0.8
     return savings
-  }
-  else if (opt.includes('Right Size')) {
-	  console.log("---car---", car)
-	  calculateRightCar(car)
+  } else if (opt.includes('Right Size')) {
+    console.log('---car---', car)
+    calculateRightCar(car)
   }
 }
 
@@ -209,26 +213,26 @@ function calculateB20Diesel(){
 }*/
 
 function calculateRightCar(carModel) {
-	const result = [];
-	
-	console.log("------Inside calculateRightCar------")
-	var vehicleCO2 = 0
-    
-	for (let i = 0; i < FeulData.length; i++) {
+  const result = []
+
+  console.log('------Inside calculateRightCar------')
+  var vehicleCO2 = 0
+
+  for (let i = 0; i < FeulData.length; i++) {
     const vehicle = FeulData[i]
-	//console.log("--------",vehicle["Make Model"])
+    //console.log("--------",vehicle["Make Model"])
 
     //Check if the "Make Model" match is found
     if (vehicle['Make Model'] === carModel) {
-		//console.log("---carModel---", vehicle['Make Model'])
-		vehicleCO2 = vehicle['CO2 emissions']
-		console.log("---vehicleCO2---", vehicleCO2)
-		break;
-	}
-	}	
-	
-	// Find cars with lower CO2 emissions
-/*   for (let i = 0; i < FeulData.length; i++) {
+      //console.log("---carModel---", vehicle['Make Model'])
+      vehicleCO2 = vehicle['CO2 emissions']
+      console.log('---vehicleCO2---', vehicleCO2)
+      break
+    }
+  }
+
+  // Find cars with lower CO2 emissions
+  /*   for (let i = 0; i < FeulData.length; i++) {
     const vehicle = FeulData[i];
     if (vehicle['CO2 emissions'] < vehicleCO2 && vehicle['Make Model'] !== carModel) {
 	   //console.log(vehicle['Make Model'])
@@ -240,56 +244,127 @@ function calculateRightCar(carModel) {
     }
   } */
   // Shuffle the FeulData array
-const shuffledFeulData = shuffleArray(FeulData);
+  const shuffledFeulData = shuffleArray(FeulData)
 
   for (let i = 0; i < shuffledFeulData.length; i++) {
-  const vehicle = shuffledFeulData[i];
-  if (vehicle['CO2 emissions'] < vehicleCO2 && vehicle['Make Model'] !== carModel) {
-    result.push({
-      makeModel: vehicle['Make Model'],
-      CO2Emissions: vehicle['CO2 emissions']
-    });
-    if (result.length === 10) break;
+    const vehicle = shuffledFeulData[i]
+    if (
+      vehicle['CO2 emissions'] < vehicleCO2 &&
+      vehicle['Make Model'] !== carModel
+    ) {
+      result.push({
+        makeModel: vehicle['Make Model'],
+        CO2Emissions: vehicle['CO2 emissions'],
+      })
+      if (result.length === 10) break
+    }
+    displayBarGraph(result)
   }
-displayBarGraph(result);
-}
-  
-console.log(result)
 
-	
+  console.log(result)
 }
 
+// function displayBarGraph(result) {
+//   const makeModels = result.map((item) => item.makeModel)
+//   const co2Emissions = result.map((item) => item.CO2Emissions)
+
+//   var ctx = document.getElementById('myChart').getContext('2d')
+
+//   // Destroy existing chart if it exists
+//   if (window.myChart instanceof Chart) {
+//     window.myChart.destroy()
+//   }
+
+//   window.myChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//       labels: makeModels,
+//       datasets: [
+//         {
+//           label: 'CO2 Emissions',
+//           data: co2Emissions,
+//           backgroundColor: 'rgba(255, 99, 132, 0.2)',
+//           borderColor: 'rgba(255, 99, 132, 1)',
+//           borderWidth: 1,
+//           barThickness: 24,
+//         },
+//       ],
+//     },
+//     options: {
+//       indexAxis: 'y', // Set the index axis to 'y' for horizontal bars
+//       scales: {
+//         x: {
+//           beginAtZero: true, // Optionally, start the x-axis at zero
+//         },
+//       },
+//     },
+//   })
+// }
 function displayBarGraph(result) {
-  const makeModels = result.map(item => item.makeModel);
-  const co2Emissions = result.map(item => item.CO2Emissions);
+  const makeModels = result.map((item) => item.makeModel)
+  const co2Emissions = result.map((item) => item.CO2Emissions)
 
-  var ctx = document.getElementById('myChart').getContext('2d');
+  var ctx = document.getElementById('myChart').getContext('2d')
 
   // Destroy existing chart if it exists
   if (window.myChart instanceof Chart) {
-    window.myChart.destroy();
+    window.myChart.destroy()
   }
-  
+
   window.myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: makeModels,
-      datasets: [{
-        label: 'CO2 Emissions',
-        data: co2Emissions,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: 'CO2 Emissions',
+          data: co2Emissions,
+          backgroundColor: '#26b170',
+          borderColor: '#0c1c81',
+          borderWidth: 2,
+          // Set bar thickness manually or use maxBarThickness to limit thickness
+          barThickness: 34, // you can also try maxBarThickness: <value>
+        },
+      ],
     },
     options: {
       indexAxis: 'y', // Set the index axis to 'y' for horizontal bars
       scales: {
         x: {
-          beginAtZero: true // Optionally, start the x-axis at zero
-        }
-      }
-    }
-  });
+          beginAtZero: true,
+          grid: {
+            display: false, // Remove grid lines from the x-axis
+          },
+          ticks: {
+            font: {
+              size: 16, // Increase font size for x-axis labels
+            },
+          },
+          // Add this to adjust the spacing between bars
+          barPercentage: 0.1,
+          categoryPercentage: 0.1,
+        },
+        y: {
+          grid: {
+            display: true, // Remove grid lines from the y-axis
+          },
+          ticks: {
+            font: {
+              size: 16, // Increase font size for y-axis labels
+            },
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 18, // Increase font size for the legend
+            },
+          },
+        },
+      },
+      // maintainAspectRatio: false, // Add this to prevent default aspect ratio constraints
+    },
+  })
 }
-

@@ -592,6 +592,7 @@ td {
 }
 
 #myChart {
-  width: 900px !important;
-  height: 500px !important;
+  margin: 0 auto;
+  width: 60% !important;
+  height: 90vh !important;
 }
