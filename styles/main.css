@@ -127,6 +127,7 @@ nav .social a i:hover {
 }
 
 #pageBody {
+  min-height: 85vh;
   transition: margin-left 0.5s;
   padding: 16px;
 }
@@ -335,6 +336,7 @@ td {
 /*green options*/
 #green-option {
   min-height: 79.8vh;
+  /* min-height: 85vh; */
 }
 
 .choose-green-section {
@@ -417,7 +419,8 @@ td {
 }
 
 #green-option {
-  min-height: 43rem;
+  /* min-height: 43rem; */
+  min-height: 85vh;
 }
 
 /* .options-container th {
@@ -427,7 +430,8 @@ td {
 /* Page 3 */
 /* Emission Intensity */
 #EmissionIntensity {
-  min-height: 75.5vh;
+  /* min-height: 75.5vh; */
+  min-height: 81.5vh;
 }
 
 .graphs {
@@ -490,7 +494,7 @@ td {
   cursor: pointer;
 }
 
-.hover-right,
+/* .hover-right,
 .hover-left {
   transition: transform 0.3s ease;
 }
@@ -501,7 +505,7 @@ td {
 
 .hover-left:hover {
   transform: translateX(-10px);
-}
+} */
 
 .contact-form-container {
   margin-top: 2rem;
@@ -595,4 +599,50 @@ td {
   margin: 0 auto;
   width: 60% !important;
   height: 90vh !important;
+}
+
+#faq {
+  display: none;
+}
+
+.faq-container {
+  min-height: 83vh;
+  margin-bottom: 20px;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-container .faq-img {
+  margin: 0 auto;
+}
+
+.faq-container .faq-img img {
+  height: 150px;
+  width: 150px;
+  margin-left: 43%;
+  margin-top: 2rem;
+}
+
+.faq-container .faq-content {
+  margin: 0 auto;
+  max-width: 60%;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  font-size: large;
+}
+
+.question {
+  color: #0c1081;
+  cursor: pointer;
+  font-weight: 50;
+  position: relative;
+  margin-top: 2%;
+}
+
+.answer {
+  color: #26b170;
+  /* display: none; */
 }

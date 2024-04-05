@@ -50,15 +50,16 @@
           <div class="menu">
             <a href="main.html">Home</a>
             <a href="#" onclick="backToMain()">Data Input</a>
-            <a href="#" onclick="visibility(); populateGreenOptions();"
+            <!-- <a href="#" onclick="visibility(); populateGreenOptions();"
               >Green Option</a
             >
             <a
               href="#"
               onclick="calculateEmissionIntensity(); toggleVisibility();"
               >Results</a
-            >
+            > -->
             <a href="#" onclick="goToContact();">Contact</a>
+            <a href="#" onclick="goToFAQ();">FAQ</a>
           </div>
 
           <div class="social">
@@ -392,22 +393,34 @@
       </div>
     <canvas id="myChart" width="400" height="400"></canvas>
 
-    <div class="btns">
+    <div class="btns" id="btns">
+      <img
+        id="calculate-green-btn"
+        src="Images/left-arrow.png"
+        alt="Previous"
+        onclick="backToResult;"
+        class="hover-left"
+      />
+    </div>
+
+    <!-- <div class="btns">
       <img
         src="Images/left-arrow.png"
         alt="Previous"
         class="hover-left"
         onclick="backToResult();"
       />
+      <a href="#pageBody">Back to Data</a>
       <img
-        src="Images/right-arrow.png"
-        alt="Next"
+        src="Images/back.png"
+        alt="Back To Data"
         class="hover-right"
-        onclick="goToContact()"
+        onclick="backToMain()"
       />
-    </div>
+    </div> -->
   </div>
 
+  <!-- Contact -->
     <div
       class="contact-form-container"
       style="display: none"
@@ -455,6 +468,31 @@
           id="carImage"
         />
       </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-container" id="faq">
+      <div class="faq-img">
+        <img src="Images/faq.png" alt="FAQ">
+      </div>
+      <div class="faq-content">
+        <div class="faq-item">
+          <h3 class="question">How can I use the fleet emissions analysis tool to assess the environmental impacts of my organization's vehicle fleet?</h3>
+          <div class="answer">The fleet emissions analysis tool allows you to input data about your existing fleet vehicles, including information such as vehicle types, fuel types, mileage, and usage patterns. Based on this data, the tool calculates the total annual emissions and energy consumption of your fleet.</div>
+        </div>
+        <div class="faq-item">
+          <h3 class="question">How does the tool calculate the environmental impacts of the existing fleet?</h3>
+          <div class="answer">The tool uses established emissions factors and calculation methodologies to estimate the greenhouse gas emissions (GHGs) and energy consumption associated with each vehicle in your fleet, taking into account factors such as fuel type, vehicle efficiency, and usage patterns.</div>
+        </div>
+        <div class="faq-item">
+          <h3 class="question">Can the tool help me develop strategies to reduce my organization's fleet emissions?</h3>
+          <div class="answer">Yes, the tool provides detailed "Green Results" that quantify the impacts and savings from implementing green options for your fleet. Based on these results, you can develop targeted strategies and actions to reduce your organization's fleet emissions and improve overall environmental performance.</div>
+        </div>
+        <div class="faq-item">
+          <h3 class="question">How can businesses and municipalities benefit from using the fleet emissions analysis tool?</h3>
+          <div class="answer">By using the tool, businesses and municipalities can gain valuable insights into their fleet emissions, identify opportunities for emissions reductions, and develop cost-effective strategies to transition to cleaner and more sustainable transportation options. This not only improves local air quality but also contributes to global efforts to combat climate change.</div>
+        </div>
+    </div>
     </div>
 
     <!-- Footer -->

@@ -544,12 +544,14 @@ function goToContact() {
   var charts = document.getElementById('chart-container')
   var contactContainer = document.getElementById('contact-container')
   var dataEntry = document.getElementById('pageBody')
+  var faq = document.getElementById('faq')
 
   emissionIntensity.style.display = 'none'
   emissionContainer.style.display = 'none'
   charts.style.display = 'none'
   contactContainer.style.display = 'block'
   dataEntry.style.display = 'none'
+  faq.style.display = 'none'
 }
 
 function goToGraph() {
@@ -577,7 +579,7 @@ function backToResult() {
 }
 
 function downloadCSV(event) {
-  event.preventDefault();
+  event.preventDefault()
   const table = document.getElementById('emission-table')
   let csv = []
   for (let i = 0; i < table.rows.length; i++) {
@@ -635,10 +637,9 @@ function downloadCSV(event) {
 //   pdf.save('emissions_data.pdf')
 // }
 
-
 // // Working code
 function downloadPDF(event) {
-  event.preventDefault();
+  event.preventDefault()
   const pdf = new jspdf.jsPDF()
   const table = document.getElementById('emission-table')
   let yPosition = 20
@@ -670,7 +671,7 @@ function downloadPDF(event) {
       }
 
       // Set text alignment to center
-      pdf.text(text, xPosition + (colWidth / 2), yPosition, { align: 'center' })
+      pdf.text(text, xPosition + colWidth / 2, yPosition, { align: 'center' })
 
       // Adjust xPosition for the next cell
       xPosition += colWidth
@@ -683,8 +684,6 @@ function downloadPDF(event) {
   // Save the created PDF
   pdf.save('emissions_data.pdf')
 }
-
-
 
 document
   .getElementById('contactForm')
@@ -713,3 +712,19 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   })
 })
+
+function goToFAQ() {
+  var emissionIntensity = document.getElementById('EmissionIntensity')
+  var emissionContainer = document.getElementById('emissionContainer')
+  var graphContainer = document.getElementById('chart-container')
+  var dataEntry = document.getElementById('pageBody')
+  var faq = document.getElementById('faq')
+  var contact = document.getElementById('contact-container')
+
+  emissionIntensity.style.display = 'none'
+  emissionContainer.style.display = 'none'
+  graphContainer.style.display = 'none'
+  dataEntry.style.display = 'none'
+  faq.style.display = 'block'
+  contact.style.display = 'none'
+}
