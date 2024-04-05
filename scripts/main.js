@@ -517,9 +517,19 @@ document.addEventListener('DOMContentLoaded', function () {
 function backToMain() {
   var dataEntry = document.getElementById('pageBody')
   var greenOption = document.getElementById('green-option')
+  var chart = document.getElementById('chart-container')
+  var emissionIntensity = document.getElementById('EmissionIntensity')
+  var emissionContainer = document.getElementById('emissionContainer')
+  var contactContainer = document.getElementById('contact-container')
+  var faq = document.getElementById('faq')
 
   dataEntry.style.display = 'block'
   greenOption.style.display = 'none'
+  chart.style.display = 'none'
+  emissionIntensity.style.display = 'none'
+  emissionContainer.style.display = 'none'
+  contactContainer.style.display = 'none'
+  faq.style.display = 'none'
 }
 
 function backToGreenOptions() {
