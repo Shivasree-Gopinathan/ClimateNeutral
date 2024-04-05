@@ -289,43 +289,7 @@ function calculateRightCar(carModel) {
   console.log(result)
 }
 
-// function displayBarGraph(result) {
-//   const makeModels = result.map((item) => item.makeModel)
-//   const co2Emissions = result.map((item) => item.CO2Emissions)
-
-//   var ctx = document.getElementById('myChart').getContext('2d')
-
-//   // Destroy existing chart if it exists
-//   if (window.myChart instanceof Chart) {
-//     window.myChart.destroy()
-//   }
-
-//   window.myChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//       labels: makeModels,
-//       datasets: [
-//         {
-//           label: 'CO2 Emissions',
-//           data: co2Emissions,
-//           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-//           borderColor: 'rgba(255, 99, 132, 1)',
-//           borderWidth: 1,
-//           barThickness: 24,
-//         },
-//       ],
-//     },
-//     options: {
-//       indexAxis: 'y', // Set the index axis to 'y' for horizontal bars
-//       scales: {
-//         x: {
-//           beginAtZero: true, // Optionally, start the x-axis at zero
-//         },
-//       },
-//     },
-//   })
-// }
-function displayBarGraph(result) {
+/* function displayBarGraph(result) {
   const makeModels = result.map((item) => item.makeModel)
   const co2Emissions = result.map((item) => item.CO2Emissions)
 
@@ -392,4 +356,84 @@ function displayBarGraph(result) {
       // maintainAspectRatio: false, // Add this to prevent default aspect ratio constraints
     },
   })
+} */
+
+function displayBarGraph(result) {
+  // Sort the data in descending order based on CO2 emissions
+  result.sort((a, b) => b.CO2Emissions - a.CO2Emissions);
+
+  const makeModels = result.map((item) => item.makeModel);
+  const co2Emissions = result.map((item) => item.CO2Emissions);
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  // Destroy existing chart if it exists
+  if (window.myChart instanceof Chart) {
+    window.myChart.destroy();
+  }
+
+  window.myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: makeModels,
+      datasets: [
+        {
+          label: 'CO2 Emissions',
+          data: co2Emissions,
+          backgroundColor: co2Emissions.map(emission => {
+            if (emission < 200) {
+              return '#8bc34a';
+            } else if (emission >= 200 && emission < 300) {
+              return '#26b170';
+            } else {
+              return '#007f4c';
+            }
+          }),
+          borderColor: '#0c1c81',
+          borderWidth: 2,
+          // Set bar thickness manually or use maxBarThickness to limit thickness
+          barThickness: 34, // you can also try maxBarThickness: <value>
+        },
+      ],
+    },
+    options: {
+      indexAxis: 'y', // Set the index axis to 'y' for horizontal bars
+      scales: {
+        x: {
+          beginAtZero: true,
+          grid: {
+            display: false, // Remove grid lines from the x-axis
+          },
+          ticks: {
+            font: {
+              size: 16, // Increase font size for x-axis labels
+            },
+          },
+          // Add this to adjust the spacing between bars
+          barPercentage: 0.1,
+          categoryPercentage: 0.1,
+        },
+        y: {
+          grid: {
+            display: true, // Remove grid lines from the y-axis
+          },
+          ticks: {
+            font: {
+              size: 16, // Increase font size for y-axis labels
+            },
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 18, // Increase font size for the legend
+            },
+          },
+        },
+      },
+      // maintainAspectRatio: false, // Add this to prevent default aspect ratio constraints
+    },
+  });
 }
