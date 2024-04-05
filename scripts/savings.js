@@ -251,6 +251,10 @@ function calculateRightCar(carModel) {
     if (vehicle['Make Model'] === carModel) {
       //console.log("---carModel---", vehicle['Make Model'])
       vehicleCO2 = vehicle['CO2 emissions']
+	  result.push({
+        makeModel: "Existing Vehicle",
+        CO2Emissions: vehicle['CO2 emissions'],
+      })
       console.log('---vehicleCO2---', vehicleCO2)
       break
     }
@@ -380,13 +384,15 @@ function displayBarGraph(result) {
         {
           label: 'CO2 Emissions',
           data: co2Emissions,
-          backgroundColor: co2Emissions.map(emission => {
-            if (emission < 200) {
-              return '#8bc34a';
+          backgroundColor: co2Emissions.map((emission, index) => {
+            if (index === 0) {
+              return ' #ffc300'; // Yellow for the first element
+            } else if (emission < 200) {
+              return '#8bc34a'; // Dark green for low emissions
             } else if (emission >= 200 && emission < 300) {
-              return '#26b170';
+              return '#26b170'; // Medium green for medium emissions
             } else {
-              return '#007f4c';
+              return '#007f4c'; // Light green for high emissions
             }
           }),
           borderColor: '#0c1c81',
@@ -437,3 +443,4 @@ function displayBarGraph(result) {
     },
   });
 }
+
