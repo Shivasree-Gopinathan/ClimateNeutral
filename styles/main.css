@@ -455,6 +455,12 @@ td {
   margin: auto;
 }
 
+.graph1,
+.graph2 {
+  width: 45%;
+  height: auto;
+}
+
 .graph1 h2,
 .graph2 h2 {
   text-align: center;
