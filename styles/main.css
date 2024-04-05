@@ -33,6 +33,7 @@ header nav {
 header nav .menu {
   display: flex;
   align-items: center;
+  margin-right: 40% !important;
 }
 
 nav .menu a {
