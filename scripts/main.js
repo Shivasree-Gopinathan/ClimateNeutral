@@ -576,7 +576,8 @@ function backToResult() {
   dataEntry.style.display = 'none'
 }
 
-function downloadCSV() {
+function downloadCSV(event) {
+  event.preventDefault();
   const table = document.getElementById('emission-table')
   let csv = []
   for (let i = 0; i < table.rows.length; i++) {
@@ -636,7 +637,8 @@ function downloadCSV() {
 
 
 // // Working code
-function downloadPDF() {
+function downloadPDF(event) {
+  event.preventDefault();
   const pdf = new jspdf.jsPDF()
   const table = document.getElementById('emission-table')
   let yPosition = 20
