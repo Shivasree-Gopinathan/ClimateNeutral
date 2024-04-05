@@ -127,9 +127,15 @@ function iterateThroughList() {
   totalEmissionsSavings.textContent = `${totalEmissionsSavingsAverage.toFixed(
     2
   )} Tonnes/Year`
-  emissionsSavingsPercentage.innerHTML = `${emissionsSavingsPercentageAverage.toFixed(
-    2
-  )}%`
+  // emissionsSavingsPercentage.innerHTML = `${emissionsSavingsPercentageAverage.toFixed(
+  //   2
+  // )}%`
+
+  if (isNaN(emissionsSavingsPercentageAverage)) {
+    emissionsSavingsPercentage.innerHTML = '0%';
+  } else {
+    emissionsSavingsPercentage.innerHTML = `${emissionsSavingsPercentageAverage.toFixed(2)}%`;
+  }
 }
 
 function getCombinedKWh(makeModel) {

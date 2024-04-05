@@ -597,6 +597,45 @@ function downloadCSV() {
   document.body.removeChild(downloadLink)
 }
 
+// function downloadPDF() {
+//   const pdf = new jspdf.jsPDF()
+//   const table = document.getElementById('emission-table')
+//   let yPosition = 20
+
+//   // Add a title for the PDF
+//   pdf.setFontSize(16)
+//   pdf.text('Emission Savings Result Analysis', 14, yPosition)
+//   yPosition += 10
+
+//   // Set the font size for the table content
+//   pdf.setFontSize(10)
+
+//   // Iterate over each row of the table
+//   for (let i = 0; i < table.rows.length; i++) {
+//     let xPosition = 14
+//     const row = table.rows[i]
+//     const cols = row.querySelectorAll('td, th')
+
+//     // Iterate over each cell in the row
+//     for (let j = 0; j < cols.length; j++) {
+//       const text = cols[j].innerText
+//       // Add the cell text to the PDF. Adjust `xPosition` and `yPosition` as needed.
+//       pdf.text(text, xPosition, yPosition)
+
+//       // Adjust xPosition for the next cell. The value depends on your table's layout.
+//       xPosition += 40 // Adjust based on the width of your columns
+//     }
+
+//     // Move to the next row position
+//     yPosition += 10
+//   }
+
+//   // Save the created PDF
+//   pdf.save('emissions_data.pdf')
+// }
+
+
+// // Working code
 function downloadPDF() {
   const pdf = new jspdf.jsPDF()
   const table = document.getElementById('emission-table')
@@ -607,7 +646,7 @@ function downloadPDF() {
   pdf.text('Emission Savings Result Analysis', 14, yPosition)
   yPosition += 10
 
-  // Set the font size for the table content
+  // Set the font size and text alignment for the table content
   pdf.setFontSize(10)
 
   // Iterate over each row of the table
@@ -619,11 +658,20 @@ function downloadPDF() {
     // Iterate over each cell in the row
     for (let j = 0; j < cols.length; j++) {
       const text = cols[j].innerText
-      // Add the cell text to the PDF. Adjust `xPosition` and `yPosition` as needed.
-      pdf.text(text, xPosition, yPosition)
+      let colWidth = 40 // Adjust based on the width of your columns
 
-      // Adjust xPosition for the next cell. The value depends on your table's layout.
-      xPosition += 40 // Adjust based on the width of your columns
+      // Adjust xPosition for the next cell
+      if (j === cols.length - 1) {
+        // Last column, adjust xPosition to avoid overlapping
+        xPosition += colWidth - 63
+        colWidth *= 2
+      }
+
+      // Set text alignment to center
+      pdf.text(text, xPosition + (colWidth / 2), yPosition, { align: 'center' })
+
+      // Adjust xPosition for the next cell
+      xPosition += colWidth
     }
 
     // Move to the next row position
@@ -633,6 +681,8 @@ function downloadPDF() {
   // Save the created PDF
   pdf.save('emissions_data.pdf')
 }
+
+
 
 document
   .getElementById('contactForm')
